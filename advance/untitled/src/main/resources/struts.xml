@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE struts PUBLIC
+        "-//Apache Software Foundation//DTD Struts Configuration 2.1.7//EN"
+        "http://struts.apache.org/dtds/struts-2.1.7.dtd">
+
+<struts>
+    <constant name="struts.devMode" value="true" />
+    <constant name="struts.action.extension" value=","/>
+
+    <package name="com.test.app" extends="struts-default">
+
+        <action name="index">
+            <result>/index.jsp</result>
+        </action>
+
+        <action name="hello" class="com.test.app.action.HelloWorldAction" method="test">
+            <result name="ss">/HelloWorld.jsp</result>
+        </action>
+
+    </package>
+</struts>
