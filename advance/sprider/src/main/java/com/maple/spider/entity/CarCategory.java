@@ -1,4 +1,4 @@
-package com.maple.sprider.entity;
+package com.maple.spider.entity;
 
 /**
  * Created by alongsea2 on 16/10/8.

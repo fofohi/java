@@ -1,4 +1,4 @@
-package com.maple.sprider.util;
+package com.maple.spider.util;
 
 import okhttp3.OkHttpClient;
 import okhttp3.Request;

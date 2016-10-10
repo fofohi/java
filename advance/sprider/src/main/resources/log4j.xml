@@ -19,5 +19,6 @@
     <!-- 根logger的设置-->
     <root>
         <priority value ="debug"/>
+        <appender-ref ref="myConsole" />
     </root>
 </log4j:configuration>
