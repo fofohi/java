@@ -29,10 +29,9 @@ class CarCategoryServiceImpl implements CarCategoryService {
         URL jsonFile = loader.getResource(fileName);
         String s = null;
         if(jsonFile == null){
-            Response response = OkHttpUtil.httpGet(Constant.carCategoryApiUrl);
+            Response response = OkHttpUtil.httpGet(Constant.CAR_CATEGORY_API_URL);
             try {
                 s = parseCategoryJsonp(response.body().string());
-
                 File file = new File(loader.getResource("").getPath() + fileName);
                 FileOutputStream out = new FileOutputStream(file);
                 out.write(s.getBytes());
@@ -44,9 +43,9 @@ class CarCategoryServiceImpl implements CarCategoryService {
             try {
                 FileInputStream in = new FileInputStream(new File(jsonFile.getPath()));
                 byte[] n = new byte[in.available()];
-                int r = 0;
+
                 StringBuilder sb = new StringBuilder();
-                while ( ( r = in.read(n) ) != -1  ){
+                while ( in.read(n) != -1 ){
                     sb.append(new String(n));
                 }
                 s = sb.toString();
@@ -64,8 +63,6 @@ class CarCategoryServiceImpl implements CarCategoryService {
             logger.error("error3");
             System.exit(0);
         }
-
-
     }
 
     private String parseCategoryJsonp(String jsonp){
@@ -75,7 +72,7 @@ class CarCategoryServiceImpl implements CarCategoryService {
         if (matcher.find()){
             r = matcher.group(1);
         }
-        if(r==null){
+        if(r == null){
             return null;
         }
         r = r.replace(":","\":").replace("{","{\"").replace(",",",\"").replace(",\"{",",{");
