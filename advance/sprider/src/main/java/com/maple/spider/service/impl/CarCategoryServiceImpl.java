@@ -3,12 +3,15 @@ package com.maple.spider.service.impl;
 import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.maple.spider.common.Constant;
+import com.maple.spider.dao.CarCategoryDao;
 import com.maple.spider.service.CarCategoryService;
 import com.maple.spider.util.ObjectMapperUtil;
 import com.maple.spider.util.OkHttpUtil;
 import okhttp3.Response;
 import org.apache.log4j.Logger;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.io.*;
 import java.net.URL;
@@ -22,17 +25,20 @@ import java.util.regex.Pattern;
 class CarCategoryServiceImpl implements CarCategoryService {
     private static Logger logger = Logger.getLogger(CarCategoryServiceImpl.class);
 
+    @Autowired
+    private CarCategoryDao carCategoryDao;
+
     @Override
     public void buildCategoryJson() {
+        carCategoryDao.testCase();
         String fileName = "category.json";
         ClassLoader loader = this.getClass().getClassLoader();
         URL jsonFile = loader.getResource(fileName);
         String s = null;
         if(jsonFile == null){
-            Response response = OkHttpUtil.httpGet(Constant.carCategoryApiUrl);
+            Response response = OkHttpUtil.httpGet(Constant.CAR_CATEGORY_API_URL);
             try {
                 s = parseCategoryJsonp(response.body().string());
-
                 File file = new File(loader.getResource("").getPath() + fileName);
                 FileOutputStream out = new FileOutputStream(file);
                 out.write(s.getBytes());
@@ -44,9 +50,9 @@ class CarCategoryServiceImpl implements CarCategoryService {
             try {
                 FileInputStream in = new FileInputStream(new File(jsonFile.getPath()));
                 byte[] n = new byte[in.available()];
-                int r = 0;
+
                 StringBuilder sb = new StringBuilder();
-                while ( ( r = in.read(n) ) != -1  ){
+                while ( in.read(n) != -1 ){
                     sb.append(new String(n));
                 }
                 s = sb.toString();
@@ -64,8 +70,6 @@ class CarCategoryServiceImpl implements CarCategoryService {
             logger.error("error3");
             System.exit(0);
         }
-
-
     }
 
     private String parseCategoryJsonp(String jsonp){
@@ -75,7 +79,7 @@ class CarCategoryServiceImpl implements CarCategoryService {
         if (matcher.find()){
             r = matcher.group(1);
         }
-        if(r==null){
+        if(r == null){
             return null;
         }
         r = r.replace(":","\":").replace("{","{\"").replace(",",",\"").replace(",\"{",",{");
