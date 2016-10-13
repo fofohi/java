@@ -2,12 +2,9 @@ package com.maple.spider;
 
 
 
-import com.maple.spider.entity.hibernate.Test;
 import com.maple.spider.service.CarCategoryService;
 import org.apache.log4j.Logger;
 
-import org.hibernate.Session;
-import org.hibernate.SessionFactory;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 

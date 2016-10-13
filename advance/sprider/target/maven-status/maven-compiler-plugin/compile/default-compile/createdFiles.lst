@@ -1,0 +1,11 @@
+com\maple\spider\service\impl\CarCategoryServiceImpl.class
+com\maple\spider\entity\hibernate\Test.class
+com\maple\spider\util\ObjectMapperUtil.class
+com\maple\spider\common\Constant.class
+com\maple\spider\entity\CarCategory.class
+com\maple\spider\Spider.class
+com\maple\spider\util\OkHttpUtil$OkHttpUtilInner.class
+com\maple\spider\util\ObjectMapperUtil$ObjectMapperUtilInner.class
+com\maple\spider\service\CarCategoryService.class
+com\maple\spider\entity\hibernate\Test2.class
+com\maple\spider\util\OkHttpUtil.class

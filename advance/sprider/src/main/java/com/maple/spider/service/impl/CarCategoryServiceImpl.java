@@ -3,15 +3,13 @@ package com.maple.spider.service.impl;
 import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.maple.spider.common.Constant;
-import com.maple.spider.entity.hibernate.Test;
-import com.maple.spider.entity.hibernate.Test2;
+import com.maple.spider.dao.CarCategoryDao;
 import com.maple.spider.service.CarCategoryService;
 import com.maple.spider.util.ObjectMapperUtil;
 import com.maple.spider.util.OkHttpUtil;
 import okhttp3.Response;
 import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.orm.hibernate4.HibernateTemplate;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -28,16 +26,11 @@ class CarCategoryServiceImpl implements CarCategoryService {
     private static Logger logger = Logger.getLogger(CarCategoryServiceImpl.class);
 
     @Autowired
-    private HibernateTemplate hibernateTemplate;
+    private CarCategoryDao carCategoryDao;
 
     @Override
     public void buildCategoryJson() {
-        Test2 s3 = new Test2();
-        s3.setTest("2");
-        hibernateTemplate.save(s3);
-        Test s2 = new Test();
-        s2.setTest("3");
-        hibernateTemplate.save(s2);
+        carCategoryDao.testCase();
         String fileName = "category.json";
         ClassLoader loader = this.getClass().getClassLoader();
         URL jsonFile = loader.getResource(fileName);

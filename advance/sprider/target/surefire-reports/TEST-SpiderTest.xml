@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<testsuite failures="0" time="5.049" errors="0" skipped="0" tests="2" name="SpiderTest">
+  <properties>
+    <property name="java.runtime.name" value="Java(TM) SE Runtime Environment"/>
+    <property name="sun.boot.library.path" value="D:\jdk7\jdk1.7.0_67\jre\bin"/>
+    <property name="java.vm.version" value="24.65-b04"/>
+    <property name="java.vm.vendor" value="Oracle Corporation"/>
+    <property name="java.vendor.url" value="http://java.oracle.com/"/>
+    <property name="path.separator" value=";"/>
+    <property name="java.vm.name" value="Java HotSpot(TM) 64-Bit Server VM"/>
+    <property name="file.encoding.pkg" value="sun.io"/>
+    <property name="user.script" value=""/>
+    <property name="user.country" value="CN"/>
+    <property name="sun.java.launcher" value="SUN_STANDARD"/>
+    <property name="sun.os.patch.level" value=""/>
+    <property name="java.vm.specification.name" value="Java Virtual Machine Specification"/>
+    <property name="user.dir" value="D:\project\advance\java\advance\sprider"/>
+    <property name="java.runtime.version" value="1.7.0_67-b01"/>
+    <property name="java.awt.graphicsenv" value="sun.awt.Win32GraphicsEnvironment"/>
+    <property name="basedir" value="D:\project\advance\java\advance\sprider"/>
+    <property name="java.endorsed.dirs" value="D:\jdk7\jdk1.7.0_67\jre\lib\endorsed"/>
+    <property name="os.arch" value="amd64"/>
+    <property name="surefire.real.class.path" value="C:\Users\dell\AppData\Local\Temp\surefirebooter4288465847621171623.jar"/>
+    <property name="java.io.tmpdir" value="C:\Users\dell\AppData\Local\Temp\"/>
+    <property name="line.separator" value="
+"/>
+    <property name="java.vm.specification.vendor" value="Oracle Corporation"/>
+    <property name="user.variant" value=""/>
+    <property name="os.name" value="Windows 8.1"/>
+    <property name="sun.jnu.encoding" value="GBK"/>
+    <property name="java.library.path" value="D:\jdk7\jdk1.7.0_67\jre\bin;C:\WINDOWS\Sun\Java\bin;C:\WINDOWS\system32;C:\WINDOWS;C:\WINDOWS\system32;C:\WINDOWS;C:\WINDOWS\System32\Wbem;C:\WINDOWS\System32\WindowsPowerShell\v1.0\;D:\Git\cmd;F:\program\vagrant\bin;D:\jdk8\jdk1.8.0_77\bin;D:\maven\bin;C:\Users\dell\AppData\Local\Microsoft\WindowsApps;;."/>
+    <property name="surefire.test.class.path" value="D:\project\advance\java\advance\sprider\target\test-classes;D:\project\advance\java\advance\sprider\target\classes;D:\m2\.m2\com\squareup\okhttp3\okhttp\3.4.1\okhttp-3.4.1.jar;D:\m2\.m2\com\squareup\okio\okio\1.9.0\okio-1.9.0.jar;D:\m2\.m2\log4j\log4j\1.2.17\log4j-1.2.17.jar;D:\m2\.m2\com\fasterxml\jackson\core\jackson-core\2.8.3\jackson-core-2.8.3.jar;D:\m2\.m2\com\fasterxml\jackson\core\jackson-databind\2.8.3\jackson-databind-2.8.3.jar;D:\m2\.m2\com\fasterxml\jackson\core\jackson-annotations\2.8.3\jackson-annotations-2.8.3.jar;D:\m2\.m2\org\springframework\spring-core\4.3.3.RELEASE\spring-core-4.3.3.RELEASE.jar;D:\m2\.m2\commons-logging\commons-logging\1.2\commons-logging-1.2.jar;D:\m2\.m2\org\springframework\spring-context\4.3.3.RELEASE\spring-context-4.3.3.RELEASE.jar;D:\m2\.m2\org\springframework\spring-aop\4.3.3.RELEASE\spring-aop-4.3.3.RELEASE.jar;D:\m2\.m2\org\springframework\spring-beans\4.3.3.RELEASE\spring-beans-4.3.3.RELEASE.jar;D:\m2\.m2\org\springframework\spring-expression\4.3.3.RELEASE\spring-expression-4.3.3.RELEASE.jar;D:\m2\.m2\org\springframework\spring-jdbc\4.3.3.RELEASE\spring-jdbc-4.3.3.RELEASE.jar;D:\m2\.m2\org\springframework\spring-orm\4.3.3.RELEASE\spring-orm-4.3.3.RELEASE.jar;D:\m2\.m2\org\springframework\spring-tx\4.3.3.RELEASE\spring-tx-4.3.3.RELEASE.jar;D:\m2\.m2\org\springframework\spring-test\4.3.3.RELEASE\spring-test-4.3.3.RELEASE.jar;D:\m2\.m2\org\hibernate\hibernate-core\4.3.11.Final\hibernate-core-4.3.11.Final.jar;D:\m2\.m2\org\jboss\logging\jboss-logging\3.1.3.GA\jboss-logging-3.1.3.GA.jar;D:\m2\.m2\org\jboss\logging\jboss-logging-annotations\1.2.0.Beta1\jboss-logging-annotations-1.2.0.Beta1.jar;D:\m2\.m2\org\jboss\spec\javax\transaction\jboss-transaction-api_1.2_spec\1.0.0.Final\jboss-transaction-api_1.2_spec-1.0.0.Final.jar;D:\m2\.m2\dom4j\dom4j\1.6.1\dom4j-1.6.1.jar;D:\m2\.m2\xml-apis\xml-apis\1.0.b2\xml-apis-1.0.b2.jar;D:\m2\.m2\org\hibernate\common\hibernate-commons-annotations\4.0.5.Final\hibernate-commons-annotations-4.0.5.Final.jar;D:\m2\.m2\org\hibernate\javax\persistence\hibernate-jpa-2.1-api\1.0.0.Final\hibernate-jpa-2.1-api-1.0.0.Final.jar;D:\m2\.m2\org\javassist\javassist\3.18.1-GA\javassist-3.18.1-GA.jar;D:\m2\.m2\antlr\antlr\2.7.7\antlr-2.7.7.jar;D:\m2\.m2\org\jboss\jandex\1.1.0.Final\jandex-1.1.0.Final.jar;D:\m2\.m2\mysql\mysql-connector-java\5.1.38\mysql-connector-java-5.1.38.jar;D:\m2\.m2\com\mchange\c3p0\0.9.5.2\c3p0-0.9.5.2.jar;D:\m2\.m2\com\mchange\mchange-commons-java\0.2.11\mchange-commons-java-0.2.11.jar;D:\m2\.m2\junit\junit\4.12\junit-4.12.jar;D:\m2\.m2\org\hamcrest\hamcrest-core\1.3\hamcrest-core-1.3.jar;"/>
+    <property name="java.specification.name" value="Java Platform API Specification"/>
+    <property name="java.class.version" value="51.0"/>
+    <property name="sun.management.compiler" value="HotSpot 64-Bit Tiered Compilers"/>
+    <property name="os.version" value="6.3"/>
+    <property name="user.home" value="C:\Users\dell"/>
+    <property name="user.timezone" value="Asia/Shanghai"/>
+    <property name="java.awt.printerjob" value="sun.awt.windows.WPrinterJob"/>
+    <property name="java.specification.version" value="1.7"/>
+    <property name="file.encoding" value="GBK"/>
+    <property name="user.name" value="dell"/>
+    <property name="java.class.path" value="D:\project\advance\java\advance\sprider\target\test-classes;D:\project\advance\java\advance\sprider\target\classes;D:\m2\.m2\com\squareup\okhttp3\okhttp\3.4.1\okhttp-3.4.1.jar;D:\m2\.m2\com\squareup\okio\okio\1.9.0\okio-1.9.0.jar;D:\m2\.m2\log4j\log4j\1.2.17\log4j-1.2.17.jar;D:\m2\.m2\com\fasterxml\jackson\core\jackson-core\2.8.3\jackson-core-2.8.3.jar;D:\m2\.m2\com\fasterxml\jackson\core\jackson-databind\2.8.3\jackson-databind-2.8.3.jar;D:\m2\.m2\com\fasterxml\jackson\core\jackson-annotations\2.8.3\jackson-annotations-2.8.3.jar;D:\m2\.m2\org\springframework\spring-core\4.3.3.RELEASE\spring-core-4.3.3.RELEASE.jar;D:\m2\.m2\commons-logging\commons-logging\1.2\commons-logging-1.2.jar;D:\m2\.m2\org\springframework\spring-context\4.3.3.RELEASE\spring-context-4.3.3.RELEASE.jar;D:\m2\.m2\org\springframework\spring-aop\4.3.3.RELEASE\spring-aop-4.3.3.RELEASE.jar;D:\m2\.m2\org\springframework\spring-beans\4.3.3.RELEASE\spring-beans-4.3.3.RELEASE.jar;D:\m2\.m2\org\springframework\spring-expression\4.3.3.RELEASE\spring-expression-4.3.3.RELEASE.jar;D:\m2\.m2\org\springframework\spring-jdbc\4.3.3.RELEASE\spring-jdbc-4.3.3.RELEASE.jar;D:\m2\.m2\org\springframework\spring-orm\4.3.3.RELEASE\spring-orm-4.3.3.RELEASE.jar;D:\m2\.m2\org\springframework\spring-tx\4.3.3.RELEASE\spring-tx-4.3.3.RELEASE.jar;D:\m2\.m2\org\springframework\spring-test\4.3.3.RELEASE\spring-test-4.3.3.RELEASE.jar;D:\m2\.m2\org\hibernate\hibernate-core\4.3.11.Final\hibernate-core-4.3.11.Final.jar;D:\m2\.m2\org\jboss\logging\jboss-logging\3.1.3.GA\jboss-logging-3.1.3.GA.jar;D:\m2\.m2\org\jboss\logging\jboss-logging-annotations\1.2.0.Beta1\jboss-logging-annotations-1.2.0.Beta1.jar;D:\m2\.m2\org\jboss\spec\javax\transaction\jboss-transaction-api_1.2_spec\1.0.0.Final\jboss-transaction-api_1.2_spec-1.0.0.Final.jar;D:\m2\.m2\dom4j\dom4j\1.6.1\dom4j-1.6.1.jar;D:\m2\.m2\xml-apis\xml-apis\1.0.b2\xml-apis-1.0.b2.jar;D:\m2\.m2\org\hibernate\common\hibernate-commons-annotations\4.0.5.Final\hibernate-commons-annotations-4.0.5.Final.jar;D:\m2\.m2\org\hibernate\javax\persistence\hibernate-jpa-2.1-api\1.0.0.Final\hibernate-jpa-2.1-api-1.0.0.Final.jar;D:\m2\.m2\org\javassist\javassist\3.18.1-GA\javassist-3.18.1-GA.jar;D:\m2\.m2\antlr\antlr\2.7.7\antlr-2.7.7.jar;D:\m2\.m2\org\jboss\jandex\1.1.0.Final\jandex-1.1.0.Final.jar;D:\m2\.m2\mysql\mysql-connector-java\5.1.38\mysql-connector-java-5.1.38.jar;D:\m2\.m2\com\mchange\c3p0\0.9.5.2\c3p0-0.9.5.2.jar;D:\m2\.m2\com\mchange\mchange-commons-java\0.2.11\mchange-commons-java-0.2.11.jar;D:\m2\.m2\junit\junit\4.12\junit-4.12.jar;D:\m2\.m2\org\hamcrest\hamcrest-core\1.3\hamcrest-core-1.3.jar;"/>
+    <property name="java.vm.specification.version" value="1.7"/>
+    <property name="sun.arch.data.model" value="64"/>
+    <property name="java.home" value="D:\jdk7\jdk1.7.0_67\jre"/>
+    <property name="sun.java.command" value="C:\Users\dell\AppData\Local\Temp\surefirebooter4288465847621171623.jar C:\Users\dell\AppData\Local\Temp\surefire2307337414736169261tmp C:\Users\dell\AppData\Local\Temp\surefire6495250592263004780tmp"/>
+    <property name="java.specification.vendor" value="Oracle Corporation"/>
+    <property name="user.language" value="zh"/>
+    <property name="awt.toolkit" value="sun.awt.windows.WToolkit"/>
+    <property name="java.vm.info" value="mixed mode"/>
+    <property name="java.version" value="1.7.0_67"/>
+    <property name="java.ext.dirs" value="D:\jdk7\jdk1.7.0_67\jre\lib\ext;C:\WINDOWS\Sun\Java\lib\ext"/>
+    <property name="sun.boot.class.path" value="D:\jdk7\jdk1.7.0_67\jre\lib\resources.jar;D:\jdk7\jdk1.7.0_67\jre\lib\rt.jar;D:\jdk7\jdk1.7.0_67\jre\lib\sunrsasign.jar;D:\jdk7\jdk1.7.0_67\jre\lib\jsse.jar;D:\jdk7\jdk1.7.0_67\jre\lib\jce.jar;D:\jdk7\jdk1.7.0_67\jre\lib\charsets.jar;D:\jdk7\jdk1.7.0_67\jre\lib\jfr.jar;D:\jdk7\jdk1.7.0_67\jre\classes"/>
+    <property name="java.vendor" value="Oracle Corporation"/>
+    <property name="localRepository" value="D:\m2\.m2"/>
+    <property name="file.separator" value="\"/>
+    <property name="java.vendor.url.bug" value="http://bugreport.sun.com/bugreport/"/>
+    <property name="sun.cpu.endian" value="little"/>
+    <property name="sun.io.unicode.encoding" value="UnicodeLittle"/>
+    <property name="sun.desktop" value="windows"/>
+    <property name="sun.cpu.isalist" value="amd64"/>
+  </properties>
+  <testcase time="0.243" classname="SpiderTest" name="junit1Test"/>
+  <testcase time="0.083" classname="SpiderTest" name="junit2Test"/>
+</testsuite>
