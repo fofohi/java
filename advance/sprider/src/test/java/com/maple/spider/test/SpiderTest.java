@@ -1,3 +1,5 @@
+package com.maple.spider.test;
+
 import com.maple.spider.entity.hibernate.Test2;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
