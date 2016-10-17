@@ -1,9 +1,13 @@
 package com.maple.spider.service.impl;
 
+import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.maple.spider.common.Constant;
 import com.maple.spider.dao.CarCategoryDao;
+import com.maple.spider.entity.CarCategory;
+import com.maple.spider.entity.dto.YiSpiderTaskDto;
+import com.maple.spider.queue.SpiderQueue;
 import com.maple.spider.service.CarCategoryService;
 import com.maple.spider.util.ObjectMapperUtil;
 import com.maple.spider.util.OkHttpUtil;
@@ -11,10 +15,11 @@ import okhttp3.Response;
 import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import org.springframework.transaction.annotation.Transactional;
 
 import java.io.*;
 import java.net.URL;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
@@ -23,14 +28,13 @@ import java.util.regex.Pattern;
  */
 @Service
 class CarCategoryServiceImpl implements CarCategoryService {
-    private static Logger logger = Logger.getLogger(CarCategoryServiceImpl.class);
-
-    @Autowired
-    private CarCategoryDao carCategoryDao;
+    private static final Logger logger = Logger.getLogger(CarCategoryServiceImpl.class);
+    private static final String[] typeArrary = new String[]{
+      "A","B","C","D","E","F","G","H","I","J","K","L","M","N","O","P","Q","R","S","T","U","V","W","X","Y","Z"
+    };
 
     @Override
     public void buildCategoryJson() {
-        carCategoryDao.testCase();
         String fileName = "category.json";
         ClassLoader loader = this.getClass().getClassLoader();
         URL jsonFile = loader.getResource(fileName);
@@ -65,7 +69,20 @@ class CarCategoryServiceImpl implements CarCategoryService {
         JsonNode jsonNode = null;
         try {
             jsonNode = objectMapper.readTree(s);
-            System.out.println(jsonNode.get("A"));
+            YiSpiderTaskDto yiSpiderTaskDto;
+            for(String chars : typeArrary){
+                JsonNode node = jsonNode.get(chars);
+                if(node != null){
+                    String res = node.toString();
+                    List<CarCategory> spiderTaskBefore = objectMapper.readValue(res, new TypeReference<List<CarCategory>>() {
+                    });
+                    // TODO: 2016/10/14 加入任务队列
+                    yiSpiderTaskDto = new YiSpiderTaskDto();
+                    yiSpiderTaskDto.setChars(chars);
+                    yiSpiderTaskDto.setListCategory(spiderTaskBefore);
+                    SpiderQueue.addTask(yiSpiderTaskDto);
+                }
+            }
         } catch (IOException e) {
             logger.error("error3");
             System.exit(0);

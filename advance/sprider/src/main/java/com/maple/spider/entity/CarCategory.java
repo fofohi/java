@@ -8,6 +8,24 @@ public class CarCategory {
     private int id;
     private String name;
     private String url;
+    private int cur;
+    private int num;
+
+    public int getCur() {
+        return cur;
+    }
+
+    public void setCur(int cur) {
+        this.cur = cur;
+    }
+
+    public int getNum() {
+        return num;
+    }
+
+    public void setNum(int num) {
+        this.num = num;
+    }
 
     public String getType() {
         return type;

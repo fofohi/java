@@ -18,7 +18,7 @@
         <property name="acquireIncrement" value="3" />
         <property name="minPoolSize" value="20" />
         <property name="maxPoolSize" value="100" />
-        <property name="maxIdleTime" value="3000" />
+        <property name="maxIdleTime" value="60" />
     </bean>
 
     <bean id="hibernate" class="org.springframework.orm.hibernate4.LocalSessionFactoryBean">
@@ -29,6 +29,8 @@
     <bean id="transactionManager" class="org.springframework.orm.hibernate4.HibernateTransactionManager" >
         <property name="sessionFactory" ref="hibernate" />
     </bean>
+
+    <bean id="initQueue" class="com.maple.spider.queue.SpiderQueue" scope="prototype"/>
 
     <tx:annotation-driven transaction-manager="transactionManager" />
 
