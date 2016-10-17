@@ -18,6 +18,7 @@ import org.springframework.stereotype.Service;
 
 import java.io.*;
 import java.net.URL;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
@@ -82,7 +83,6 @@ class CarCategoryServiceImpl implements CarCategoryService {
                     SpiderQueue.addTask(yiSpiderTaskDto);
                 }
             }
-
         } catch (IOException e) {
             logger.error("error3");
             System.exit(0);

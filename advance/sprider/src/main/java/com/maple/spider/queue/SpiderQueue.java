@@ -4,16 +4,21 @@ import com.maple.spider.entity.dto.YiSpiderTaskDto;
 import org.apache.log4j.Logger;
 import org.springframework.stereotype.Component;
 
+import java.util.List;
 import java.util.concurrent.ConcurrentLinkedQueue;
+import java.util.concurrent.ExecutorService;
+import java.util.concurrent.Executors;
+
 
 /**
  * Created by dell on 2016/10/14.
  */
 @Component
 public class SpiderQueue implements Runnable{
-    private static ConcurrentLinkedQueue<YiSpiderTaskDto> spiderQueue = new ConcurrentLinkedQueue<YiSpiderTaskDto>();
-    private boolean flag = true;
-    private static final Logger logger = Logger.getLogger(SpiderQueue.class);
+    private static ConcurrentLinkedQueue<YiSpiderTaskDto> spiderQueue = new ConcurrentLinkedQueue<>();
+    private static ExecutorService pool = Executors.newFixedThreadPool(30);
+    public static volatile int i = 0;
+    public static boolean flag = true;
 
     SpiderQueue(){
         new Thread(this).start();
@@ -23,23 +28,27 @@ public class SpiderQueue implements Runnable{
         spiderQueue.add(yiSpiderTaskDto);
     }
 
-    private void init(){
-        while (flag){
-            YiSpiderTaskDto task = spiderQueue.poll();
-            if(task != null){
-                logger.info(spiderQueue.size() + "=========");
-                System.out.println(task + "=========");
-                logger.info(spiderQueue.size() + "=========");
-            }
-        }
+    public static void addAllTask(List<YiSpiderTaskDto> tasks){
+        spiderQueue.addAll(tasks);
     }
 
-    public void setFlag(boolean flag) {
-        this.flag = flag;
+    private void init(){
+        YiSpiderTaskDto task = spiderQueue.poll();
+        if (task != null) {
+            pool.execute(task);
+            i++;
+            System.out.println(i);
+        }
     }
 
     @Override
     public void run() {
-        init();
+        while(i <= 21){
+            init();
+        }
+        if(i > 21){
+            flag = false;
+        }
+        System.out.println(flag);
     }
 }
