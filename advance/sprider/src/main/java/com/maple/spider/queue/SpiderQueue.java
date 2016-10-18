@@ -37,18 +37,14 @@ public class SpiderQueue implements Runnable{
         if (task != null) {
             pool.execute(task);
             i++;
-            System.out.println(i);
         }
     }
 
     @Override
     public void run() {
-        while(i <= 21){
+        while(flag){
             init();
         }
-        if(i > 21){
-            flag = false;
-        }
-        System.out.println(flag);
+        System.exit(0);
     }
 }
