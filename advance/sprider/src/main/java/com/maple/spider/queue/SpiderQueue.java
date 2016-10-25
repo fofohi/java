@@ -47,4 +47,8 @@ public class SpiderQueue implements Runnable{
         }
         System.exit(0);
     }
+
+    public static void main(String[] args) {
+        System.out.println(-2 % 12);
+    }
 }
