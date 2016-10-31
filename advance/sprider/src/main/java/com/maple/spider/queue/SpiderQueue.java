@@ -34,11 +34,6 @@ public class SpiderQueue implements Runnable{
 
     private void init(){
         YiSpiderTaskDto task = spiderQueue.poll();
-        if (task != null) {
-            pool.execute(task);
-            i++;
-            System.out.println(i);
-        }
     }
 
     @Override

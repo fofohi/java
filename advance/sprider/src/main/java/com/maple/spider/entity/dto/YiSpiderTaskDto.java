@@ -7,7 +7,7 @@ import java.util.List;
 /**
  * Created by dell on 2016/10/14.
  */
-public class YiSpiderTaskDto implements Runnable{
+public class YiSpiderTaskDto{
     private String chars;
     private List<CarCategory> listCategory;
 
@@ -27,8 +27,4 @@ public class YiSpiderTaskDto implements Runnable{
         this.listCategory = listCategory;
     }
 
-    @Override
-    public void run() {
-
-    }
 }
