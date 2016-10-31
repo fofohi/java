@@ -1,6 +1,7 @@
 package com.maple.spider.entity.dto;
 
 import com.maple.spider.entity.CarCategory;
+import com.maple.spider.queue.SpiderQueue;
 
 import java.util.List;
 
@@ -27,4 +28,14 @@ public class YiSpiderTaskDto{
         this.listCategory = listCategory;
     }
 
+<<<<<<< HEAD
+=======
+    @Override
+    public void run() {
+        System.out.println(SpiderQueue.flag);
+        if(this.chars.equals("Z")){
+            SpiderQueue.flag = false;
+        }
+    }
+>>>>>>> 0a3e144ff6601b7e05f2d2580a41494a30df40f6
 }
