@@ -8,7 +8,7 @@ import java.util.List;
 /**
  * Created by dell on 2016/10/14.
  */
-public class YiSpiderTaskDto{
+public class YiSpiderTaskDto implements Runnable{
     private String chars;
     private List<CarCategory> listCategory;
 
@@ -28,8 +28,6 @@ public class YiSpiderTaskDto{
         this.listCategory = listCategory;
     }
 
-<<<<<<< HEAD
-=======
     @Override
     public void run() {
         System.out.println(SpiderQueue.flag);
@@ -37,5 +35,4 @@ public class YiSpiderTaskDto{
             SpiderQueue.flag = false;
         }
     }
->>>>>>> 0a3e144ff6601b7e05f2d2580a41494a30df40f6
 }
