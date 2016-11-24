@@ -32,15 +32,17 @@ public class SpiderQueue implements Runnable{
         spiderQueue.addAll(tasks);
     }
 
-    private void init(){
+    private void init() {
         YiSpiderTaskDto task = spiderQueue.poll();
-<<<<<<< HEAD
-=======
+
         if (task != null) {
             pool.execute(task);
             i++;
         }
->>>>>>> 0a3e144ff6601b7e05f2d2580a41494a30df40f6
+    }
+
+    public static void main(String[] args) {
+        System.out.println(-2 % 12);
     }
 
     @Override
@@ -49,9 +51,5 @@ public class SpiderQueue implements Runnable{
             init();
         }
         System.exit(0);
-    }
-
-    public static void main(String[] args) {
-        System.out.println(-2 % 12);
     }
 }
