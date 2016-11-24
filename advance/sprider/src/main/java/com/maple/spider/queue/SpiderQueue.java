@@ -4,7 +4,7 @@ import com.maple.spider.entity.dto.YiSpiderTaskDto;
 import org.apache.log4j.Logger;
 import org.springframework.stereotype.Component;
 
-import java.util.*;
+import java.util.List;
 import java.util.concurrent.ConcurrentLinkedQueue;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
@@ -32,12 +32,17 @@ public class SpiderQueue implements Runnable{
         spiderQueue.addAll(tasks);
     }
 
-    private void init(){
+    private void init() {
         YiSpiderTaskDto task = spiderQueue.poll();
+
         if (task != null) {
             pool.execute(task);
             i++;
         }
+    }
+
+    public static void main(String[] args) {
+        System.out.println(-2 % 12);
     }
 
     @Override
@@ -46,22 +51,5 @@ public class SpiderQueue implements Runnable{
             init();
         }
         System.exit(0);
-    }
-
-    public static void main(String[] args) {
-        TreeSet<String> treeSet = new TreeSet<>();
-        treeSet.add("s");
-        treeSet.add("a");
-        Collections.sort(treeSet, new Comparator<String>() {
-            @Override
-            public int compare(String o1, String o2) {
-                return 0;
-            }
-        });
-        Iterator<String> it = treeSet.iterator();
-        while (it.hasNext()){
-            System.out.println(it.next());
-        }
-
     }
 }
