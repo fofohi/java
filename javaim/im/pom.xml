@@ -124,6 +124,15 @@
             <version>3.3.2</version>
         </dependency>
 
+        <!-- https://mvnrepository.com/artifact/com.koushikdutta.async/androidasync -->
+        <dependency>
+            <groupId>com.koushikdutta.async</groupId>
+            <artifactId>androidasync</artifactId>
+            <version>2.1.9</version>
+        </dependency>
+
+
+
     </dependencies>
     <build>
         <plugins>
