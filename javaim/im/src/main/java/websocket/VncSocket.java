@@ -1,8 +1,5 @@
 package websocket;
 
-import com.koushikdutta.async.AsyncNetworkSocket;
-import com.koushikdutta.async.AsyncSocket;
-import com.koushikdutta.async.http.socketio.SocketIORequest;
 
 import java.io.*;
 import java.net.InetSocketAddress;
@@ -38,7 +35,4 @@ public class VncSocket {
         }
     }
 
-    public void testFunc(){
-
-    }
 }
