@@ -9,12 +9,12 @@ public class FileIO {
     public static void main(String[] args) throws IOException {
         File file = new File(FileIO.class.getClassLoader().getResource("sql.txt").getFile());
 
-        byte[] bt = new byte[1024];
+        byte[] bt = new byte[3];
         BufferedInputStream bufferedInputStream = new BufferedInputStream(new FileInputStream(file));
         int readInt;
-        while ((readInt = bufferedInputStream.read(bt,0,1024)) != -1) {
+        while ((readInt = bufferedInputStream.read(bt,0,3)) != -1) {
             for (byte b : bt) {
-                System.out.println(Integer.toHexString(b & 0xFF));
+                System.out.println(b);
             }
         }
     }
