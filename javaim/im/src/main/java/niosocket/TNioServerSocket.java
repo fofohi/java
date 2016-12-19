@@ -60,7 +60,7 @@ public class TNioServerSocket implements Runnable{
                     }else if(selectorKey.isReadable()){
                         SocketChannel sc = (SocketChannel)selectorKey.channel();
                         sc.configureBlocking(false);
-                        //sc.write(ByteBuffer.wrap("servertest".getBytes()));
+                        sc.write(ByteBuffer.wrap("servertest".getBytes()));
 //                        try {
 //                            int i = sc.read(ByteBuffer.allocate(100));
 //                            System.out.println("=====>" + i);
