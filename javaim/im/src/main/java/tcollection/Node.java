@@ -30,13 +30,13 @@ public class Node {
     public static void main(String[] args) {
         Node head = new Node("head");
         head.next = null;
-        
+
         Node tNode1 = new Node("1");
         head.next = tNode1;
         Node tNode2 = new Node("2");
         tNode1.next = tNode2;
 
-        while (head.getNext() != null){
+        while (head != null){
             System.out.println(head.getData());
             head = head.getNext();
         }
