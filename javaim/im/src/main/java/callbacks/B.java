@@ -3,7 +3,7 @@ package callbacks;
 /**
  * Created by alongsea2 on 16/12/14.
  */
-public class B implements CallBack{
+public class B {
     //when b happened sth a need to know
     //so b need notify a by invoke a's func
     private A a;
@@ -13,20 +13,13 @@ public class B implements CallBack{
     }
 
     public void callA(){
-        a.needKnowSth("b tell you sth",this);
+        a.needKnowSth(" a tell b sth", new CallBack() {
+            @Override
+            public void callBack(String s) {
+                System.out.println(s);
+            }
+        });
     }
-
-
-    @Override
-    public void callBack(String s) {
-        System.out.println(s);
-    }
-
-    @Override
-    public void run() {
-
-    }
-
 
     public static void main(String[] args) {
         A a = new A();
