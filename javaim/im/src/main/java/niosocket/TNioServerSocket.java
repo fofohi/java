@@ -61,13 +61,7 @@ public class TNioServerSocket implements Runnable{
                         SocketChannel sc = (SocketChannel)selectorKey.channel();
                         sc.configureBlocking(false);
                         sc.write(ByteBuffer.wrap("servertest".getBytes()));
-//                        try {
-//                            int i = sc.read(ByteBuffer.allocate(100));
-//                            System.out.println("=====>" + i);
-//                        }catch (Exception e){
-//                            sc.close();
-//                            e.printStackTrace();
-//                        }
+
                     }
 
                 }
