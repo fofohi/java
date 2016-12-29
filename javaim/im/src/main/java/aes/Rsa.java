@@ -24,6 +24,6 @@ public class Rsa {
         KeyPair keyPair = generateRSAKeyPair(1024);
         byte[] privetKey = keyPair.getPrivate().getEncoded();
         byte[] publicKey = keyPair.getPublic().getEncoded();
-        
+
     }
 }

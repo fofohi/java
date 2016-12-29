@@ -29,19 +29,19 @@ public class Socket implements Runnable{
 
     public static void main(String[] args) {
         int index = 0;
-        //new Thread(new Socket(10801,index)).start();
-        for(int i = 10801;i<=10845;i++){
-            new Thread(new Socket(i,index)).start();
-            list.add(index);
-            index++;
-        }
+        new Thread(new Socket(10801,index)).start();
+//        for(int i = 10801;i<=10845;i++){
+//            new Thread(new Socket(i,index)).start();
+//            list.add(index);
+//            index++;
+//        }
         int allSocket = 45;
         int allHandler = 9;
         int allInfinite = allSocket / allHandler;
-
-        for(int j = 0; j < allInfinite; j++){
-            new Thread(new InfiniteThread(j,allHandler)).start();
-        }
+        new Thread(new InfiniteThread(0,1)).start();
+//        for(int j = 0; j < allInfinite; j++){
+//            new Thread(new InfiniteThread(j,allHandler)).start();
+//        }
 
     }
 

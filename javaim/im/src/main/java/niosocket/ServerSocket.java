@@ -18,10 +18,10 @@ public class ServerSocket implements Runnable{
     }
 
     public static void main(String[] args) {
-        //new Thread(new ServerSocket(10801)).start();
-        for(int i = 10801 ; i<= 10845 ; i++){
-            new Thread(new ServerSocket(i)).start();
-        }
+        new Thread(new ServerSocket(10801)).start();
+//        for(int i = 10801 ; i<= 10845 ; i++){
+//            new Thread(new ServerSocket(i)).start();
+//        }
     }
 
     private void runServer() throws IOException {
