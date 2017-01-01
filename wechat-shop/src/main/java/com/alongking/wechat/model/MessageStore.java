@@ -1,4 +1,4 @@
-package com.test.app.model;
+package com.alongking.wechat.model;
 
 /**
  * Created by dell on 2016/9/30.

@@ -8,13 +8,13 @@
     <constant name="struts.devMode" value="true" />
     <constant name="struts.action.extension" value=","/>
 
-    <package name="com.test.app" extends="struts-default">
+    <package name="com.alongking.wechat" extends="struts-default">
 
         <action name="index">
             <result>/index.jsp</result>
         </action>
 
-        <action name="hello" class="com.test.app.action.HelloWorldAction" method="test">
+        <action name="hello" class="com.alongking.wechat.action.HelloWorldAction" method="test">
             <result name="ss">/HelloWorld.jsp</result>
         </action>
 
