@@ -47,9 +47,10 @@ public class ServerSocket implements Runnable{
 
                 byte[] b = new byte[length];
 
-                while ( (i = input1.read(b) )!= -1 ){
-                    System.out.println(new String(b));
+                while ( (i = input1.read(b) ) == -1 ){
+                    break;
                 }
+                System.out.println(new String(b));
 //                byte[] bl = new byte[4];
 //                bl[0] = (byte) (( sendLength >>> 24 ) & 0xFF);
 //                bl[1] = (byte) (( sendLength >>> 16 ) & 0xFF);

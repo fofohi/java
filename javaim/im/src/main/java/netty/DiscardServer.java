@@ -33,8 +33,8 @@ public class DiscardServer {
                         public void initChannel(SocketChannel ch) throws Exception {
                             ChannelPipeline p = ch.pipeline();
                             p.addLast(new StringEncoder());
-                            p.addLast(new StringDecoder());
                             p.addLast(new DiscardServerHandler());
+                            p.addLast(new StringDecoder());
                         }
                     })
                     .option(ChannelOption.SO_BACKLOG, 128)          // (5)
