@@ -1,6 +1,7 @@
 package netty;
 
 
+import io.netty.buffer.ByteBuf;
 import io.netty.channel.ChannelHandlerContext;
 import io.netty.channel.ChannelInboundHandlerAdapter;
 import org.apache.log4j.Logger;
@@ -18,7 +19,8 @@ public class DiscardClientHandler extends ChannelInboundHandlerAdapter {
 
     @Override
     public void channelActive(ChannelHandlerContext ctx) {
-        logger.info("===== client active ok" );
+        logger.info("channelActive ===== client active ok" );
+        ctx.writeAndFlush("give client");
         //注册自己的状态给服务器
         //开启读写线程
         new writeMsgThread(ctx);
@@ -26,8 +28,8 @@ public class DiscardClientHandler extends ChannelInboundHandlerAdapter {
 
     @Override
     public void channelRead(ChannelHandlerContext ctx, Object msg) {
-        logger.info("===== " + msg);
-        ctx.fireChannelRead(msg);
+        logger.info("channelRead ===== " + msg);
+        //ctx.fireChannelRead(msg);
     }
 
     @Override
@@ -63,8 +65,15 @@ public class DiscardClientHandler extends ChannelInboundHandlerAdapter {
                 }
                 if(!message.isEmpty()) {
                     message = ctx.toString() + "[client say] " + message + "\r\n";
-                    ctx.channel().write(message);
-                    ctx.flush();
+                    String s = "101,202";
+                    int sLength = s.length();
+                    //ctx.channel().writeAndFlush("2\n");
+                    ByteBuf a = ctx.alloc().buffer(4);
+                    ByteBuf r = a.writeByte(sLength);
+                    ctx.channel().writeAndFlush("2");
+                    ctx.channel().writeAndFlush("d");
+                    ctx.channel().writeAndFlush(r);
+                    ctx.channel().writeAndFlush(s);
                 }
             }
         }

@@ -31,7 +31,7 @@ public class DiscardClient {
                         ChannelPipeline p = socketChannel.pipeline();
                         p.addLast(new StringDecoder());
                         p.addLast(new DiscardClientHandler());
-                        p.addLast(new DiscardClientHandlerV2());
+                        //p.addLast(new DiscardClientHandlerV2());
                         p.addLast(new StringEncoder());
 
                     }
