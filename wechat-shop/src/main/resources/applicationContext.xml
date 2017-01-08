@@ -10,9 +10,9 @@
        ">
     <bean id="dataSourceGlobal" class="com.mchange.v2.c3p0.ComboPooledDataSource">
         <property name="driverClass" value="com.mysql.jdbc.Driver" />
-        <property name="jdbcUrl" value="jdbc:mysql://localhost:3306/fenshang" />
-        <property name="user" value="root" />
-        <property name="password" value="fengshang123" />
+        <property name="jdbcUrl" value="${db.url}" />
+        <property name="user" value="${db.user}" />
+        <property name="password" value="${db.password}" />
 
         <!-- these are C3P0 properties -->
         <property name="acquireIncrement" value="3" />

@@ -1,0 +1,30 @@
+<?xml version='1.0' encoding='utf-8'?>
+<!DOCTYPE hibernate-mapping PUBLIC
+    "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+    "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+
+    <class name="com.alongking.wechat.entity.EcmSessionsEntity" table="ecm_sessions" schema="fenshang">
+        <id name="sesskey">
+            <column name="sesskey" sql-type="char(32)" length="32"/>
+        </id>
+        <property name="expiry">
+            <column name="expiry" sql-type="int(11)"/>
+        </property>
+        <property name="userid">
+            <column name="userid" sql-type="int(11)"/>
+        </property>
+        <property name="adminid">
+            <column name="adminid" sql-type="int(11)"/>
+        </property>
+        <property name="ip">
+            <column name="ip" sql-type="char(15)" length="15"/>
+        </property>
+        <property name="data">
+            <column name="data" sql-type="char(255)"/>
+        </property>
+        <property name="isOverflow">
+            <column name="is_overflow" sql-type="tinyint(4)"/>
+        </property>
+    </class>
+</hibernate-mapping>

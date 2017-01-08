@@ -1,0 +1,30 @@
+<?xml version='1.0' encoding='utf-8'?>
+<!DOCTYPE hibernate-mapping PUBLIC
+    "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+    "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+
+    <class name="com.alongking.wechat.entity.EcmGoodsStatisticsEntity" table="ecm_goods_statistics" schema="fenshang">
+        <id name="goodsId">
+            <column name="goods_id" sql-type="int(10) unsigned"/>
+        </id>
+        <property name="views">
+            <column name="views" sql-type="int(10) unsigned"/>
+        </property>
+        <property name="collects">
+            <column name="collects" sql-type="int(10) unsigned"/>
+        </property>
+        <property name="carts">
+            <column name="carts" sql-type="int(10) unsigned"/>
+        </property>
+        <property name="orders">
+            <column name="orders" sql-type="int(10) unsigned"/>
+        </property>
+        <property name="sales">
+            <column name="sales" sql-type="int(10) unsigned"/>
+        </property>
+        <property name="comments">
+            <column name="comments" sql-type="int(11) unsigned"/>
+        </property>
+    </class>
+</hibernate-mapping>

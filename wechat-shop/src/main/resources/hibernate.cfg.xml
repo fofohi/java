@@ -4,7 +4,60 @@
 
 <hibernate-configuration>
     <session-factory>
+        <property name="connection.url">jdbc:mysql://192.168.33.11:3306/fenshang</property>
+        <property name="connection.driver_class">com.mysql.jdbc.Driver</property>
         <!-- List of XML mapping files -->
-        <mapping resource="hbm/entity.xml"/>
+        <mapping resource="hbm/EcmAcategoryEntity.hbm.xml"/>
+        <mapping resource="hbm/EcmAddressEntity.hbm.xml"/>
+        <mapping resource="hbm/EcmArticleEntity.hbm.xml"/>
+        <mapping resource="hbm/EcmAttributeEntity.hbm.xml"/>
+        <mapping resource="hbm/EcmBrandEntity.hbm.xml"/>
+        <mapping resource="hbm/EcmCartEntity.hbm.xml"/>
+        <mapping resource="hbm/EcmCategoryGoodsEntity.hbm.xml"/>
+        <mapping resource="hbm/EcmCategoryStoreEntity.hbm.xml"/>
+        <mapping resource="hbm/EcmCollectEntity.hbm.xml"/>
+        <mapping resource="hbm/EcmCouponEntity.hbm.xml"/>
+        <mapping resource="hbm/EcmCouponSnEntity.hbm.xml"/>
+        <mapping resource="hbm/EcmCustomMenuEntity.hbm.xml"/>
+        <mapping resource="hbm/EcmFriendEntity.hbm.xml"/>
+        <mapping resource="hbm/EcmFunctionEntity.hbm.xml"/>
+        <mapping resource="hbm/EcmGcategoryEntity.hbm.xml"/>
+        <mapping resource="hbm/EcmGoodsEntity.hbm.xml"/>
+        <mapping resource="hbm/EcmGoodsAttrEntity.hbm.xml"/>
+        <mapping resource="hbm/EcmGoodsImageEntity.hbm.xml"/>
+        <mapping resource="hbm/EcmGoodsQaEntity.hbm.xml"/>
+        <mapping resource="hbm/EcmGoodsSpecEntity.hbm.xml"/>
+        <mapping resource="hbm/EcmGoodsStatisticsEntity.hbm.xml"/>
+        <mapping resource="hbm/EcmGroupbuyEntity.hbm.xml"/>
+        <mapping resource="hbm/EcmGroupbuyLogEntity.hbm.xml"/>
+        <mapping resource="hbm/EcmIndentEntity.hbm.xml"/>
+        <mapping resource="hbm/EcmKeywordEntity.hbm.xml"/>
+        <mapping resource="hbm/EcmMailQueueEntity.hbm.xml"/>
+        <mapping resource="hbm/EcmMemberEntity.hbm.xml"/>
+        <mapping resource="hbm/EcmModuleEntity.hbm.xml"/>
+        <mapping resource="hbm/EcmNavigationEntity.hbm.xml"/>
+        <mapping resource="hbm/EcmOrderEntity.hbm.xml"/>
+        <mapping resource="hbm/EcmOrderExtmEntity.hbm.xml"/>
+        <mapping resource="hbm/EcmOrderGoodsEntity.hbm.xml"/>
+        <mapping resource="hbm/EcmOrderLogEntity.hbm.xml"/>
+        <mapping resource="hbm/EcmPageviewEntity.hbm.xml"/>
+        <mapping resource="hbm/EcmPartnerEntity.hbm.xml"/>
+        <mapping resource="hbm/EcmPaymentEntity.hbm.xml"/>
+        <mapping resource="hbm/EcmPrivilegeEntity.hbm.xml"/>
+        <mapping resource="hbm/EcmRecommendEntity.hbm.xml"/>
+        <mapping resource="hbm/EcmRecommendedGoodsEntity.hbm.xml"/>
+        <mapping resource="hbm/EcmRegionEntity.hbm.xml"/>
+        <mapping resource="hbm/EcmScategoryEntity.hbm.xml"/>
+        <mapping resource="hbm/EcmSessionsEntity.hbm.xml"/>
+        <mapping resource="hbm/EcmSessionsDataEntity.hbm.xml"/>
+        <mapping resource="hbm/EcmSgradeEntity.hbm.xml"/>
+        <mapping resource="hbm/EcmShippingEntity.hbm.xml"/>
+        <mapping resource="hbm/EcmStoreEntity.hbm.xml"/>
+        <mapping resource="hbm/EcmTuijianLogEntity.hbm.xml"/>
+        <mapping resource="hbm/EcmUploadedFileEntity.hbm.xml"/>
+        <mapping resource="hbm/EcmUserCouponEntity.hbm.xml"/>
+        <mapping resource="hbm/EcmUserPrivEntity.hbm.xml"/>
+        <mapping resource="hbm/EcmWechatEntity.hbm.xml"/>
+        <mapping resource="hbm/EcmWxconfigEntity.hbm.xml"/>
     </session-factory>
 </hibernate-configuration>

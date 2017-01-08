@@ -1,26 +1,37 @@
 package com.alongking.wechat.action;
 
+import com.alongking.wechat.entity.EcmMemberEntity;
+import com.alongking.wechat.service.IEcMemberService;
 import com.opensymphony.xwork2.ActionSupport;
-import com.alongking.wechat.model.MessageStore;
+import org.springframework.beans.factory.annotation.Autowired;
+
+import org.springframework.context.annotation.Scope;
+import org.springframework.stereotype.Component;
 
 /**
  * Created by dell on 2016/9/30.
  */
+@Component
+@Scope("prototype")
 public class HelloWorldAction extends ActionSupport {
-    private MessageStore messageStore;
-    
-    public String test() throws Exception {
-        
-        messageStore = new MessageStore() ;
-        messageStore.setMessage("test");
-        return "ss";
+
+    private EcmMemberEntity ecmMemberEntity;
+
+    @Autowired
+    private IEcMemberService iEcMemberService;
+
+
+    public String test(){
+        ecmMemberEntity = iEcMemberService.selectUserById(1);
+        System.out.println(ecmMemberEntity);
+        return "success";
     }
 
-    public MessageStore getMessageStore() {
-        return messageStore;
+    public EcmMemberEntity getEcmMemberEntity() {
+        return ecmMemberEntity;
     }
 
-    public void setMessageStore(MessageStore messageStore) {
-        this.messageStore = messageStore;
+    public void setEcmMemberEntity(EcmMemberEntity ecmMemberEntity) {
+        this.ecmMemberEntity = ecmMemberEntity;
     }
 }

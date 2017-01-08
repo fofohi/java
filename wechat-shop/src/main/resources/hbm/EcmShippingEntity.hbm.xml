@@ -1,0 +1,36 @@
+<?xml version='1.0' encoding='utf-8'?>
+<!DOCTYPE hibernate-mapping PUBLIC
+    "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+    "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+
+    <class name="com.alongking.wechat.entity.EcmShippingEntity" table="ecm_shipping" schema="fenshang">
+        <id name="shippingId">
+            <column name="shipping_id" sql-type="int(10) unsigned"/>
+        </id>
+        <property name="storeId">
+            <column name="store_id" sql-type="int(10) unsigned"/>
+        </property>
+        <property name="shippingName">
+            <column name="shipping_name" sql-type="varchar(100)" length="100"/>
+        </property>
+        <property name="shippingDesc">
+            <column name="shipping_desc" sql-type="varchar(255)" not-null="true"/>
+        </property>
+        <property name="firstPrice">
+            <column name="first_price" sql-type="decimal(10,2)" precision="10" scale="2"/>
+        </property>
+        <property name="stepPrice">
+            <column name="step_price" sql-type="decimal(10,2)" precision="10" scale="2"/>
+        </property>
+        <property name="codRegions">
+            <column name="cod_regions" sql-type="text" not-null="true"/>
+        </property>
+        <property name="enabled">
+            <column name="enabled" sql-type="tinyint(3) unsigned"/>
+        </property>
+        <property name="sortOrder">
+            <column name="sort_order" sql-type="tinyint(3) unsigned"/>
+        </property>
+    </class>
+</hibernate-mapping>

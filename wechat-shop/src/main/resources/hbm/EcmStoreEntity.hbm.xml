@@ -1,0 +1,120 @@
+<?xml version='1.0' encoding='utf-8'?>
+<!DOCTYPE hibernate-mapping PUBLIC
+    "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+    "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+
+    <class name="com.alongking.wechat.entity.EcmStoreEntity" table="ecm_store" schema="fenshang">
+        <id name="storeId">
+            <column name="store_id" sql-type="int(10) unsigned"/>
+        </id>
+        <property name="storeName">
+            <column name="store_name" sql-type="varchar(100)" length="100"/>
+        </property>
+        <property name="ownerName">
+            <column name="owner_name" sql-type="varchar(60)" length="60"/>
+        </property>
+        <property name="ownerCard">
+            <column name="owner_card" sql-type="varchar(60)" length="60"/>
+        </property>
+        <property name="regionId">
+            <column name="region_id" sql-type="int(10) unsigned" not-null="true"/>
+        </property>
+        <property name="regionName">
+            <column name="region_name" sql-type="varchar(100)" length="100" not-null="true"/>
+        </property>
+        <property name="address">
+            <column name="address" sql-type="varchar(255)"/>
+        </property>
+        <property name="zipcode">
+            <column name="zipcode" sql-type="varchar(20)" length="20"/>
+        </property>
+        <property name="tel">
+            <column name="tel" sql-type="varchar(60)" length="60"/>
+        </property>
+        <property name="sgrade">
+            <column name="sgrade" sql-type="tinyint(3) unsigned"/>
+        </property>
+        <property name="applyRemark">
+            <column name="apply_remark" sql-type="varchar(255)"/>
+        </property>
+        <property name="creditValue">
+            <column name="credit_value" sql-type="int(10)"/>
+        </property>
+        <property name="praiseRate">
+            <column name="praise_rate" sql-type="decimal(5,2) unsigned" precision="5" scale="2"/>
+        </property>
+        <property name="domain">
+            <column name="domain" sql-type="varchar(60)" length="60" not-null="true"/>
+        </property>
+        <property name="state">
+            <column name="state" sql-type="tinyint(3) unsigned"/>
+        </property>
+        <property name="closeReason">
+            <column name="close_reason" sql-type="varchar(255)"/>
+        </property>
+        <property name="addTime">
+            <column name="add_time" sql-type="int(10) unsigned" not-null="true"/>
+        </property>
+        <property name="endTime">
+            <column name="end_time" sql-type="int(10) unsigned"/>
+        </property>
+        <property name="certification">
+            <column name="certification" sql-type="varchar(255)" not-null="true"/>
+        </property>
+        <property name="sortOrder">
+            <column name="sort_order" sql-type="smallint(5) unsigned"/>
+        </property>
+        <property name="recommended">
+            <column name="recommended" sql-type="tinyint(4)"/>
+        </property>
+        <property name="theme">
+            <column name="theme" sql-type="varchar(60)" length="60"/>
+        </property>
+        <property name="storeBanner">
+            <column name="store_banner" sql-type="varchar(255)" not-null="true"/>
+        </property>
+        <property name="storeLogo">
+            <column name="store_logo" sql-type="varchar(255)" not-null="true"/>
+        </property>
+        <property name="description">
+            <column name="description" sql-type="text" not-null="true"/>
+        </property>
+        <property name="image1">
+            <column name="image_1" sql-type="varchar(255)"/>
+        </property>
+        <property name="image2">
+            <column name="image_2" sql-type="varchar(255)"/>
+        </property>
+        <property name="image3">
+            <column name="image_3" sql-type="varchar(255)"/>
+        </property>
+        <property name="imQq">
+            <column name="im_qq" sql-type="varchar(60)" length="60"/>
+        </property>
+        <property name="imWw">
+            <column name="im_ww" sql-type="varchar(60)" length="60"/>
+        </property>
+        <property name="imMsn">
+            <column name="im_msn" sql-type="varchar(60)" length="60"/>
+        </property>
+        <property name="enableGroupbuy">
+            <column name="enable_groupbuy" sql-type="tinyint(1) unsigned"/>
+        </property>
+        <property name="enableRadar">
+            <column name="enable_radar" sql-type="tinyint(1) unsigned"/>
+        </property>
+        <property name="storeCode">
+            <column name="store_code" sql-type="varchar(255)" not-null="true"/>
+        </property>
+        <property name="storeNewImages">
+            <column name="store_new_images" sql-type="varchar(255)" not-null="true"/>
+        </property>
+        <property name="storeRecommendImages">
+            <column name="store_recommend_images" sql-type="varchar(255)" not-null="true"/>
+        </property>
+        <property name="storeHotImages">
+            <column name="store_hot_images" sql-type="varchar(255)" not-null="true"/>
+        </property>
+    </class>
+</hibernate-mapping>

@@ -1,0 +1,18 @@
+<?xml version='1.0' encoding='utf-8'?>
+<!DOCTYPE hibernate-mapping PUBLIC
+    "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+    "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+
+    <class name="com.alongking.wechat.entity.EcmFunctionEntity" table="ecm_function" schema="fenshang">
+        <id name="funcCode">
+            <column name="func_code" sql-type="varchar(20)" length="20"/>
+        </id>
+        <property name="funcName">
+            <column name="func_name" sql-type="varchar(60)" length="60"/>
+        </property>
+        <property name="privileges">
+            <column name="privileges" sql-type="varchar(255)"/>
+        </property>
+    </class>
+</hibernate-mapping>

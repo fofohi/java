@@ -1,0 +1,20 @@
+<?xml version='1.0' encoding='utf-8'?>
+<!DOCTYPE hibernate-mapping PUBLIC
+    "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+    "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+
+    <class name="com.alongking.wechat.entity.EcmUserPrivEntity" table="ecm_user_priv" schema="fenshang">
+        <composite-id mapped="true" class="com.alongking.wechat.entity.EcmUserPrivEntityPK">
+            <key-property name="userId">
+                <column name="user_id" sql-type="int(10) unsigned"/>
+            </key-property>
+            <key-property name="storeId">
+                <column name="store_id" sql-type="int(10) unsigned"/>
+            </key-property>
+        </composite-id>
+        <property name="privs">
+            <column name="privs" sql-type="text"/>
+        </property>
+    </class>
+</hibernate-mapping>

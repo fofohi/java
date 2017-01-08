@@ -1,0 +1,21 @@
+<?xml version='1.0' encoding='utf-8'?>
+<!DOCTYPE hibernate-mapping PUBLIC
+    "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+    "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+
+    <class name="com.alongking.wechat.entity.EcmRecommendedGoodsEntity" table="ecm_recommended_goods"
+           schema="fenshang">
+        <composite-id mapped="true" class="com.alongking.wechat.entity.EcmRecommendedGoodsEntityPK">
+            <key-property name="recomId">
+                <column name="recom_id" sql-type="int(10) unsigned"/>
+            </key-property>
+            <key-property name="goodsId">
+                <column name="goods_id" sql-type="int(10) unsigned"/>
+            </key-property>
+        </composite-id>
+        <property name="sortOrder">
+            <column name="sort_order" sql-type="tinyint(3) unsigned"/>
+        </property>
+    </class>
+</hibernate-mapping>

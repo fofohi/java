@@ -1,0 +1,21 @@
+<?xml version='1.0' encoding='utf-8'?>
+<!DOCTYPE hibernate-mapping PUBLIC
+    "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+    "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+
+    <class name="com.alongking.wechat.entity.EcmPrivilegeEntity" table="ecm_privilege" schema="fenshang">
+        <id name="privCode">
+            <column name="priv_code" sql-type="varchar(20)" length="20"/>
+        </id>
+        <property name="privName">
+            <column name="priv_name" sql-type="varchar(60)" length="60"/>
+        </property>
+        <property name="parentCode">
+            <column name="parent_code" sql-type="varchar(20)" length="20" not-null="true"/>
+        </property>
+        <property name="owner">
+            <column name="owner" sql-type="varchar(10)" length="10"/>
+        </property>
+    </class>
+</hibernate-mapping>

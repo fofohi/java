@@ -1,0 +1,45 @@
+<?xml version='1.0' encoding='utf-8'?>
+<!DOCTYPE hibernate-mapping PUBLIC
+    "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+    "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+
+    <class name="com.alongking.wechat.entity.EcmSgradeEntity" table="ecm_sgrade" schema="fenshang">
+        <id name="gradeId">
+            <column name="grade_id" sql-type="tinyint(3) unsigned"/>
+        </id>
+        <property name="gradeName">
+            <column name="grade_name" sql-type="varchar(60)" length="60"/>
+        </property>
+        <property name="goodsLimit">
+            <column name="goods_limit" sql-type="int(10) unsigned"/>
+        </property>
+        <property name="spaceLimit">
+            <column name="space_limit" sql-type="int(10) unsigned"/>
+        </property>
+        <property name="skinLimit">
+            <column name="skin_limit" sql-type="int(10) unsigned"/>
+        </property>
+        <property name="charge">
+            <column name="charge" sql-type="varchar(100)" length="100"/>
+        </property>
+        <property name="needConfirm">
+            <column name="need_confirm" sql-type="tinyint(3) unsigned"/>
+        </property>
+        <property name="description">
+            <column name="description" sql-type="varchar(255)"/>
+        </property>
+        <property name="functions">
+            <column name="functions" sql-type="varchar(255)" not-null="true"/>
+        </property>
+        <property name="skins">
+            <column name="skins" sql-type="text"/>
+        </property>
+        <property name="sortOrder">
+            <column name="sort_order" sql-type="tinyint(4) unsigned"/>
+        </property>
+        <property name="price">
+            <column name="price" sql-type="decimal(11,2)" precision="11" scale="2"/>
+        </property>
+    </class>
+</hibernate-mapping>

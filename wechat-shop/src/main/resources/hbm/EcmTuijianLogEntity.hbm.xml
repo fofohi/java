@@ -1,0 +1,30 @@
+<?xml version='1.0' encoding='utf-8'?>
+<!DOCTYPE hibernate-mapping PUBLIC
+    "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+    "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+
+    <class name="com.alongking.wechat.entity.EcmTuijianLogEntity" table="ecm_tuijian_log" schema="fenshang">
+        <id name="id">
+            <column name="id" sql-type="int(11)"/>
+        </id>
+        <property name="userId">
+            <column name="user_id" sql-type="int(11)"/>
+        </property>
+        <property name="tuijianId">
+            <column name="tuijian_id" sql-type="int(11)"/>
+        </property>
+        <property name="price">
+            <column name="price" sql-type="decimal(11,2)" precision="11" scale="2"/>
+        </property>
+        <property name="jifen">
+            <column name="jifen" sql-type="decimal(11,2)" precision="11" scale="2"/>
+        </property>
+        <property name="addTime">
+            <column name="add_time" sql-type="int(11)"/>
+        </property>
+        <property name="userName">
+            <column name="user_name" sql-type="varchar(255)"/>
+        </property>
+    </class>
+</hibernate-mapping>

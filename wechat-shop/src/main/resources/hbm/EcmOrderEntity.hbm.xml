@@ -1,0 +1,93 @@
+<?xml version='1.0' encoding='utf-8'?>
+<!DOCTYPE hibernate-mapping PUBLIC
+    "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+    "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+
+    <class name="com.alongking.wechat.entity.EcmOrderEntity" table="ecm_order" schema="fenshang">
+        <id name="orderId">
+            <column name="order_id" sql-type="int(10) unsigned"/>
+        </id>
+        <property name="orderSn">
+            <column name="order_sn" sql-type="varchar(20)" length="20"/>
+        </property>
+        <property name="type">
+            <column name="type" sql-type="varchar(10)" length="10"/>
+        </property>
+        <property name="extension">
+            <column name="extension" sql-type="varchar(10)" length="10"/>
+        </property>
+        <property name="sellerId">
+            <column name="seller_id" sql-type="int(10) unsigned"/>
+        </property>
+        <property name="sellerName">
+            <column name="seller_name" sql-type="varchar(100)" length="100" not-null="true"/>
+        </property>
+        <property name="buyerId">
+            <column name="buyer_id" sql-type="int(10) unsigned"/>
+        </property>
+        <property name="buyerName">
+            <column name="buyer_name" sql-type="varchar(100)" length="100" not-null="true"/>
+        </property>
+        <property name="buyerEmail">
+            <column name="buyer_email" sql-type="varchar(60)" length="60"/>
+        </property>
+        <property name="status">
+            <column name="status" sql-type="tinyint(3) unsigned"/>
+        </property>
+        <property name="addTime">
+            <column name="add_time" sql-type="int(10) unsigned"/>
+        </property>
+        <property name="paymentId">
+            <column name="payment_id" sql-type="int(10) unsigned" not-null="true"/>
+        </property>
+        <property name="paymentName">
+            <column name="payment_name" sql-type="varchar(100)" length="100" not-null="true"/>
+        </property>
+        <property name="paymentCode">
+            <column name="payment_code" sql-type="varchar(20)" length="20"/>
+        </property>
+        <property name="outTradeSn">
+            <column name="out_trade_sn" sql-type="varchar(20)" length="20"/>
+        </property>
+        <property name="payTime">
+            <column name="pay_time" sql-type="int(10) unsigned" not-null="true"/>
+        </property>
+        <property name="payMessage">
+            <column name="pay_message" sql-type="varchar(255)"/>
+        </property>
+        <property name="shipTime">
+            <column name="ship_time" sql-type="int(10) unsigned" not-null="true"/>
+        </property>
+        <property name="invoiceNo">
+            <column name="invoice_no" sql-type="varchar(255)" not-null="true"/>
+        </property>
+        <property name="finishedTime">
+            <column name="finished_time" sql-type="int(10) unsigned"/>
+        </property>
+        <property name="goodsAmount">
+            <column name="goods_amount" sql-type="decimal(10,2) unsigned" precision="10" scale="2"/>
+        </property>
+        <property name="discount">
+            <column name="discount" sql-type="decimal(10,2) unsigned" precision="10" scale="2"/>
+        </property>
+        <property name="orderAmount">
+            <column name="order_amount" sql-type="decimal(10,2) unsigned" precision="10" scale="2"/>
+        </property>
+        <property name="evaluationStatus">
+            <column name="evaluation_status" sql-type="tinyint(1) unsigned"/>
+        </property>
+        <property name="evaluationTime">
+            <column name="evaluation_time" sql-type="int(10) unsigned"/>
+        </property>
+        <property name="anonymous">
+            <column name="anonymous" sql-type="tinyint(3) unsigned"/>
+        </property>
+        <property name="postscript">
+            <column name="postscript" sql-type="varchar(255)"/>
+        </property>
+        <property name="payAlter">
+            <column name="pay_alter" sql-type="tinyint(1) unsigned"/>
+        </property>
+    </class>
+</hibernate-mapping>

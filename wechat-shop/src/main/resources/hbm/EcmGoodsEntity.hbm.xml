@@ -1,0 +1,84 @@
+<?xml version='1.0' encoding='utf-8'?>
+<!DOCTYPE hibernate-mapping PUBLIC
+    "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+    "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+
+    <class name="com.alongking.wechat.entity.EcmGoodsEntity" table="ecm_goods" schema="fenshang">
+        <id name="goodsId">
+            <column name="goods_id" sql-type="int(10) unsigned"/>
+        </id>
+        <property name="storeId">
+            <column name="store_id" sql-type="int(10) unsigned"/>
+        </property>
+        <property name="type">
+            <column name="type" sql-type="varchar(10)" length="10"/>
+        </property>
+        <property name="goodsName">
+            <column name="goods_name" sql-type="varchar(255)"/>
+        </property>
+        <property name="description">
+            <column name="description" sql-type="text" not-null="true"/>
+        </property>
+        <property name="cateId">
+            <column name="cate_id" sql-type="int(10) unsigned"/>
+        </property>
+        <property name="cateName">
+            <column name="cate_name" sql-type="varchar(255)"/>
+        </property>
+        <property name="brand">
+            <column name="brand" sql-type="varchar(100)" length="100"/>
+        </property>
+        <property name="specQty">
+            <column name="spec_qty" sql-type="tinyint(4) unsigned"/>
+        </property>
+        <property name="specName1">
+            <column name="spec_name_1" sql-type="varchar(60)" length="60"/>
+        </property>
+        <property name="specName2">
+            <column name="spec_name_2" sql-type="varchar(60)" length="60"/>
+        </property>
+        <property name="ifShow">
+            <column name="if_show" sql-type="tinyint(3) unsigned"/>
+        </property>
+        <property name="closed">
+            <column name="closed" sql-type="tinyint(3) unsigned"/>
+        </property>
+        <property name="closeReason">
+            <column name="close_reason" sql-type="varchar(255)" not-null="true"/>
+        </property>
+        <property name="addTime">
+            <column name="add_time" sql-type="int(10) unsigned"/>
+        </property>
+        <property name="lastUpdate">
+            <column name="last_update" sql-type="int(10) unsigned"/>
+        </property>
+        <property name="defaultSpec">
+            <column name="default_spec" sql-type="int(11) unsigned"/>
+        </property>
+        <property name="defaultImage">
+            <column name="default_image" sql-type="varchar(255)"/>
+        </property>
+        <property name="recommended">
+            <column name="recommended" sql-type="tinyint(4) unsigned"/>
+        </property>
+        <property name="cateId1">
+            <column name="cate_id_1" sql-type="int(10) unsigned"/>
+        </property>
+        <property name="cateId2">
+            <column name="cate_id_2" sql-type="int(10) unsigned"/>
+        </property>
+        <property name="cateId3">
+            <column name="cate_id_3" sql-type="int(10) unsigned"/>
+        </property>
+        <property name="cateId4">
+            <column name="cate_id_4" sql-type="int(10) unsigned"/>
+        </property>
+        <property name="price">
+            <column name="price" sql-type="decimal(10,2)" precision="10" scale="2"/>
+        </property>
+        <property name="tags">
+            <column name="tags" sql-type="varchar(102)" length="102"/>
+        </property>
+    </class>
+</hibernate-mapping>

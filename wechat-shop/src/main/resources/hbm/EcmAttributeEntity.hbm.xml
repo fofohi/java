@@ -1,0 +1,21 @@
+<?xml version='1.0' encoding='utf-8'?>
+<!DOCTYPE hibernate-mapping PUBLIC
+    "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+    "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+
+    <class name="com.alongking.wechat.entity.EcmAttributeEntity" table="ecm_attribute" schema="fenshang">
+        <id name="attrId">
+            <column name="attr_id" sql-type="int(10) unsigned"/>
+        </id>
+        <property name="attrName">
+            <column name="attr_name" sql-type="varchar(60)" length="60"/>
+        </property>
+        <property name="inputMode">
+            <column name="input_mode" sql-type="varchar(10)" length="10"/>
+        </property>
+        <property name="defValue">
+            <column name="def_value" sql-type="varchar(255)" not-null="true"/>
+        </property>
+    </class>
+</hibernate-mapping>

@@ -1,0 +1,39 @@
+<?xml version='1.0' encoding='utf-8'?>
+<!DOCTYPE hibernate-mapping PUBLIC
+    "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+    "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+
+    <class name="com.alongking.wechat.entity.EcmPaymentEntity" table="ecm_payment" schema="fenshang">
+        <id name="paymentId">
+            <column name="payment_id" sql-type="int(10) unsigned"/>
+        </id>
+        <property name="storeId">
+            <column name="store_id" sql-type="int(10) unsigned"/>
+        </property>
+        <property name="paymentCode">
+            <column name="payment_code" sql-type="varchar(20)" length="20"/>
+        </property>
+        <property name="paymentName">
+            <column name="payment_name" sql-type="varchar(100)" length="100"/>
+        </property>
+        <property name="paymentDesc">
+            <column name="payment_desc" sql-type="varchar(255)" not-null="true"/>
+        </property>
+        <property name="config">
+            <column name="config" sql-type="text" not-null="true"/>
+        </property>
+        <property name="isOnline">
+            <column name="is_online" sql-type="tinyint(3) unsigned"/>
+        </property>
+        <property name="enabled">
+            <column name="enabled" sql-type="tinyint(3) unsigned"/>
+        </property>
+        <property name="sortOrder">
+            <column name="sort_order" sql-type="tinyint(3) unsigned"/>
+        </property>
+        <property name="bankImages">
+            <column name="bank_images" sql-type="varchar(255)" not-null="true"/>
+        </property>
+    </class>
+</hibernate-mapping>

@@ -1,0 +1,27 @@
+<?xml version='1.0' encoding='utf-8'?>
+<!DOCTYPE hibernate-mapping PUBLIC
+    "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+    "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+
+    <class name="com.alongking.wechat.entity.EcmGoodsImageEntity" table="ecm_goods_image" schema="fenshang">
+        <id name="imageId">
+            <column name="image_id" sql-type="int(10) unsigned"/>
+        </id>
+        <property name="goodsId">
+            <column name="goods_id" sql-type="int(10) unsigned"/>
+        </property>
+        <property name="imageUrl">
+            <column name="image_url" sql-type="varchar(255)"/>
+        </property>
+        <property name="thumbnail">
+            <column name="thumbnail" sql-type="varchar(255)"/>
+        </property>
+        <property name="sortOrder">
+            <column name="sort_order" sql-type="tinyint(4) unsigned"/>
+        </property>
+        <property name="fileId">
+            <column name="file_id" sql-type="int(11) unsigned"/>
+        </property>
+    </class>
+</hibernate-mapping>

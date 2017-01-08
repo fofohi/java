@@ -1,0 +1,42 @@
+<?xml version='1.0' encoding='utf-8'?>
+<!DOCTYPE hibernate-mapping PUBLIC
+    "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+    "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+
+    <class name="com.alongking.wechat.entity.EcmOrderExtmEntity" table="ecm_order_extm" schema="fenshang">
+        <id name="orderId">
+            <column name="order_id" sql-type="int(10) unsigned"/>
+        </id>
+        <property name="consignee">
+            <column name="consignee" sql-type="varchar(60)" length="60"/>
+        </property>
+        <property name="regionId">
+            <column name="region_id" sql-type="int(10) unsigned" not-null="true"/>
+        </property>
+        <property name="regionName">
+            <column name="region_name" sql-type="varchar(255)" not-null="true"/>
+        </property>
+        <property name="address">
+            <column name="address" sql-type="varchar(255)" not-null="true"/>
+        </property>
+        <property name="zipcode">
+            <column name="zipcode" sql-type="varchar(20)" length="20" not-null="true"/>
+        </property>
+        <property name="phoneTel">
+            <column name="phone_tel" sql-type="varchar(60)" length="60" not-null="true"/>
+        </property>
+        <property name="phoneMob">
+            <column name="phone_mob" sql-type="varchar(60)" length="60" not-null="true"/>
+        </property>
+        <property name="shippingId">
+            <column name="shipping_id" sql-type="int(10) unsigned" not-null="true"/>
+        </property>
+        <property name="shippingName">
+            <column name="shipping_name" sql-type="varchar(100)" length="100" not-null="true"/>
+        </property>
+        <property name="shippingFee">
+            <column name="shipping_fee" sql-type="decimal(10,2)" precision="10" scale="2"/>
+        </property>
+    </class>
+</hibernate-mapping>

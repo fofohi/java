@@ -1,0 +1,39 @@
+<?xml version='1.0' encoding='utf-8'?>
+<!DOCTYPE hibernate-mapping PUBLIC
+    "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+    "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+
+    <class name="com.alongking.wechat.entity.EcmArticleEntity" table="ecm_article" schema="fenshang">
+        <id name="articleId">
+            <column name="article_id" sql-type="int(10) unsigned"/>
+        </id>
+        <property name="code">
+            <column name="code" sql-type="varchar(20)" length="20"/>
+        </property>
+        <property name="title">
+            <column name="title" sql-type="varchar(100)" length="100"/>
+        </property>
+        <property name="cateId">
+            <column name="cate_id" sql-type="int(10)"/>
+        </property>
+        <property name="storeId">
+            <column name="store_id" sql-type="int(10) unsigned"/>
+        </property>
+        <property name="link">
+            <column name="link" sql-type="varchar(255)" not-null="true"/>
+        </property>
+        <property name="content">
+            <column name="content" sql-type="text" not-null="true"/>
+        </property>
+        <property name="sortOrder">
+            <column name="sort_order" sql-type="tinyint(3) unsigned"/>
+        </property>
+        <property name="ifShow">
+            <column name="if_show" sql-type="tinyint(3) unsigned"/>
+        </property>
+        <property name="addTime">
+            <column name="add_time" sql-type="int(10) unsigned" not-null="true"/>
+        </property>
+    </class>
+</hibernate-mapping>

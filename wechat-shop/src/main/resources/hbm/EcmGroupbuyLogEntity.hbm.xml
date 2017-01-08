@@ -1,0 +1,38 @@
+<?xml version='1.0' encoding='utf-8'?>
+<!DOCTYPE hibernate-mapping PUBLIC
+    "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+    "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+
+    <class name="com.alongking.wechat.entity.EcmGroupbuyLogEntity" table="ecm_groupbuy_log" schema="fenshang">
+        <composite-id mapped="true" class="com.alongking.wechat.entity.EcmGroupbuyLogEntityPK">
+            <key-property name="groupId">
+                <column name="group_id" sql-type="int(10) unsigned"/>
+            </key-property>
+            <key-property name="userId">
+                <column name="user_id" sql-type="int(10) unsigned"/>
+            </key-property>
+        </composite-id>
+        <property name="userName">
+            <column name="user_name" sql-type="varchar(60)" length="60"/>
+        </property>
+        <property name="quantity">
+            <column name="quantity" sql-type="smallint(5) unsigned"/>
+        </property>
+        <property name="specQuantity">
+            <column name="spec_quantity" sql-type="text"/>
+        </property>
+        <property name="linkman">
+            <column name="linkman" sql-type="varchar(60)" length="60"/>
+        </property>
+        <property name="tel">
+            <column name="tel" sql-type="varchar(60)" length="60"/>
+        </property>
+        <property name="orderId">
+            <column name="order_id" sql-type="int(10) unsigned"/>
+        </property>
+        <property name="addTime">
+            <column name="add_time" sql-type="int(10) unsigned"/>
+        </property>
+    </class>
+</hibernate-mapping>

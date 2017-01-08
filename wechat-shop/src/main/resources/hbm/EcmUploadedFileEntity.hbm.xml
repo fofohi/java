@@ -1,0 +1,36 @@
+<?xml version='1.0' encoding='utf-8'?>
+<!DOCTYPE hibernate-mapping PUBLIC
+    "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+    "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+
+    <class name="com.alongking.wechat.entity.EcmUploadedFileEntity" table="ecm_uploaded_file" schema="fenshang">
+        <id name="fileId">
+            <column name="file_id" sql-type="int(10) unsigned"/>
+        </id>
+        <property name="storeId">
+            <column name="store_id" sql-type="int(10) unsigned"/>
+        </property>
+        <property name="fileType">
+            <column name="file_type" sql-type="varchar(60)" length="60"/>
+        </property>
+        <property name="fileSize">
+            <column name="file_size" sql-type="int(10) unsigned"/>
+        </property>
+        <property name="fileName">
+            <column name="file_name" sql-type="varchar(255)"/>
+        </property>
+        <property name="filePath">
+            <column name="file_path" sql-type="varchar(255)"/>
+        </property>
+        <property name="addTime">
+            <column name="add_time" sql-type="int(10) unsigned"/>
+        </property>
+        <property name="belong">
+            <column name="belong" sql-type="tinyint(3) unsigned"/>
+        </property>
+        <property name="itemId">
+            <column name="item_id" sql-type="int(10) unsigned"/>
+        </property>
+    </class>
+</hibernate-mapping>

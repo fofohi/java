@@ -1,0 +1,87 @@
+<?xml version='1.0' encoding='utf-8'?>
+<!DOCTYPE hibernate-mapping PUBLIC
+    "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+    "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+
+    <class name="com.alongking.wechat.entity.EcmMemberEntity" table="ecm_member" schema="fenshang">
+        <id name="userId">
+            <column name="user_id" sql-type="int(10) unsigned"/>
+        </id>
+        <property name="userName">
+            <column name="user_name" sql-type="varchar(60)" length="60"/>
+        </property>
+        <property name="email">
+            <column name="email" sql-type="varchar(60)" length="60"/>
+        </property>
+        <property name="password">
+            <column name="password" sql-type="varchar(32)" length="32"/>
+        </property>
+        <property name="realName">
+            <column name="real_name" sql-type="varchar(60)" length="60" not-null="true"/>
+        </property>
+        <property name="gender">
+            <column name="gender" sql-type="tinyint(3) unsigned"/>
+        </property>
+        <property name="birthday">
+            <column name="birthday" sql-type="date" not-null="true"/>
+        </property>
+        <property name="phoneTel">
+            <column name="phone_tel" sql-type="varchar(60)" length="60" not-null="true"/>
+        </property>
+        <property name="phoneMob">
+            <column name="phone_mob" sql-type="varchar(60)" length="60" not-null="true"/>
+        </property>
+        <property name="imQq">
+            <column name="im_qq" sql-type="varchar(60)" length="60" not-null="true"/>
+        </property>
+        <property name="imMsn">
+            <column name="im_msn" sql-type="varchar(60)" length="60" not-null="true"/>
+        </property>
+        <property name="imSkype">
+            <column name="im_skype" sql-type="varchar(60)" length="60" not-null="true"/>
+        </property>
+        <property name="imYahoo">
+            <column name="im_yahoo" sql-type="varchar(60)" length="60" not-null="true"/>
+        </property>
+        <property name="imAliww">
+            <column name="im_aliww" sql-type="varchar(60)" length="60" not-null="true"/>
+        </property>
+        <property name="regTime">
+            <column name="reg_time" sql-type="int(10) unsigned" not-null="true"/>
+        </property>
+        <property name="lastLogin">
+            <column name="last_login" sql-type="int(10) unsigned" not-null="true"/>
+        </property>
+        <property name="lastIp">
+            <column name="last_ip" sql-type="varchar(15)" length="15" not-null="true"/>
+        </property>
+        <property name="logins">
+            <column name="logins" sql-type="int(10) unsigned"/>
+        </property>
+        <property name="ugrade">
+            <column name="ugrade" sql-type="tinyint(3) unsigned"/>
+        </property>
+        <property name="portrait">
+            <column name="portrait" sql-type="varchar(255)" not-null="true"/>
+        </property>
+        <property name="outerId">
+            <column name="outer_id" sql-type="int(10) unsigned"/>
+        </property>
+        <property name="activation">
+            <column name="activation" sql-type="varchar(60)" length="60" not-null="true"/>
+        </property>
+        <property name="feedConfig">
+            <column name="feed_config" sql-type="text"/>
+        </property>
+        <property name="money">
+            <column name="money" sql-type="decimal(11,2)" precision="11" scale="2" not-null="true"/>
+        </property>
+        <property name="jifen">
+            <column name="jifen" sql-type="decimal(11,2)" precision="11" scale="2" not-null="true"/>
+        </property>
+        <property name="tuijianId">
+            <column name="tuijian_id" sql-type="int(11)" not-null="true"/>
+        </property>
+    </class>
+</hibernate-mapping>

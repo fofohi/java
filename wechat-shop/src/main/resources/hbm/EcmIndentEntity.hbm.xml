@@ -1,0 +1,33 @@
+<?xml version='1.0' encoding='utf-8'?>
+<!DOCTYPE hibernate-mapping PUBLIC
+    "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+    "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+
+    <class name="com.alongking.wechat.entity.EcmIndentEntity" table="ecm_indent" schema="fenshang">
+        <id name="id">
+            <column name="id" sql-type="int(11)"/>
+        </id>
+        <property name="userId">
+            <column name="user_id" sql-type="int(11)"/>
+        </property>
+        <property name="userName">
+            <column name="user_name" sql-type="varchar(60)" length="60"/>
+        </property>
+        <property name="title">
+            <column name="title" sql-type="varchar(255)"/>
+        </property>
+        <property name="status">
+            <column name="status" sql-type="tinyint(1)"/>
+        </property>
+        <property name="addTime">
+            <column name="add_time" sql-type="int(11)"/>
+        </property>
+        <property name="outTradeNo">
+            <column name="out_trade_no" sql-type="varchar(50)" length="50"/>
+        </property>
+        <property name="money">
+            <column name="money" sql-type="decimal(11,2)" precision="11" scale="2"/>
+        </property>
+    </class>
+</hibernate-mapping>

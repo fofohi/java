@@ -1,0 +1,48 @@
+<?xml version='1.0' encoding='utf-8'?>
+<!DOCTYPE hibernate-mapping PUBLIC
+    "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+    "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+
+    <class name="com.alongking.wechat.entity.EcmGroupbuyEntity" table="ecm_groupbuy" schema="fenshang">
+        <id name="groupId">
+            <column name="group_id" sql-type="int(10) unsigned"/>
+        </id>
+        <property name="groupName">
+            <column name="group_name" sql-type="varchar(255)"/>
+        </property>
+        <property name="groupDesc">
+            <column name="group_desc" sql-type="varchar(255)"/>
+        </property>
+        <property name="startTime">
+            <column name="start_time" sql-type="int(10) unsigned"/>
+        </property>
+        <property name="endTime">
+            <column name="end_time" sql-type="int(10) unsigned"/>
+        </property>
+        <property name="goodsId">
+            <column name="goods_id" sql-type="int(10) unsigned"/>
+        </property>
+        <property name="storeId">
+            <column name="store_id" sql-type="int(10) unsigned"/>
+        </property>
+        <property name="specPrice">
+            <column name="spec_price" sql-type="text"/>
+        </property>
+        <property name="minQuantity">
+            <column name="min_quantity" sql-type="smallint(5) unsigned"/>
+        </property>
+        <property name="maxPerUser">
+            <column name="max_per_user" sql-type="smallint(5) unsigned"/>
+        </property>
+        <property name="state">
+            <column name="state" sql-type="tinyint(3) unsigned"/>
+        </property>
+        <property name="recommended">
+            <column name="recommended" sql-type="tinyint(3) unsigned"/>
+        </property>
+        <property name="views">
+            <column name="views" sql-type="int(10) unsigned"/>
+        </property>
+    </class>
+</hibernate-mapping>

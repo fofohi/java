@@ -1,0 +1,21 @@
+<?xml version='1.0' encoding='utf-8'?>
+<!DOCTYPE hibernate-mapping PUBLIC
+    "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+    "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+
+    <class name="com.alongking.wechat.entity.EcmWxconfigEntity" table="ecm_wxconfig" schema="fenshang">
+        <id name="id">
+            <column name="id" sql-type="int(11)"/>
+        </id>
+        <property name="appid">
+            <column name="appid" sql-type="varchar(255)"/>
+        </property>
+        <property name="appsecret">
+            <column name="appsecret" sql-type="varchar(255)"/>
+        </property>
+        <property name="userId">
+            <column name="user_id" sql-type="int(11)"/>
+        </property>
+    </class>
+</hibernate-mapping>

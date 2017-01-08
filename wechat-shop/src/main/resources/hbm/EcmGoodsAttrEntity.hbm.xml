@@ -1,0 +1,27 @@
+<?xml version='1.0' encoding='utf-8'?>
+<!DOCTYPE hibernate-mapping PUBLIC
+    "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+    "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+
+    <class name="com.alongking.wechat.entity.EcmGoodsAttrEntity" table="ecm_goods_attr" schema="fenshang">
+        <id name="gattrId">
+            <column name="gattr_id" sql-type="int(10) unsigned"/>
+        </id>
+        <property name="goodsId">
+            <column name="goods_id" sql-type="int(10) unsigned"/>
+        </property>
+        <property name="attrName">
+            <column name="attr_name" sql-type="varchar(60)" length="60"/>
+        </property>
+        <property name="attrValue">
+            <column name="attr_value" sql-type="varchar(255)"/>
+        </property>
+        <property name="attrId">
+            <column name="attr_id" sql-type="int(10) unsigned" not-null="true"/>
+        </property>
+        <property name="sortOrder">
+            <column name="sort_order" sql-type="tinyint(3) unsigned" not-null="true"/>
+        </property>
+    </class>
+</hibernate-mapping>

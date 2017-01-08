@@ -1,0 +1,26 @@
+<?xml version='1.0' encoding='utf-8'?>
+<!DOCTYPE hibernate-mapping PUBLIC
+    "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+    "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+
+    <class name="com.alongking.wechat.entity.EcmCollectEntity" table="ecm_collect" schema="fenshang">
+        <composite-id mapped="true" class="com.alongking.wechat.entity.EcmCollectEntityPK">
+            <key-property name="userId">
+                <column name="user_id" sql-type="int(10) unsigned"/>
+            </key-property>
+            <key-property name="type">
+                <column name="type" sql-type="varchar(10)" length="10"/>
+            </key-property>
+            <key-property name="itemId">
+                <column name="item_id" sql-type="int(10) unsigned"/>
+            </key-property>
+        </composite-id>
+        <property name="keyword">
+            <column name="keyword" sql-type="varchar(60)" length="60" not-null="true"/>
+        </property>
+        <property name="addTime">
+            <column name="add_time" sql-type="int(10) unsigned" not-null="true"/>
+        </property>
+    </class>
+</hibernate-mapping>

@@ -13,6 +13,6 @@
 </head>
 <body>
 <p></p>
-<h2><s:property value="messageStore.message" /></h2>
+<%--<h2><s:property value="ecmMemberEntity.userId" /></h2>--%>
 </body>
 </html>

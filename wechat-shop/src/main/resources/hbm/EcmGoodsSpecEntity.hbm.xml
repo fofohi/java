@@ -1,0 +1,33 @@
+<?xml version='1.0' encoding='utf-8'?>
+<!DOCTYPE hibernate-mapping PUBLIC
+    "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+    "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+
+    <class name="com.alongking.wechat.entity.EcmGoodsSpecEntity" table="ecm_goods_spec" schema="fenshang">
+        <id name="specId">
+            <column name="spec_id" sql-type="int(10) unsigned"/>
+        </id>
+        <property name="goodsId">
+            <column name="goods_id" sql-type="int(10) unsigned"/>
+        </property>
+        <property name="spec1">
+            <column name="spec_1" sql-type="varchar(60)" length="60"/>
+        </property>
+        <property name="spec2">
+            <column name="spec_2" sql-type="varchar(60)" length="60"/>
+        </property>
+        <property name="colorRgb">
+            <column name="color_rgb" sql-type="varchar(7)" length="7"/>
+        </property>
+        <property name="price">
+            <column name="price" sql-type="decimal(10,2)" precision="10" scale="2"/>
+        </property>
+        <property name="stock">
+            <column name="stock" sql-type="int(11)"/>
+        </property>
+        <property name="sku">
+            <column name="sku" sql-type="varchar(60)" length="60"/>
+        </property>
+    </class>
+</hibernate-mapping>

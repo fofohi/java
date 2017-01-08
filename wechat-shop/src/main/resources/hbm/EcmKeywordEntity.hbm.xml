@@ -1,0 +1,48 @@
+<?xml version='1.0' encoding='utf-8'?>
+<!DOCTYPE hibernate-mapping PUBLIC
+    "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+    "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+
+    <class name="com.alongking.wechat.entity.EcmKeywordEntity" table="ecm_keyword" schema="fenshang">
+        <id name="kid">
+            <column name="kid" sql-type="int(11) unsigned"/>
+        </id>
+        <property name="kename">
+            <column name="kename" sql-type="varchar(300)" length="300" not-null="true"/>
+        </property>
+        <property name="kecontent">
+            <column name="kecontent" sql-type="varchar(500)" length="500" not-null="true"/>
+        </property>
+        <property name="type">
+            <column name="type" sql-type="tinyint(1)"/>
+        </property>
+        <property name="kyword">
+            <column name="kyword" sql-type="varchar(255)" not-null="true"/>
+        </property>
+        <property name="titles">
+            <column name="titles" sql-type="varchar(1000)" length="1000" not-null="true"/>
+        </property>
+        <property name="imageinfo">
+            <column name="imageinfo" sql-type="varchar(1000)" length="1000" not-null="true"/>
+        </property>
+        <property name="linkinfo">
+            <column name="linkinfo" sql-type="varchar(1000)" length="1000" not-null="true"/>
+        </property>
+        <property name="ismess">
+            <column name="ismess" sql-type="tinyint(1)" not-null="true"/>
+        </property>
+        <property name="isfollow">
+            <column name="isfollow" sql-type="tinyint(1)" not-null="true"/>
+        </property>
+        <property name="iskey">
+            <column name="iskey" sql-type="tinyint(1)" not-null="true"/>
+        </property>
+        <property name="userId">
+            <column name="user_id" sql-type="int(11)"/>
+        </property>
+        <property name="token">
+            <column name="token" sql-type="varchar(50)" length="50"/>
+        </property>
+    </class>
+</hibernate-mapping>

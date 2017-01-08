@@ -1,0 +1,42 @@
+<?xml version='1.0' encoding='utf-8'?>
+<!DOCTYPE hibernate-mapping PUBLIC
+    "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+    "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+
+    <class name="com.alongking.wechat.entity.EcmCartEntity" table="ecm_cart" schema="fenshang">
+        <id name="recId">
+            <column name="rec_id" sql-type="int(10) unsigned"/>
+        </id>
+        <property name="userId">
+            <column name="user_id" sql-type="int(10) unsigned"/>
+        </property>
+        <property name="sessionId">
+            <column name="session_id" sql-type="varchar(32)" length="32"/>
+        </property>
+        <property name="storeId">
+            <column name="store_id" sql-type="int(10) unsigned"/>
+        </property>
+        <property name="goodsId">
+            <column name="goods_id" sql-type="int(10) unsigned"/>
+        </property>
+        <property name="goodsName">
+            <column name="goods_name" sql-type="varchar(255)"/>
+        </property>
+        <property name="specId">
+            <column name="spec_id" sql-type="int(10) unsigned"/>
+        </property>
+        <property name="specification">
+            <column name="specification" sql-type="varchar(255)" not-null="true"/>
+        </property>
+        <property name="price">
+            <column name="price" sql-type="decimal(10,2) unsigned" precision="10" scale="2"/>
+        </property>
+        <property name="quantity">
+            <column name="quantity" sql-type="int(10) unsigned"/>
+        </property>
+        <property name="goodsImage">
+            <column name="goods_image" sql-type="varchar(255)" not-null="true"/>
+        </property>
+    </class>
+</hibernate-mapping>

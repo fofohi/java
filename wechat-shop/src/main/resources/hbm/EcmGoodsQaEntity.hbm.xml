@@ -1,0 +1,45 @@
+<?xml version='1.0' encoding='utf-8'?>
+<!DOCTYPE hibernate-mapping PUBLIC
+    "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+    "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+
+    <class name="com.alongking.wechat.entity.EcmGoodsQaEntity" table="ecm_goods_qa" schema="fenshang">
+        <id name="quesId">
+            <column name="ques_id" sql-type="int(10) unsigned"/>
+        </id>
+        <property name="questionContent">
+            <column name="question_content" sql-type="varchar(255)"/>
+        </property>
+        <property name="userId">
+            <column name="user_id" sql-type="int(10) unsigned"/>
+        </property>
+        <property name="storeId">
+            <column name="store_id" sql-type="int(10) unsigned"/>
+        </property>
+        <property name="email">
+            <column name="email" sql-type="varchar(60)" length="60"/>
+        </property>
+        <property name="itemId">
+            <column name="item_id" sql-type="int(10) unsigned"/>
+        </property>
+        <property name="itemName">
+            <column name="item_name" sql-type="varchar(255)"/>
+        </property>
+        <property name="replyContent">
+            <column name="reply_content" sql-type="varchar(255)"/>
+        </property>
+        <property name="timePost">
+            <column name="time_post" sql-type="int(10) unsigned"/>
+        </property>
+        <property name="timeReply">
+            <column name="time_reply" sql-type="int(10) unsigned"/>
+        </property>
+        <property name="ifNew">
+            <column name="if_new" sql-type="tinyint(3) unsigned"/>
+        </property>
+        <property name="type">
+            <column name="type" sql-type="varchar(10)" length="10"/>
+        </property>
+    </class>
+</hibernate-mapping>

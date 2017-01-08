@@ -1,0 +1,27 @@
+<?xml version='1.0' encoding='utf-8'?>
+<!DOCTYPE hibernate-mapping PUBLIC
+    "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+    "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+
+    <class name="com.alongking.wechat.entity.EcmModuleEntity" table="ecm_module" schema="fenshang">
+        <id name="moduleId">
+            <column name="module_id" sql-type="varchar(30)" length="30"/>
+        </id>
+        <property name="moduleName">
+            <column name="module_name" sql-type="varchar(100)" length="100"/>
+        </property>
+        <property name="moduleVersion">
+            <column name="module_version" sql-type="varchar(5)" length="5"/>
+        </property>
+        <property name="moduleDesc">
+            <column name="module_desc" sql-type="text"/>
+        </property>
+        <property name="moduleConfig">
+            <column name="module_config" sql-type="text"/>
+        </property>
+        <property name="enabled">
+            <column name="enabled" sql-type="tinyint(1)"/>
+        </property>
+    </class>
+</hibernate-mapping>

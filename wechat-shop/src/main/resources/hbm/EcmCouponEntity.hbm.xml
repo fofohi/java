@@ -1,0 +1,36 @@
+<?xml version='1.0' encoding='utf-8'?>
+<!DOCTYPE hibernate-mapping PUBLIC
+    "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+    "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+
+    <class name="com.alongking.wechat.entity.EcmCouponEntity" table="ecm_coupon" schema="fenshang">
+        <id name="couponId">
+            <column name="coupon_id" sql-type="int(10) unsigned"/>
+        </id>
+        <property name="storeId">
+            <column name="store_id" sql-type="int(10) unsigned"/>
+        </property>
+        <property name="couponName">
+            <column name="coupon_name" sql-type="varchar(100)" length="100"/>
+        </property>
+        <property name="couponValue">
+            <column name="coupon_value" sql-type="decimal(10,2) unsigned" precision="10" scale="2"/>
+        </property>
+        <property name="useTimes">
+            <column name="use_times" sql-type="int(10) unsigned"/>
+        </property>
+        <property name="startTime">
+            <column name="start_time" sql-type="int(10) unsigned"/>
+        </property>
+        <property name="endTime">
+            <column name="end_time" sql-type="int(10) unsigned"/>
+        </property>
+        <property name="minAmount">
+            <column name="min_amount" sql-type="decimal(10,2) unsigned" precision="10" scale="2"/>
+        </property>
+        <property name="ifIssue">
+            <column name="if_issue" sql-type="tinyint(3) unsigned"/>
+        </property>
+    </class>
+</hibernate-mapping>
