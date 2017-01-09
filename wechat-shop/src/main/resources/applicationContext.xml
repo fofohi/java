@@ -15,26 +15,26 @@
         <property name="password" value="${db.password}" />
 
         <!-- these are C3P0 properties -->
-        <property name="acquireIncrement" value="3" />
+        <property name="acquireIncrement" value="20" />
         <property name="minPoolSize" value="20" />
         <property name="maxPoolSize" value="100" />
         <property name="maxIdleTime" value="60" />
     </bean>
 
-    <bean id="hibernate" class="org.springframework.orm.hibernate4.LocalSessionFactoryBean">
-        <property name="configLocation" value="hibernate.cfg.xml" />
+    <bean id="hibernates" class="org.springframework.orm.hibernate4.LocalSessionFactoryBean">
+        <property name="configLocation" value="classpath:hibernate.cfg.xml" />
         <property name="dataSource" ref="dataSourceGlobal"/>
     </bean>
 
     <bean id="transactionManager" class="org.springframework.orm.hibernate4.HibernateTransactionManager" >
-        <property name="sessionFactory" ref="hibernate" />
+        <property name="sessionFactory" ref="hibernates" />
     </bean>
 
 
     <tx:annotation-driven transaction-manager="transactionManager" />
 
-    <context:component-scan  base-package="com.alongking.wechat">
-        <context:include-filter type="annotation" expression="org.springframework.stereotype.Component"/>
+    <context:component-scan  base-package="com.alongking.wechat" />
+      <!--  <context:include-filter type="annotation" expression="org.springframework.stereotype.Component"/>
         <context:include-filter type="annotation" expression="org.springframework.stereotype.Service"/>
-    </context:component-scan>
+    </context:component-scan>-->
 </beans>
