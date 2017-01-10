@@ -21,13 +21,13 @@
         <property name="maxIdleTime" value="60" />
     </bean>
 
-    <bean id="hibernate" class="org.springframework.orm.hibernate4.LocalSessionFactoryBean">
-        <property name="configLocation" value="hibernate.cfg.xml" />
+    <bean id="hibernates" class="org.springframework.orm.hibernate4.LocalSessionFactoryBean">
+        <property name="configLocation" value="./hibernate.cfg.xml" />
         <property name="dataSource" ref="dataSourceGlobal"/>
     </bean>
 
     <bean id="transactionManager" class="org.springframework.orm.hibernate4.HibernateTransactionManager" >
-        <property name="sessionFactory" ref="hibernate" />
+        <property name="sessionFactory" ref="hibernates" />
     </bean>
 
 
