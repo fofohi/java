@@ -17,9 +17,8 @@ public class HelloWorldAction extends ActionSupport {
     private IEcMemberService iEcMemberService;
 
     public String test(){
-        System.out.println("=====>" + iEcMemberService);
-//        ecmMemberEntity = iEcMemberService.selectUserById(1);
-//        System.out.println(ecmMemberEntity);
+        ecmMemberEntity = iEcMemberService.selectUserById(1);
+        System.out.println("=====>" + ecmMemberEntity);
         return "success";
     }
 

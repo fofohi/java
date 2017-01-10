@@ -30,11 +30,14 @@
         <property name="sessionFactory" ref="hibernates" />
     </bean>
 
+    <bean id="hibernateTemplate" class="org.springframework.orm.hibernate4.HibernateTemplate">
+        <property name="sessionFactory" ref="hibernates" />
+    </bean>
 
     <tx:annotation-driven transaction-manager="transactionManager" />
 
-    <context:component-scan  base-package="com.alongking.wechat" />
-      <!--  <context:include-filter type="annotation" expression="org.springframework.stereotype.Component"/>
+    <context:component-scan  base-package="com.alongking.wechat" >
+        <context:include-filter type="annotation" expression="org.springframework.stereotype.Component"/>
         <context:include-filter type="annotation" expression="org.springframework.stereotype.Service"/>
-    </context:component-scan>-->
+    </context:component-scan>
 </beans>

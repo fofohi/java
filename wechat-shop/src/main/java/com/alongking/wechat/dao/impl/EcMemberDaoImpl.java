@@ -2,6 +2,8 @@ package com.alongking.wechat.dao.impl;
 
 import com.alongking.wechat.dao.IEcmMemberDao;
 import com.alongking.wechat.entity.EcmMemberEntity;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.orm.hibernate4.HibernateTemplate;
 import org.springframework.stereotype.Component;
 
 /**
@@ -9,7 +11,12 @@ import org.springframework.stereotype.Component;
  */
 @Component("iEcmMemberDao")
 public class EcMemberDaoImpl implements IEcmMemberDao {
+
+    @Autowired
+    private HibernateTemplate hibernateTemplate;
+
+
     public EcmMemberEntity selectUserById(int id) {
-        return null;
+        return hibernateTemplate.get(EcmMemberEntity.class,id);
     }
 }
