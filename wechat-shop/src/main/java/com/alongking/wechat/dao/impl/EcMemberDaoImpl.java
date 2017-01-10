@@ -7,7 +7,7 @@ import org.springframework.stereotype.Component;
 /**
  * Created by alongsea2 on 2017/1/8.
  */
-@Component
+@Component("iEcmMemberDao")
 public class EcMemberDaoImpl implements IEcmMemberDao {
     public EcmMemberEntity selectUserById(int id) {
         return null;

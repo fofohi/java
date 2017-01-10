@@ -10,15 +10,11 @@ import org.springframework.transaction.annotation.Transactional;
 /**
  * Created by alongsea2 on 2017/1/8.
  */
-@Service
+@Service("iEcMemberService")
 public class EcmMemberServiceImpl implements IEcMemberService {
 
-    private final IEcmMemberDao iEcmMemberDao;
-
     @Autowired
-    public EcmMemberServiceImpl(IEcmMemberDao iEcmMemberDao) {
-        this.iEcmMemberDao = iEcmMemberDao;
-    }
+    private IEcmMemberDao iEcmMemberDao;
 
     @Transactional
     public EcmMemberEntity selectUserById(int id) {
