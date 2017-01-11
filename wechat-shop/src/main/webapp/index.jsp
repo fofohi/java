@@ -10,10 +10,9 @@
 
 <html>
 <head>
-    <title>Title</title>
+    <title>nothing</title>
 </head>
 <body>
-    <div>test</div>
-    <a href="<s:url action='hello'/>">Hello World</a>
+    <div>请在微信内打开</div>
 </body>
 </html>

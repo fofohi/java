@@ -7,15 +7,33 @@
 <struts>
     <constant name="struts.devMode" value="true" />
     <constant name="struts.action.extension" value=","/>
+    
 
     <package name="com.alongking.wechat" extends="struts-default">
+        <interceptors>
+            <interceptor name="wechatUseInterceptor" class="com.alongking.wechat.interceptor.WechatUseInterceptor"/>
+            <interceptor-stack name="defaultStack">
+                <interceptor-ref name="wechatUseInterceptor"/>
+            </interceptor-stack>
+        </interceptors>
+        <global-results>
+            <result name="mustWechat">/index.jsp</result>
+        </global-results>
 
-        <action name="index">
+        <action name="/">
             <result>/index.jsp</result>
         </action>
 
-        <action name="hello" class="com.alongking.wechat.action.HelloWorldAction" method="test">
-            <result name="success">/HelloWorld.jsp</result>
+        <action name="dispatcher" class="com.alongking.wechat.action.ShopAction" method="dispatcher">
+            <result name="success">/include/dispatcher.jsp</result>
+        </action>
+
+        <action name="index" class="com.alongking.wechat.action.ShopAction" method="shopIndex">
+            <result name="success">/include/shop.jsp</result>
+        </action>
+
+        <action name="member" class="com.alongking.wechat.action.ShopAction" method="consumerIndex">
+            <result name="success">/include/shop.jsp</result>
         </action>
 
     </package>
