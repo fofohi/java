@@ -24,7 +24,7 @@
         <!-- 这里是页面内容区 -->
 
         <!-- 幻灯片 -->
-        <div class="swiper-container" style="width: 100%;height: 100%">
+        <div class="swiper-container">
             <div class="swiper-wrapper">
                 <div class="swiper-slide"><img width="100%" src="http://gqianniu.alicdn.com/bao/uploaded/i4//tfscom/i1/TB1n3rZHFXXXXX9XFXXXXXXXXXX_!!0-item_pic.jpg_320x320q60.jpg" alt=""></div>
                 <div class="swiper-slide"><img width="100%" src="http://gqianniu.alicdn.com/bao/uploaded/i4//tfscom/i4/TB10rkPGVXXXXXGapXXXXXXXXXX_!!0-item_pic.jpg_320x320q60.jpg" alt=""></div>
