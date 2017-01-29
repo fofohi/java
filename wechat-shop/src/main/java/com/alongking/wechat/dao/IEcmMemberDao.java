@@ -8,4 +8,6 @@ import org.springframework.stereotype.Component;
  */
 public interface IEcmMemberDao {
     EcmMemberEntity selectUserById(int id);
+
+    EcmMemberEntity selectUserByWechatId(String wechatId);
 }

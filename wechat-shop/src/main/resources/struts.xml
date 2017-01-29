@@ -9,32 +9,102 @@
     <constant name="struts.action.extension" value=","/>
     
 
-    <package name="com.alongking.wechat" extends="struts-default">
+    <package name="com.alongking.wechat" extends="struts-default,json-default">
         <interceptors>
             <interceptor name="wechatUseInterceptor" class="com.alongking.wechat.interceptor.WechatUseInterceptor"/>
+            <interceptor name="exceptionInterceptor" class="com.alongking.wechat.interceptor.ExceptionInterceptor"/>
+            <interceptor name="loginInterceptor" class="com.alongking.wechat.interceptor.LoginExceptionInterceptor"/>
             <interceptor-stack name="defaultStack">
+                <interceptor-ref name="exceptionInterceptor"/>
                 <interceptor-ref name="wechatUseInterceptor"/>
             </interceptor-stack>
         </interceptors>
+
         <global-results>
-            <result name="mustWechat">/index.jsp</result>
+            <result name="mustWechat">/include/mustWechat.jsp</result>
+            <result name="error">/include/error.jsp</result>
+            <result name="redirectWechat" >/include/goWechatLogin.jsp</result>
         </global-results>
 
-        <action name="/">
-            <result>/index.jsp</result>
+        <global-exception-mappings>
+            <exception-mapping result="error" exception="java.lang.Exception" />
+        </global-exception-mappings>
+
+        <action name="" class="com.alongking.wechat.action.ShopAction" method="authFromWechat">
+            <result name="success">/include/oauth.jsp</result>
         </action>
 
+        <!--获取wechatId-->
         <action name="dispatcher" class="com.alongking.wechat.action.ShopAction" method="dispatcher">
-            <result name="success">/include/dispatcher.jsp</result>
+            <result name="success" type="redirect">index?storeId=${shopId}&amp;wechatId=${wechatId}</result>
         </action>
 
+        <!--首页-->
         <action name="index" class="com.alongking.wechat.action.ShopAction" method="shopIndex">
             <result name="success">/include/shop.jsp</result>
         </action>
 
-        <action name="member" class="com.alongking.wechat.action.ShopAction" method="consumerIndex">
-            <result name="success">/include/shop.jsp</result>
+        <!--首页json数据-->
+        <action name="index-json" class="com.alongking.wechat.action.ShopAction" method="shopIndexJson">
+            <result type="json">
+                <param name="root">lists</param>
+            </result>
         </action>
 
+        <!--用户页面-->
+        <action name="member" class="com.alongking.wechat.action.ShopAction" method="consumerIndex">
+            <result name="success">/include/member.jsp</result>
+            <interceptor-ref name="loginInterceptor"/>
+        </action>
+
+        <!--商品详情-->
+        <action name="goodsInfo" class="com.alongking.wechat.action.ShopAction" method="goodsInfo">
+            <result name="success">/include/goods.jsp</result>
+        </action>
+
+        <!--地址-->
+        <action name="address" class="com.alongking.wechat.action.ShopAction" method="address">
+            <result name="success">/include/address.jsp</result>
+            <interceptor-ref name="loginInterceptor"/>
+        </action>
+
+        <!--增加新地址-->
+        <action name="addAddress" class="com.alongking.wechat.action.ShopAction" method="addAddressJson">
+            <result type="json">
+                <param name="root">jsonResult</param>
+            </result>
+            <interceptor-ref name="loginInterceptor"/>
+        </action>
+
+        <!--删除地址-->
+        <action name="delAddress" class="com.alongking.wechat.action.ShopAction" method="delAddressJson">
+            <result type="json">
+                <param name="root">jsonResult</param>
+            </result>
+            <interceptor-ref name="loginInterceptor"/>
+        </action>
+
+        <!--选择默认地址-->
+        <action name="defaultAddress" class="com.alongking.wechat.action.ShopAction" method="defaultAddressJson">
+            <result type="json">
+                <param name="root">jsonResult</param>
+            </result>
+            <interceptor-ref name="loginInterceptor"/>
+        </action>
+
+        <!--获取省市-->
+        <action name="region" class="com.alongking.wechat.action.ShopAction" method="getRegion">
+            <result type="json">
+                <param name="root">jsonResult</param>
+            </result>
+        </action>
+
+        <!--提交商品订单-->
+        <action name="subOrder" class="com.alongking.wechat.action.ShopAction" method="subOrder">
+            <result type="json">
+                <param name="root">jsonResult</param>
+            </result>
+            <interceptor-ref name="loginInterceptor"/>
+        </action>
     </package>
 </struts>

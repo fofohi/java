@@ -11,7 +11,7 @@ public class EcmRegionEntity {
     private int regionId;
     private String regionName;
     private int parentId;
-    private byte sortOrder;
+    private int sortOrder;
 
     @Id
     @Column(name = "region_id", nullable = false)
@@ -45,11 +45,11 @@ public class EcmRegionEntity {
 
     @Basic
     @Column(name = "sort_order", nullable = false)
-    public byte getSortOrder() {
+    public int getSortOrder() {
         return sortOrder;
     }
 
-    public void setSortOrder(byte sortOrder) {
+    public void setSortOrder(int sortOrder) {
         this.sortOrder = sortOrder;
     }
 

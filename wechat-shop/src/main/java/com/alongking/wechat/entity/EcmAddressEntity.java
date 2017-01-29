@@ -3,7 +3,7 @@ package com.alongking.wechat.entity;
 import javax.persistence.*;
 
 /**
- * Created by alongsea2 on 2017/1/8.
+ * Created by alongsea2 on 2017/1/26.
  */
 @Entity
 @Table(name = "ecm_address", schema = "fenshang", catalog = "")
@@ -17,6 +17,7 @@ public class EcmAddressEntity {
     private String zipcode;
     private String phoneTel;
     private String phoneMob;
+    private Integer isDefault;
 
     @Id
     @Column(name = "addr_id", nullable = false)
@@ -108,6 +109,16 @@ public class EcmAddressEntity {
         this.phoneMob = phoneMob;
     }
 
+    @Basic
+    @Column(name = "is_default", nullable = true)
+    public Integer getIsDefault() {
+        return isDefault;
+    }
+
+    public void setIsDefault(Integer isDefault) {
+        this.isDefault = isDefault;
+    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
@@ -124,6 +135,7 @@ public class EcmAddressEntity {
         if (zipcode != null ? !zipcode.equals(that.zipcode) : that.zipcode != null) return false;
         if (phoneTel != null ? !phoneTel.equals(that.phoneTel) : that.phoneTel != null) return false;
         if (phoneMob != null ? !phoneMob.equals(that.phoneMob) : that.phoneMob != null) return false;
+        if (isDefault != null ? !isDefault.equals(that.isDefault) : that.isDefault != null) return false;
 
         return true;
     }
@@ -139,6 +151,7 @@ public class EcmAddressEntity {
         result = 31 * result + (zipcode != null ? zipcode.hashCode() : 0);
         result = 31 * result + (phoneTel != null ? phoneTel.hashCode() : 0);
         result = 31 * result + (phoneMob != null ? phoneMob.hashCode() : 0);
+        result = 31 * result + (isDefault != null ? isDefault.hashCode() : 0);
         return result;
     }
 }

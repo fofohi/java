@@ -7,4 +7,6 @@ import com.alongking.wechat.entity.EcmMemberEntity;
  */
 public interface IEcMemberService {
     EcmMemberEntity selectUserById(int id);
+
+    EcmMemberEntity selectUserByWechatId(String wechatId);
 }

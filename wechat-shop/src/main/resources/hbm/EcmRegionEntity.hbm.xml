@@ -15,7 +15,7 @@
             <column name="parent_id" sql-type="int(10) unsigned"/>
         </property>
         <property name="sortOrder">
-            <column name="sort_order" sql-type="tinyint(3) unsigned"/>
+            <column name="sort_order" sql-type="int(11) unsigned"/>
         </property>
     </class>
 </hibernate-mapping>

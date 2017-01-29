@@ -2,41 +2,54 @@
 <beans xmlns="http://www.springframework.org/schema/beans"
        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
        xmlns:context="http://www.springframework.org/schema/context"
-       xmlns:tx="http://www.springframework.org/schema/tx"
+       xmlns:tx="http://www.springframework.org/schema/tx" xmlns:aop="http://www.springframework.org/schema/aop"
        xsi:schemaLocation="http://www.springframework.org/schema/beans
        http://www.springframework.org/schema/beans/spring-beans.xsd
        http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd
-       http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx.xsd
-       ">
-    <bean id="dataSourceGlobal" class="com.mchange.v2.c3p0.ComboPooledDataSource">
-        <property name="driverClass" value="com.mysql.jdbc.Driver" />
-        <property name="jdbcUrl" value="${db.url}" />
-        <property name="user" value="${db.user}" />
-        <property name="password" value="${db.password}" />
+           http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx.xsd http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop.xsd">
 
+    <bean id="dataSourceGlobal" class="com.mchange.v2.c3p0.ComboPooledDataSource">
+        <property name="driverClass" value="com.mysql.jdbc.Driver"/>
+        <property name="jdbcUrl" value="${db.url}"/>
+        <property name="user" value="${db.user}"/>
+        <property name="password" value="${db.password}"/>
         <!-- these are C3P0 properties -->
-        <property name="acquireIncrement" value="20" />
-        <property name="minPoolSize" value="20" />
-        <property name="maxPoolSize" value="100" />
-        <property name="maxIdleTime" value="60" />
+        <property name="acquireIncrement" value="20"/>
+        <property name="minPoolSize" value="20"/>
+        <property name="maxPoolSize" value="100"/>
+        <property name="maxIdleTime" value="60"/>
     </bean>
 
     <bean id="hibernates" class="org.springframework.orm.hibernate4.LocalSessionFactoryBean">
-        <property name="configLocation" value="classpath:hibernate.cfg.xml" />
+        <property name="configLocation" value="classpath:hibernate.cfg.xml"/>
         <property name="dataSource" ref="dataSourceGlobal"/>
     </bean>
 
-    <bean id="transactionManager" class="org.springframework.orm.hibernate4.HibernateTransactionManager" >
-        <property name="sessionFactory" ref="hibernates" />
+    <bean id="transactionManager" class="org.springframework.orm.hibernate4.HibernateTransactionManager">
+        <property name="sessionFactory" ref="hibernates"/>
     </bean>
 
     <bean id="hibernateTemplate" class="org.springframework.orm.hibernate4.HibernateTemplate">
-        <property name="sessionFactory" ref="hibernates" />
+        <property name="sessionFactory" ref="hibernates"/>
     </bean>
 
-    <tx:annotation-driven transaction-manager="transactionManager" />
+    <tx:advice id="txAdvice" transaction-manager="transactionManager">
+        <tx:attributes>
+            <tx:method name="*" propagation="REQUIRED" read-only="true"/>
+            <tx:method name="save*" propagation="REQUIRED"/>
+            <tx:method name="add*" propagation="REQUIRED"/>
+            <tx:method name="del*" propagation="REQUIRED"/>
+            <tx:method name="update*" propagation="REQUIRED" isolation="REPEATABLE_READ"/>
+        </tx:attributes>
+    </tx:advice>
 
-    <context:component-scan  base-package="com.alongking.wechat" >
+    <aop:config>
+        <aop:pointcut id="managerOperation"
+                      expression="execution(* com.alongking.wechat.service.*.*(..))"/>
+        <aop:advisor advice-ref="txAdvice" pointcut-ref="managerOperation"/>
+    </aop:config>
+
+    <context:component-scan base-package="com.alongking.wechat">
         <context:include-filter type="annotation" expression="org.springframework.stereotype.Component"/>
         <context:include-filter type="annotation" expression="org.springframework.stereotype.Service"/>
     </context:component-scan>

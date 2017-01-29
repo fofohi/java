@@ -9,19 +9,22 @@ import org.apache.struts2.StrutsStatics;
 import javax.servlet.http.HttpServletRequest;
 
 /**
- * Created by alongsea2 on 2017/1/11.
+ * Created by alongsea2 on 2017/1/25.
  */
-public class WechatUseInterceptor extends AbstractInterceptor {
+public class LoginExceptionInterceptor extends AbstractInterceptor {
 
     @Override
     public String intercept(ActionInvocation actionInvocation) throws Exception {
         ActionContext actionContext = actionInvocation.getInvocationContext();
         HttpServletRequest request = (HttpServletRequest) actionContext.get(StrutsStatics.HTTP_REQUEST);
-        String agent = request.getHeader("User-Agent");
-//        if(!agent.contains("MicroMessenger")){//todo 微信内打开
-//            return ShopConfig.MUST_WECHAT;
-//        }else{
-            return actionInvocation.invoke();
-        //}
+        try {
+            String wechatId = request.getParameter("wechatId");
+            if(wechatId == null || wechatId.isEmpty()){
+                return ShopConfig.REDIECT_WECHAT;
+            }
+        }catch (Exception e){
+            return ShopConfig.REDIECT_WECHAT;
+        }
+        return actionInvocation.invoke();
     }
 }

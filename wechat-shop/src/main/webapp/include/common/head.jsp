@@ -1,3 +1,4 @@
+<%@ taglib prefix="s" uri="/struts-tags" %>
 <%--
   Created by IntelliJ IDEA.
   User: alongsea2
@@ -11,7 +12,7 @@
 <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <title>风尚美容美发微信商城</title>
+    <title><s:property value="title"/></title>
     <meta name="viewport" content="initial-scale=1, maximum-scale=1">
     <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-status-bar-style" content="black">
@@ -34,5 +35,5 @@
             <span class="icon icon-left"></span>
             返回
         </a>
-        <h1 class="title">风尚美容美发微信商城</h1><!--有时间变量化-->
+        <h1 class="title"><s:property value="title"/></h1><!--有时间变量化-->
     </header>

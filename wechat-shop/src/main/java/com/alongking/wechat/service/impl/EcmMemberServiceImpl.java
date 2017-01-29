@@ -20,4 +20,9 @@ public class EcmMemberServiceImpl implements IEcMemberService {
     public EcmMemberEntity selectUserById(int id) {
         return iEcmMemberDao.selectUserById(id);
     }
+
+    @Override
+    public EcmMemberEntity selectUserByWechatId(String wechatId) {
+        return iEcmMemberDao.selectUserByWechatId(wechatId);
+    }
 }

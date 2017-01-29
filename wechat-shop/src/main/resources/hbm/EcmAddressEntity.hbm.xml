@@ -32,5 +32,8 @@
         <property name="phoneMob">
             <column name="phone_mob" sql-type="varchar(60)" length="60" not-null="true"/>
         </property>
+        <property name="isDefault">
+            <column name="is_default" sql-type="int(1)" not-null="true"/>
+        </property>
     </class>
 </hibernate-mapping>
