@@ -25,4 +25,6 @@ public interface IEcmAddressService {
     void delAddress(final int addressId, final int userId);
 
     EcmRegionEntity getRegionName(int regionId);
+
+    int countAddressNum(final int userId);
 }

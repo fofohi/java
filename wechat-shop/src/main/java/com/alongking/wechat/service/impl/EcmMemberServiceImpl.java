@@ -16,7 +16,7 @@ public class EcmMemberServiceImpl implements IEcMemberService {
     @Autowired
     private IEcmMemberDao iEcmMemberDao;
 
-    @Transactional
+    @Override
     public EcmMemberEntity selectUserById(int id) {
         return iEcmMemberDao.selectUserById(id);
     }
@@ -25,4 +25,10 @@ public class EcmMemberServiceImpl implements IEcMemberService {
     public EcmMemberEntity selectUserByWechatId(String wechatId) {
         return iEcmMemberDao.selectUserByWechatId(wechatId);
     }
+
+    @Override
+    public void saveMember(EcmMemberEntity ecmMemberEntity) {
+        iEcmMemberDao.saveMember(ecmMemberEntity);
+    }
+
 }

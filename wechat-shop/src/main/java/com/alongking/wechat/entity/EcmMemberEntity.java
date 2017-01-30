@@ -12,30 +12,30 @@ import java.sql.Date;
 public class EcmMemberEntity {
     private int userId;
     private String userName;
-    private String email;
+    private String email = "";
     private String password;
     private String realName;
-    private byte gender;
-    private Date birthday;
-    private String phoneTel;
-    private String phoneMob;
-    private String imQq;
-    private String imMsn;
-    private String imSkype;
-    private String imYahoo;
-    private String imAliww;
+    private byte gender = 0;
+    private Date birthday = new Date(System.currentTimeMillis());
+    private String phoneTel = "";
+    private String phoneMob = "";
+    private String imQq = "";
+    private String imMsn = "";
+    private String imSkype = "";
+    private String imYahoo = "";
+    private String imAliww = "";
     private Integer regTime;
     private Integer lastLogin;
     private String lastIp;
-    private int logins;
+    private int logins = 1;
     private byte ugrade;
     private String portrait;
-    private int outerId;
-    private String activation;
-    private String feedConfig;
-    private BigDecimal money;
-    private BigDecimal jifen;
-    private Integer tuijianId;
+    private int outerId = 0;
+    private String activation = "";
+    private String feedConfig = "";
+    private BigDecimal money = new BigDecimal(0);
+    private BigDecimal jifen = new BigDecimal(0);
+    private Integer tuijianId = 0;
 
     @Id
     @Column(name = "user_id", nullable = false)

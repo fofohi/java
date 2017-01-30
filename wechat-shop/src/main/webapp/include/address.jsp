@@ -149,11 +149,13 @@
                         },
                         success:function(ele){
                             $.toast(ele.message);
-                        },
-                        complete: function () {
-                            setTimeout(function () {
-                                location.reload();
-                            },1000);
+                            if(ele.code == 0){
+                                $("#icon-img").attr("src","css/img/confirm.png");
+                            }else{
+                                setTimeout(function(){
+                                    location.reload();
+                                },2000);
+                            }
                         }
                     });
                 });

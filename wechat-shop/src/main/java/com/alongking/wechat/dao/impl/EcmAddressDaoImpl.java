@@ -12,6 +12,7 @@ import org.hibernate.criterion.Restrictions;
 import org.springframework.orm.hibernate4.HibernateCallback;
 import org.springframework.stereotype.Repository;
 
+import java.math.BigInteger;
 import java.util.List;
 
 
@@ -92,5 +93,16 @@ public class EcmAddressDaoImpl extends BaseDaoImpl implements IEcmAddressDao{
         return hibernateTemplate.get(EcmRegionEntity.class,regionId);
     }
 
-
+    @Override
+    public int countAddressNum(final int userId) {
+        return hibernateTemplate.execute(new HibernateCallback<Integer>() {
+            @Override
+            public Integer doInHibernate(Session session) throws HibernateException {
+                String sql = "select count(*) from ecm_address where user_id = :userId";
+                SQLQuery query = session.createSQLQuery(sql);
+                query.setInteger("userId",userId);
+                return ((BigInteger) query.uniqueResult()).intValue();
+            }
+        });
+    }
 }

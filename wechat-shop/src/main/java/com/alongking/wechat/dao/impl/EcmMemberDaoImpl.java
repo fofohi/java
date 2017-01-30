@@ -26,4 +26,9 @@ public class EcmMemberDaoImpl extends BaseDaoImpl implements IEcmMemberDao {
         List<EcmMemberEntity> data = (List<EcmMemberEntity>) hibernateTemplate.findByCriteria(detachedCriteria);
         return data == null || data.size() == 0 ? null : data.get(0);
     }
+
+    @Override
+    public void saveMember(EcmMemberEntity ecmMemberEntity) {
+        hibernateTemplate.saveOrUpdate(ecmMemberEntity);
+    }
 }

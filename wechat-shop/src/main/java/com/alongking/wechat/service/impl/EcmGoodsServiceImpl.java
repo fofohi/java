@@ -19,11 +19,27 @@ public class EcmGoodsServiceImpl implements IEcmGoodsService {
 
     @Override
     public List<EcmGoodsEntity> selectGoods(int storeId, int pageNo, int offset) {
-        return iEcmGoodsDao.selectGoods(storeId,pageNo,offset);
+        List<EcmGoodsEntity> list = iEcmGoodsDao.selectGoods(storeId, pageNo, offset);
+        for (EcmGoodsEntity ecmGoodsEntity : list) {
+            fixImageUrl(ecmGoodsEntity);
+        }
+        return list;
     }
 
     @Override
     public EcmGoodsEntity selectGoodsInfo(int storeId, int goodsId) {
-        return iEcmGoodsDao.selectGoodsInfo(storeId,goodsId);
+        return fixImageUrl(iEcmGoodsDao.selectGoodsInfo(storeId,goodsId));
+    }
+
+
+    //===private function==//
+    private EcmGoodsEntity fixImageUrl(EcmGoodsEntity entity){
+        if(entity == null) return null;
+        String oldImage = entity.getDefaultImage();
+        if(!oldImage.contains("http")){
+            String newImage = "http://api.csfenshang.cc/" + oldImage;
+            entity.setDefaultImage(newImage);
+        }
+        return entity;
     }
 }

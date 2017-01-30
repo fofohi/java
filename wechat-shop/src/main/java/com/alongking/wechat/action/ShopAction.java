@@ -19,6 +19,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import javax.servlet.http.HttpServletRequest;
 import java.io.IOException;
 import java.net.URLEncoder;
+import java.sql.Date;
 import java.util.List;
 import java.util.regex.Pattern;
 
@@ -75,6 +76,7 @@ public class ShopAction extends BaseAction {
         }
         int goodsId = Integer.parseInt(getRequest().getParameter("goodsId"));
         goods = iEcmGoodsService.selectGoodsInfo(getStoreId(), goodsId);
+        getRequest().getSession().getAttribute("test");
         return ShopConfig.SUCCESS;
     }
 
@@ -86,21 +88,45 @@ public class ShopAction extends BaseAction {
     }
 
     public String dispatcher() throws IOException {
-        String storeId = getRequest().getParameter("state");
-        String code = getRequest().getParameter("code");
-        String tokenUrl = String.format(ShopConfig.TOKEN_URL, ShopConfig.APP_ID, ShopConfig.APP_SECRET, code);
+        //String storeId = getRequest().getParameter("state");
+        //String code = getRequest().getParameter("code");
+        //String tokenUrl = String.format(ShopConfig.TOKEN_URL, ShopConfig.APP_ID, ShopConfig.APP_SECRET, code);
         ObjectMapper objectMapper = new ObjectMapper();
-        String tokenJson = HttpRequestUtil.httpGet(tokenUrl).body().string();
+        //String tokenJson = HttpRequestUtil.httpGet(tokenUrl).body().string();
+        String tokenJson = "{\"access_token\":\"GTSGa_fmdeIXrE7gaq5rmW_bXMPIa2gMQbjc7woGdLRMABVNizPfANhaIo3r1F7wLwmpaYDNwcgewuFy4FEqEx9n-Br2PYJXFMMOtDcGsRk\",\"expires_in\":7200,\"refresh_token\":\"F20wdInFRnezk9mB89eLQizoWpZXOVn3zMW_vEG964zDqJSeYaIg3rUsj7l8p0ldxqbq8oT_lGkK4KTxqNX7ZvOnzTeZrATi9_lOkNF_m98\",\"openid\":\"oX6ciwdD6LqBfNg7TsoBbUeVeUx8\",\"scope\":\"snsapi_userinfo\"}";
         JsonNode obj = objectMapper.readTree(tokenJson);
         logger.info("=====>" + tokenJson);
-        setShopId(Integer.parseInt(storeId));
+        //setShopId(Integer.parseInt(storeId));
         setWechatId(obj.get("openid").asText());
-
+        String accessToken = obj.get("access_token").asText();
+        member = iEcMemberService.selectUserByWechatId(obj.get("openid").asText());
+        int now = (int)(System.currentTimeMillis() / 1000);
+        //String getInfoUrl = String.format(ShopConfig.USER_INFO_URL,accessToken,getOpenId());
+        //String userInfoJson = HttpRequestUtil.httpGet(getInfoUrl).body().string();
+        String userInfoJson = "{\"nickname\":\"test\",\"headimgurl\":\"test\"}";
+        JsonNode userObj = objectMapper.readTree(userInfoJson);
+        if(member == null){
+            EcmMemberEntity memberEntity = new EcmMemberEntity();
+            memberEntity.setUserName(obj.get("openid").asText());
+            memberEntity.setPassword("d41d8cd98f00b204e9800998ecf8427e");
+            memberEntity.setRealName(userObj.get("nickname").asText());
+            memberEntity.setRegTime(now);
+            memberEntity.setLastIp(getRequest().getRemoteHost());
+            memberEntity.setLastLogin(now);
+            memberEntity.setPortrait(userObj.get("headimgurl").asText());
+            iEcMemberService.saveMember(memberEntity);
+        }else{
+            member.setLastIp(getRequest().getRemoteHost());
+            member.setPortrait(userObj.get("headimgurl").asText());
+            member.setLastLogin(now);
+            iEcMemberService.saveMember(member);
+        }
         return ShopConfig.SUCCESS;
     }
 
     public String consumerIndex() {
-
+        setWechatId(getOpenId());
+        member = iEcMemberService.selectUserByWechatId(getOpenId());
         return ShopConfig.SUCCESS;
     }
 
@@ -134,8 +160,15 @@ public class ShopAction extends BaseAction {
             if(StringUtils.isEmpty(consignee) || StringUtils.isEmpty(addressName) || StringUtils.isEmpty(tel) || !Pattern.matches("\\d{11}",tel)){
                 throw new IllegalArgumentException();
             }
+            int hasAddress = iEcmAddressService.countAddressNum(member.getUserId());
+            if(hasAddress >= 3){
+                jsonResult.setCode(ShopConfig.FAIL_CODE);
+                jsonResult.setMessage("地址最多保存3个");
+                return ShopConfig.SUCCESS;
+            }
             int selectCity = Integer.parseInt(req.getParameter("selectCity"));
             int selectProvince = Integer.parseInt(req.getParameter("selectProvince"));
+            EcmRegionEntity provinceEntity = iEcmAddressService.getRegionName(selectProvince);
             int selectDefault = Integer.parseInt(req.getParameter("selectDefault"));
             EcmAddressEntity ecmAddressEntity = new EcmAddressEntity();
             ecmAddressEntity.setConsignee(consignee);
@@ -148,7 +181,7 @@ public class ShopAction extends BaseAction {
             ecmAddressEntity.setPhoneTel(tel);
             ecmAddressEntity.setRegionId(selectCity);
             EcmRegionEntity regionData = iEcmAddressService.getRegionName(selectCity);
-            ecmAddressEntity.setRegionName(regionData.getRegionName());
+            ecmAddressEntity.setRegionName(provinceEntity.getRegionName() + " " + regionData.getRegionName());
             ecmAddressEntity.setZipcode("0");
             ecmAddressEntity.setUserId(member.getUserId());
             iEcmAddressService.saveAddress(ecmAddressEntity);
@@ -156,6 +189,7 @@ public class ShopAction extends BaseAction {
             jsonResult.setCode(ShopConfig.FAIL_CODE);
             jsonResult.setMessage("请填写正确参数");
             logger.error("=====> addAddressJson error", e);
+            return ShopConfig.SUCCESS;
         }
         jsonResult.setCode(ShopConfig.SUCCESS_CODE);
         jsonResult.setMessage("添加地址成功");

@@ -24,4 +24,6 @@ public interface IEcmAddressDao {
     void delAddress(int addressId,int userId);
 
     EcmRegionEntity getRegionName(int regionId);
+
+    int countAddressNum(int userId);
 }

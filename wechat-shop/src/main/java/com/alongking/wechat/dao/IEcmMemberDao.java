@@ -10,4 +10,6 @@ public interface IEcmMemberDao {
     EcmMemberEntity selectUserById(int id);
 
     EcmMemberEntity selectUserByWechatId(String wechatId);
+
+    void saveMember(EcmMemberEntity ecmMemberEntity);
 }

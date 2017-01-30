@@ -60,4 +60,9 @@ public class EcmAddressServiceImpl implements IEcmAddressService{
     public EcmRegionEntity getRegionName(int regionId) {
         return iEcmAddressDao.getRegionName(regionId);
     }
+
+    @Override
+    public int countAddressNum(int userId) {
+        return iEcmAddressDao.countAddressNum(userId);
+    }
 }

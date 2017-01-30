@@ -35,11 +35,11 @@
             </div>
         </div>
         <div class="card-footer" style="text-align: center">
-            <a href="#" class="link open-buy" style="font-size:30px;margin: 0 auto">点击购买 <span
+            <a href="#" class="link open-buy" style="font-size:30px;margin: 0 auto">点击购买<span
                     class="icon icon-cart"></span></a>
         </div>
         <!--buy popup-->
-        <div class="popup popup-buy" style="height: 30%;bottom: 0;top: initial;">
+        <div class="popup popup-buy" style="bottom: 0;top: initial;">
             <p><a class="close-popup" style="float: right;margin-right: 10px;font-size: 15px">X</a></p>
             <div class="content-block">
                 <div >
@@ -74,48 +74,48 @@
                                 </div>
                             </li>
                             <s:if test="member != null && address != null">
-                            <li>
-                                <div class="item-content">
-                                    <div class="item-media"><i class="icon icon-form-name"></i></div>
-                                    <div class="item-inner">
-                                        <div class="item-title label" style="font-size: 20px" >
-                                            <div>收件人:</div>
-                                        </div>
-                                        <div class="item-input">
-                                            <p><s:property value="address.consignee"/></p>
-                                        </div>
-                                    </div>
-                                </div>
-                            </li>
-                            <li>
-                                <div class="item-content">
-                                    <div class="item-media"><i class="icon icon-form-name"></i></div>
-                                    <div class="item-inner">
-                                        <div class="item-title label" style="font-size: 20px" >
-                                            <div>联系电话:</div>
-                                        </div>
-                                        <div class="item-input">
-                                            <p><s:property value="address.phoneMob"/></p>
+                                <li>
+                                    <div class="item-content">
+                                        <div class="item-media"><i class="icon icon-form-name"></i></div>
+                                        <div class="item-inner">
+                                            <div class="item-title label" style="font-size: 20px" >
+                                                <div>收件人:</div>
+                                            </div>
+                                            <div class="item-input">
+                                                <p><s:property value="address.consignee"/></p>
+                                            </div>
                                         </div>
                                     </div>
-                                </div>
-                            </li>
-                            <li>
-                                <div class="item-content">
-                                    <div class="item-media"><i class="icon icon-form-name"></i></div>
-                                    <div class="item-inner">
-                                        <div class="item-title label" style="font-size: 20px" >
-                                            <div>地址:</div>
-                                            <div style="font-size: 10px"><a href="address?wechatId=<s:property value="wechatId"/>">添加或者更换地址</a></div>
-                                        </div>
-                                        <div class="item-input">
-                                            <p><s:property value="address.regionName"/><s:property value="address.address"/></p>
+                                </li>
+                                <li>
+                                    <div class="item-content">
+                                        <div class="item-media"><i class="icon icon-form-name"></i></div>
+                                        <div class="item-inner">
+                                            <div class="item-title label" style="font-size: 20px" >
+                                                <div>联系电话:</div>
+                                            </div>
+                                            <div class="item-input">
+                                                <p><s:property value="address.phoneMob"/></p>
+                                            </div>
                                         </div>
                                     </div>
-                                </div>
-                                <input type="hidden" id="addressId" value="<s:property value="address.addrId"/>">
+                                </li>
+                                <li>
+                                    <div class="item-content">
+                                        <div class="item-media"><i class="icon icon-form-name"></i></div>
+                                        <div class="item-inner">
+                                            <div class="item-title label" style="font-size: 20px" >
+                                                <div>地址:</div>
+                                                <div style="font-size: 10px"><a href="address?wechatId=<s:property value="wechatId"/>">添加或者更换地址</a></div>
+                                            </div>
+                                            <div class="item-input">
+                                                <p><s:property value="address.regionName"/><s:property value="address.address"/></p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <input type="hidden" id="addressId" value="<s:property value="address.addrId"/>">
 
-                            </li>
+                                </li>
                             </s:if>
                             <s:elseif test="member !=null && address == null">
                                 <li>
@@ -192,4 +192,6 @@
             });
         });
     </script>
+
+
     <jsp:include page="common/footer.jsp"/>
