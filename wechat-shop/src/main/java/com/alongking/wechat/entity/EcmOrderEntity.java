@@ -18,28 +18,28 @@ public class EcmOrderEntity {
     private int buyerId;
     private String buyerName;
     private String buyerEmail;
-    private byte status;
+    private int status;
     private int addTime;
     private Integer paymentId;
     private String paymentName;
     private String paymentCode;
-    private String outTradeSn;
-    private Integer payTime;
-    private String payMessage;
-    private Integer shipTime;
-    private String invoiceNo;
-    private int finishedTime;
+    private String outTradeSn = "";
+    private Integer payTime = 0;
+    private String payMessage = "";
+    private Integer shipTime = 0;
+    private String invoiceNo = "";
+    private int finishedTime = 0;
     private BigDecimal goodsAmount;
-    private BigDecimal discount;
+    private BigDecimal discount = new BigDecimal(0);
     private BigDecimal orderAmount;
-    private byte evaluationStatus;
-    private int evaluationTime;
-    private byte anonymous;
-    private String postscript;
-    private byte payAlter;
+    private int evaluationStatus = 0;
+    private int evaluationTime = 0;
+    private int anonymous = 0;
+    private String postscript = "";
+    private int payAlter = 0;
 
     @Id
-    @Column(name = "order_id", nullable = false)
+    @Column(name = "order_id", nullable = false,unique = true)
     public int getOrderId() {
         return orderId;
     }
@@ -130,11 +130,11 @@ public class EcmOrderEntity {
 
     @Basic
     @Column(name = "status", nullable = false)
-    public byte getStatus() {
+    public int getStatus() {
         return status;
     }
 
-    public void setStatus(byte status) {
+    public void setStatus(int status) {
         this.status = status;
     }
 
@@ -270,11 +270,11 @@ public class EcmOrderEntity {
 
     @Basic
     @Column(name = "evaluation_status", nullable = false)
-    public byte getEvaluationStatus() {
+    public int getEvaluationStatus() {
         return evaluationStatus;
     }
 
-    public void setEvaluationStatus(byte evaluationStatus) {
+    public void setEvaluationStatus(int evaluationStatus) {
         this.evaluationStatus = evaluationStatus;
     }
 
@@ -290,11 +290,11 @@ public class EcmOrderEntity {
 
     @Basic
     @Column(name = "anonymous", nullable = false)
-    public byte getAnonymous() {
+    public int getAnonymous() {
         return anonymous;
     }
 
-    public void setAnonymous(byte anonymous) {
+    public void setAnonymous(int anonymous) {
         this.anonymous = anonymous;
     }
 
@@ -310,11 +310,11 @@ public class EcmOrderEntity {
 
     @Basic
     @Column(name = "pay_alter", nullable = false)
-    public byte getPayAlter() {
+    public int getPayAlter() {
         return payAlter;
     }
 
-    public void setPayAlter(byte payAlter) {
+    public void setPayAlter(int payAlter) {
         this.payAlter = payAlter;
     }
 

@@ -14,12 +14,12 @@ public class EcmOrderExtmEntity {
     private Integer regionId;
     private String regionName;
     private String address;
-    private String zipcode;
+    private String zipcode = "";
     private String phoneTel;
     private String phoneMob;
-    private Integer shippingId;
-    private String shippingName;
-    private BigDecimal shippingFee;
+    private Integer shippingId = 0;
+    private String shippingName = "";
+    private BigDecimal shippingFee = new BigDecimal(0);
 
     @Id
     @Column(name = "order_id", nullable = false)

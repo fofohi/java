@@ -68,6 +68,20 @@
             <interceptor-ref name="loginInterceptor"/>
         </action>
 
+        <!--用户订单-->
+        <action name="myOrder" class="com.alongking.wechat.action.ShopAction" method="getMemberOrder">
+            <result name="success">/include/myOrder.jsp</result>
+            <interceptor-ref name="loginInterceptor"/>
+        </action>
+
+        <!--用户订单json数据-->
+        <action name="order-json" class="com.alongking.wechat.action.ShopAction" method="getMemberOrderJson">
+            <result type="json">
+                <param name="root">orderList</param>
+            </result>
+            <interceptor-ref name="loginInterceptor"/>
+        </action>
+
         <!--增加新地址-->
         <action name="addAddress" class="com.alongking.wechat.action.ShopAction" method="addAddressJson">
             <result type="json">
@@ -106,5 +120,7 @@
             </result>
             <interceptor-ref name="loginInterceptor"/>
         </action>
+
+
     </package>
 </struts>

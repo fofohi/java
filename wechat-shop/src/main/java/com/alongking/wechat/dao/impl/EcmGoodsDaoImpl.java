@@ -26,7 +26,9 @@ public class EcmGoodsDaoImpl extends BaseDaoImpl implements IEcmGoodsDao {
     @Override
     public EcmGoodsEntity selectGoodsInfo(int storeId,int goodsId) {
         DetachedCriteria detachedCriteria = DetachedCriteria.forClass(EcmGoodsEntity.class);
-        detachedCriteria.add(Restrictions.eq("storeId",storeId));
+        if(storeId != 0 ){
+            detachedCriteria.add(Restrictions.eq("storeId",storeId));
+        }
         detachedCriteria.add(Restrictions.eq("goodsId",goodsId));
         return (EcmGoodsEntity) hibernateTemplate.findByCriteria(detachedCriteria).get(0);
     }

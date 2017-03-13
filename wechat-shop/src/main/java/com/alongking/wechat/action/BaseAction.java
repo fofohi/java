@@ -17,6 +17,8 @@ public class BaseAction extends ActionSupport {
 
     private String wechatId;
 
+    private int orderStatus;
+
     protected HttpServletRequest getRequest(){
         return ServletActionContext.getRequest();
     }
@@ -37,6 +39,19 @@ public class BaseAction extends ActionSupport {
         HttpServletRequest request = getRequest();
         int pageNo = request.getParameter("pageNo") == null ? 1 : Integer.parseInt(request.getParameter("pageNo"));
         return pageNo == 0 ? 1 : pageNo;
+    }
+
+    protected int getStatus(){
+        HttpServletRequest request = getRequest();
+        return getRequest().getParameter("orderStatus") == null ? -1 : Integer.parseInt(request.getParameter("orderStatus"));
+    }
+
+    public int getOrderStatus() {
+        return orderStatus;
+    }
+
+    public void setOrderStatus(int orderStatus) {
+        this.orderStatus = orderStatus;
     }
 
     public String getTitle() {

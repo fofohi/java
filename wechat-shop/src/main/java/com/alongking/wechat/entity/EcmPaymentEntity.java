@@ -14,9 +14,9 @@ public class EcmPaymentEntity {
     private String paymentName;
     private String paymentDesc;
     private String config;
-    private byte isOnline;
-    private byte enabled;
-    private byte sortOrder;
+    private int isOnline;
+    private int enabled;
+    private int sortOrder;
     private String bankImages;
 
     @Id
@@ -81,31 +81,31 @@ public class EcmPaymentEntity {
 
     @Basic
     @Column(name = "is_online", nullable = false)
-    public byte getIsOnline() {
+    public int getIsOnline() {
         return isOnline;
     }
 
-    public void setIsOnline(byte isOnline) {
+    public void setIsOnline(int isOnline) {
         this.isOnline = isOnline;
     }
 
     @Basic
     @Column(name = "enabled", nullable = false)
-    public byte getEnabled() {
+    public int getEnabled() {
         return enabled;
     }
 
-    public void setEnabled(byte enabled) {
+    public void setEnabled(int enabled) {
         this.enabled = enabled;
     }
 
     @Basic
     @Column(name = "sort_order", nullable = false)
-    public byte getSortOrder() {
+    public int getSortOrder() {
         return sortOrder;
     }
 
-    public void setSortOrder(byte sortOrder) {
+    public void setSortOrder(int sortOrder) {
         this.sortOrder = sortOrder;
     }
 

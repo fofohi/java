@@ -18,10 +18,10 @@ public class EcmOrderGoodsEntity {
     private BigDecimal price;
     private int quantity;
     private String goodsImage;
-    private byte evaluation;
+    private int evaluation = 0;
     private String comment;
-    private byte creditValue;
-    private byte isValid;
+    private int creditValue = 0;
+    private int isValid = 1;
 
     @Id
     @Column(name = "rec_id", nullable = false)
@@ -115,11 +115,11 @@ public class EcmOrderGoodsEntity {
 
     @Basic
     @Column(name = "evaluation", nullable = false)
-    public byte getEvaluation() {
+    public int getEvaluation() {
         return evaluation;
     }
 
-    public void setEvaluation(byte evaluation) {
+    public void setEvaluation(int evaluation) {
         this.evaluation = evaluation;
     }
 
@@ -135,21 +135,21 @@ public class EcmOrderGoodsEntity {
 
     @Basic
     @Column(name = "credit_value", nullable = false)
-    public byte getCreditValue() {
+    public int getCreditValue() {
         return creditValue;
     }
 
-    public void setCreditValue(byte creditValue) {
+    public void setCreditValue(int creditValue) {
         this.creditValue = creditValue;
     }
 
     @Basic
     @Column(name = "is_valid", nullable = false)
-    public byte getIsValid() {
+    public int getIsValid() {
         return isValid;
     }
 
-    public void setIsValid(byte isValid) {
+    public void setIsValid(int isValid) {
         this.isValid = isValid;
     }
 

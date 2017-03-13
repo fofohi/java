@@ -31,12 +31,19 @@ public interface ShopConfig {
 
     String REDIECT_WECHAT = "redirectWechat";
 
-    int PAGE_LIMIT = 1;
+    int PAGE_LIMIT = 3;
 
     int STORE_ID = 2;
 
     int SUCCESS_CODE = 1;
 
     int FAIL_CODE = 0;
+
+    int ORDER_SUBMITTED = 10;                 // 针对货到付款而言，他的下一个状态是卖家已发货
+    int ORDER_PENDING = 11;                   // 等待买家付款
+    int ORDER_ACCEPTED = 20;                  // 买家已付款，等待卖家发货
+    int ORDER_SHIPPED = 30;                   // 卖家已发货
+    int ORDER_FINISHED = 40;                  // 交易成功
+    int ORDER_CANCELED = 0;                   // 交易已取消
 
 }

@@ -105,4 +105,9 @@ public class EcmAddressDaoImpl extends BaseDaoImpl implements IEcmAddressDao{
             }
         });
     }
+
+    @Override
+    public EcmAddressEntity getAddress(int addressId) {
+        return hibernateTemplate.get(EcmAddressEntity.class, addressId);
+    }
 }
