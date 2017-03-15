@@ -11,6 +11,7 @@
         <property name="suffix" value=".jsp"/>
     </bean>
 
+
     <mvc:annotation-driven >
         <mvc:message-converters register-defaults="true">
             <!-- 将StringHttpMessageConverter的默认编码设为UTF-8 -->
@@ -23,4 +24,9 @@
             </bean>
         </mvc:message-converters>
     </mvc:annotation-driven>
+
+    <mvc:annotation-driven />
+
+    <context:component-scan base-package="com.szh.im"/>
+
 </beans>
