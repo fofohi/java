@@ -10,7 +10,6 @@ import javax.persistence.*;
 public class TestTwoTable {
     private int id;
     private int twoName;
-    private int oneId;
 
     @Id
     @GeneratedValue
@@ -31,16 +30,6 @@ public class TestTwoTable {
 
     public void setTwoName(int twoName) {
         this.twoName = twoName;
-    }
-
-    @Basic
-    @Column(name = "one_id")
-    public int getOneId() {
-        return oneId;
-    }
-
-    public void setOneId(int oneId) {
-        this.oneId = oneId;
     }
 
 }
