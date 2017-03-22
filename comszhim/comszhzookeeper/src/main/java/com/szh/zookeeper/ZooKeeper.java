@@ -10,7 +10,7 @@ import java.util.concurrent.ConcurrentLinkedQueue;
  */
 public class ZooKeeper {
 
-    private ConcurrentLinkedQueue arrayBlockingQueue = new ConcurrentLinkedQueue();
+    private ArrayBlockingQueue arrayBlockingQueue = new ArrayBlockingQueue(1000);
 
     public static void main(String[] args) {
         new ZooKeeper();
@@ -28,12 +28,15 @@ public class ZooKeeper {
         @Override
         public void run() {
             while (true) {
-                if(arrayBlockingQueue.size() < 50){
-                    arrayBlockingQueue.add(System.currentTimeMillis());
-                    System.out.println("add");
-                }else{
 
-                }
+                    try {
+                        Thread.sleep(10);
+                        arrayBlockingQueue.put(System.currentTimeMillis());
+                    } catch (InterruptedException e) {
+                        e.printStackTrace();
+                    }
+                    System.out.println("add");
+
 
             }
 
@@ -46,7 +49,7 @@ public class ZooKeeper {
         public void run() {
             while (true){
                 try {
-                    System.out.println("====>" + arrayBlockingQueue.poll() + " poll");
+                    System.out.println("====>" + arrayBlockingQueue.take() + " poll");
                 } catch (Exception e) {
                     e.printStackTrace();
                 }
