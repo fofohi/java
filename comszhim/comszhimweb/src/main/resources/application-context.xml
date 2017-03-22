@@ -8,7 +8,6 @@
         http://www.springframework.org/schema/data/jpa
         http://www.springframework.org/schema/data/jpa/spring-jpa.xsd"
 >
-
     <!-- druid configuration -->
     <bean id="mainDataSource" class="com.alibaba.druid.pool.DruidDataSource" init-method="init" destroy-method="close">
         <property name="driverClassName" value="com.mysql.jdbc.Driver" />
@@ -76,5 +75,4 @@
             <!--</value>-->
         <!--</property>-->
     </bean>
-
 </beans>
