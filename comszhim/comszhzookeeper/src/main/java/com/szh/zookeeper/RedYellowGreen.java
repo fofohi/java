@@ -5,16 +5,21 @@ package com.szh.zookeeper;
  */
 public class RedYellowGreen {
 
-    private Object lock = new Object();
+    private Object lockRed = new Object();
+
+    private Object lockYellow = new Object();
+
+    private Object lockGreen = new Object();
+
 
     public static void main(String[] args) {
         new RedYellowGreen().runLight();
     }
 
     public void runLight(){
-        Green green = new Green(lock);
-        Yellow yellow = new Yellow(green);
-        Red red = new Red(yellow,lock);
+        Green green = new Green(lockYellow,lockGreen);
+        Yellow yellow = new Yellow(lockRed, lockYellow, lockGreen);
+        Red red = new Red(lockYellow,lockRed);
         new Thread(red).start();
         new Thread(green).start();
         new Thread(yellow).start();
@@ -25,12 +30,12 @@ public class RedYellowGreen {
 
 class Red implements Light{
 
-    private final Yellow yellow;
-    private final Object lock;
+    private final Object lockYellow;
+    private final Object lockRed;
 
-    public Red(Yellow yellow, Object lock) {
-        this.yellow = yellow;
-        this.lock = lock;
+    public Red(Object lockYellow, Object lockRed) {
+        this.lockYellow = lockYellow;
+        this.lockRed = lockRed;
     }
 
     @Override
@@ -47,13 +52,14 @@ class Red implements Light{
             } catch (InterruptedException e) {
                 e.printStackTrace();
             }
-            synchronized (yellow){
-                yellow.notify();
+            synchronized (lockYellow){
+                lockYellow.notify();
             }
 
-            synchronized (lock){
+            synchronized (lockRed){
                 try {
-                    lock.wait();
+                    Yellow.flag = true;
+                    lockRed.wait();
                 } catch (InterruptedException e) {
                     e.printStackTrace();
                 }
@@ -64,10 +70,16 @@ class Red implements Light{
 
 class Yellow implements Light{
 
-    private final Green green;
+    private final Object lockRed;
+    private final Object lockYellow;
+    private final Object lockGreen;
+    public volatile static boolean flag = true;
 
-    Yellow(Green green) {
-        this.green = green;
+
+    Yellow(Object lockRed, Object lockYellow, Object lockGreen) {
+        this.lockRed = lockRed;
+        this.lockYellow = lockYellow;
+        this.lockGreen = lockGreen;
     }
 
 
@@ -79,9 +91,9 @@ class Yellow implements Light{
     @Override
     public void run() {
         while (true){
-            synchronized (this){
+            synchronized (lockYellow){
                 try {
-                    wait();
+                    lockYellow.wait();
                 } catch (InterruptedException e) {
                     e.printStackTrace();
                 }
@@ -91,9 +103,16 @@ class Yellow implements Light{
                 } catch (InterruptedException e) {
                     e.printStackTrace();
                 }
-                synchronized (green){
-                    green.notify();
+                if(flag){
+                    synchronized (lockGreen){
+                        lockGreen.notify();
+                    }
+                }else{
+                    synchronized (lockRed){
+                        lockRed.notify();
+                    }
                 }
+
             }
         }
     }
@@ -103,10 +122,12 @@ class Yellow implements Light{
 
 class Green implements Light{
 
-    private final Object lock;
+    private final Object lockYellow;
+    private final Object lockGreen;
 
-    public Green(Object lock) {
-        this.lock = lock;
+    public Green(Object lockYellow, Object lockGreen) {
+        this.lockYellow = lockYellow;
+        this.lockGreen = lockGreen;
     }
 
     @Override
@@ -117,9 +138,9 @@ class Green implements Light{
     @Override
     public void run() {
         while (true){
-            synchronized (this){
+            synchronized (lockGreen){
                 try {
-                    wait();
+                    lockGreen.wait();
                 } catch (InterruptedException e) {
                     e.printStackTrace();
                 }
@@ -130,16 +151,15 @@ class Green implements Light{
             } catch (InterruptedException e) {
                 e.printStackTrace();
             }
-            synchronized (lock){
-                lock.notify();
+            synchronized (lockYellow){
+                lockYellow.notify();
+                Yellow.flag = false;
             }
 
         }
 
     }
 }
-
-
 
 interface Light extends Runnable{
     void startLight();
