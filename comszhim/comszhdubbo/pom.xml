@@ -7,29 +7,19 @@
         <groupId>com.szh.im</groupId>
         <version>1.0-SNAPSHOT</version>
     </parent>
-
-    <packaging>war</packaging>
     <modelVersion>4.0.0</modelVersion>
-    <artifactId>com.szh.im.web</artifactId>
-
-    <dependencies>
-        <dependency>
-            <groupId>com.szh.im</groupId>
-            <artifactId>com.szh.dubbo</artifactId>
-            <version>1.0-SNAPSHOT</version>
-        </dependency>
-    </dependencies>
-
+    <packaging>war</packaging>
+    <artifactId>com.szh.dubbo</artifactId>
 
     <build>
-        <finalName>com.szh.im.web</finalName>
+        <finalName>com.szh.im.dubbo</finalName>
         <plugins>
             <plugin>
                 <groupId>org.apache.tomcat.maven</groupId>
                 <artifactId>tomcat7-maven-plugin</artifactId>
                 <version>2.2</version>
                 <configuration>
-                    <port>8080</port>
+                    <port>8081</port>
                     <path>/</path>
                     <!-- 防止 get请求参数乱码 -->
                     <uriEncoding>UTF-8</uriEncoding>
@@ -50,7 +40,5 @@
                 </configuration>
             </plugin>
         </plugins>
-
-
     </build>
 </project>

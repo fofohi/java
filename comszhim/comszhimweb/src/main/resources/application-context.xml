@@ -75,4 +75,5 @@
             <!--</value>-->
         <!--</property>-->
     </bean>
+    <import resource="consumer.xml"/>
 </beans>

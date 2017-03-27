@@ -34,7 +34,7 @@ public class KafkaProducerTest implements Runnable{
     @Override
     public void run() {
         for(int i=0;i<2;i++){
-            producer.send(new ProducerRecord<String,String>("test","msg" + i));
+            producer.send(new ProducerRecord<String,String>("test",System.currentTimeMillis() + "msg" + i));
         }
         producer.close();
     }

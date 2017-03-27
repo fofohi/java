@@ -1,23 +1,27 @@
 package com.szh.im.service;
 
+import com.szh.dubbo.service.TestService;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.List;
+
 
 /**
  * Created by alongsea2 on 2017/3/11.
  */
 @Service
-public class UtilService {
+public class UtilService implements IUtilService{
+
+    @Autowired
+    private TestService testService;
+
     public UtilService() {
 
     }
 
     public void getProperty() {
 
-        System.out.println("=====>");
+        testService.test();
 
     }
 
