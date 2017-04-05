@@ -10,6 +10,7 @@
         <module>comszhimweb</module>
         <module>comszhdubbo</module>
         <module>comszhdubbo2</module>
+        <module>comszhimalgorithm</module>
     </modules>
     <name>com.szh.im Maven Webapp</name>
     <url>http://maven.apache.org</url>
