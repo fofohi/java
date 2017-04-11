@@ -24,7 +24,7 @@ public class JpaController {
 
     @RequestMapping(value = "/test")
     public void jpaTest(){
-        System.out.println(testOneDao);
+        System.out.println(testOneDao.findAll());
     }
 
     @RequestMapping(value = "/testdubbo")

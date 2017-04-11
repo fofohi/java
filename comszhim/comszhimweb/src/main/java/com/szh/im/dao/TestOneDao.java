@@ -1,11 +1,12 @@
 package com.szh.im.dao;
 
 import com.szh.im.entity.TestOneTable;
+import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.repository.Repository;
 
 /**
  * Created by alongsea2 on 2017/3/14.
  */
-public interface TestOneDao extends Repository<TestOneTable,Integer> {
+public interface TestOneDao extends JpaRepository<TestOneTable,Integer> {
 
 }

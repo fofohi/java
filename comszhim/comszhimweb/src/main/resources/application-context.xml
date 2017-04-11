@@ -11,7 +11,7 @@
     <!-- druid configuration -->
     <bean id="mainDataSource" class="com.alibaba.druid.pool.DruidDataSource" init-method="init" destroy-method="close">
         <property name="driverClassName" value="com.mysql.jdbc.Driver" />
-        <property name="url" value="jdbc:mysql://192.168.33.10:3306/jap_test?characterEncoding=UTF-8" />
+        <property name="url" value="jdbc:mysql://192.168.33.10:3306/jap_test?characterEncoding=UTF-8&amp;useSSL=false" />
         <property name="username" value="root"/>
         <property name="password" value="root"/>
         <!-- 配置初始化大小、最小、最大 -->
@@ -44,7 +44,7 @@
     <!-- druid configuration -->
     <bean id="readDataSource1" class="com.alibaba.druid.pool.DruidDataSource" init-method="init" destroy-method="close">
         <property name="driverClassName" value="com.mysql.jdbc.Driver" />
-        <property name="url" value="jdbc:mysql://192.168.33.10:3307/jap_test?characterEncoding=UTF-8" />
+        <property name="url" value="jdbc:mysql://192.168.33.10:3307/jap_test?characterEncoding=UTF-8&amp;useSSL=false" />
         <property name="username" value="root"/>
         <property name="password" value="root"/>
         <!-- 配置初始化大小、最小、最大 -->
@@ -78,7 +78,7 @@
     <!-- druid configuration -->
     <bean id="readDataSource2" class="com.alibaba.druid.pool.DruidDataSource" init-method="init" destroy-method="close">
         <property name="driverClassName" value="com.mysql.jdbc.Driver" />
-        <property name="url" value="jdbc:mysql://192.168.33.10:3308/jap_test?characterEncoding=UTF-8" />
+        <property name="url" value="jdbc:mysql://192.168.33.10:3308/jap_test?characterEncoding=UTF-8&amp;useSSL=false" />
         <property name="username" value="root"/>
         <property name="password" value="root"/>
         <!-- 配置初始化大小、最小、最大 -->
@@ -108,7 +108,16 @@
         <property name="filters" value="stat" />
     </bean>
 
-
+    <bean id="multiDataSource" class="com.szh.im.common.MultiDataSource">
+        <property name="targetDataSources">
+            <map key-type="java.lang.String">
+                <entry value-ref="readDataSource1" key="readDataSource1" />
+                <entry value-ref="readDataSource2" key="readDataSource2" />
+            </map>
+        </property>
+        <property name="defaultTargetDataSource" ref="mainDataSource" >
+        </property>
+    </bean>
     <!-- SPRING - JPA -->
     <jpa:repositories
             base-package="com.szh.im.dao" />
@@ -124,7 +133,7 @@
 
     <bean id="entityManagerFactory"
           class="org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean">
-        <property name="dataSource" ref="mainDataSource" />
+        <property name="dataSource" ref="multiDataSource" />
         <property name="packagesToScan" value="com.szh.im"/>
         <property name="jpaVendorAdapter">
             <bean class="org.springframework.orm.jpa.vendor.HibernateJpaVendorAdapter">
