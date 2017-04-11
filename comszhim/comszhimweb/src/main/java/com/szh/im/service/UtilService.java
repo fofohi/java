@@ -1,6 +1,6 @@
 package com.szh.im.service;
 
-import com.szh.dubbo.service.TestService;
+//import com.szh.dubbo.service.TestService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -12,8 +12,8 @@ import org.springframework.stereotype.Service;
 @Service
 public class UtilService implements IUtilService{
 
-    @Autowired
-    private TestService testService;
+//    @Autowired
+//    private TestService testService;
 
     public UtilService() {
 
@@ -21,7 +21,7 @@ public class UtilService implements IUtilService{
 
     public void getProperty() {
 
-        testService.test();
+       // testService.test();
 
     }
 

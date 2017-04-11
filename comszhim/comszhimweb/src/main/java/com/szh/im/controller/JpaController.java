@@ -1,6 +1,5 @@
 package com.szh.im.controller;
 
-import com.szh.dubbo.service.TestService;
 import com.szh.im.dao.TestOneDao;
 import com.szh.im.service.UtilService;
 import org.springframework.beans.factory.annotation.Autowired;

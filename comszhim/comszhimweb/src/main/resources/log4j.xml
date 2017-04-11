@@ -17,7 +17,7 @@
     <!-- Root logger 所有logger的基类，没有定义的logger将会使用root logger     -->
     <!-- ===================================================================== -->
     <root>
-        <level value="DEBUG"/>
+        <level value="INFO"/>
         <appender-ref ref="root-log"/>
     </root>
 </log4j:configuration>
