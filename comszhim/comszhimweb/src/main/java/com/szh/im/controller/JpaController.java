@@ -6,6 +6,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
+
 /**
  * Created by alongsea2 on 2017/3/14.
  */
@@ -24,12 +27,20 @@ public class JpaController {
 
     @RequestMapping(value = "/test")
     public void jpaTest(){
-        System.out.println(testOneDao.findAll());
+        testOneDao.test();
     }
 
     @RequestMapping(value = "/testdubbo")
     public void dubboTest(){
         utilService.getProperty();
+    }
+
+    public static void main(String[] args) {
+        String s = "^\\d+\\.\\d{1,2}$|^\\d+$";
+        String b = "1.2";
+        Pattern pattern = Pattern.compile(s);
+        Matcher matcher = pattern.matcher(b);
+        System.out.println(matcher.find());
     }
 }
 

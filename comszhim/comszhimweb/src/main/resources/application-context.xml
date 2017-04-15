@@ -118,39 +118,67 @@
         <property name="defaultTargetDataSource" ref="mainDataSource" >
         </property>
     </bean>
-    <!-- SPRING - JPA -->
-    <jpa:repositories
-            base-package="com.szh.im.dao" />
-
-    <bean class="org.springframework.orm.jpa.JpaTransactionManager"
-          id="transactionManager">
-        <property name="entityManagerFactory"
-                  ref="entityManagerFactory" />
-        <property name="jpaDialect">
-            <bean class="org.springframework.orm.jpa.vendor.HibernateJpaDialect" />
-        </property>
-    </bean>
-
-    <bean id="entityManagerFactory"
-          class="org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean">
+    <bean id="sqlInterceptor" class="com.szh.im.common.SqlInterceptor" />
+    <bean id="sessionFactory"
+          class="org.springframework.orm.hibernate5.LocalSessionFactoryBean">
         <property name="dataSource" ref="multiDataSource" />
-        <property name="packagesToScan" value="com.szh.im"/>
-        <property name="jpaVendorAdapter">
-            <bean class="org.springframework.orm.jpa.vendor.HibernateJpaVendorAdapter">
-                <property name="generateDdl" value="true" />
-                <property name="showSql" value="false"/>
-                <property name="databasePlatform" value="org.hibernate.dialect.MySQLDialect"/>
-                <property name="database" value="MYSQL"/>
-            </bean>
+        <property name="packagesToScan">
+            <list>
+                <value>com.szh.im</value>
+            </list>
         </property>
-        <!--<property name="jpaProperties">-->
-            <!--<value>-->
-                <!--hibernate.cache.use_second_level_cache = true-->
-                <!--hibernate.cache.region.factory_class = org.hibernate.cache.spi.Cache-->
-                <!--hibernate.cache.use_query_cache = true-->
-                <!--hibernate.generate_statistics = true-->
-            <!--</value>-->
-        <!--</property>-->
+        <property name="hibernateProperties">
+            <props>
+                <prop key="hibernate.show_sql">true</prop>
+                <prop key="hibernate.format_sql">true</prop>
+                <prop key="dialect">
+                    org.hibernate.dialect.MySQL5Dialect
+                </prop>
+                <prop key="hibernate.id.new_generator_mappings">false</prop>
+            </props>
+        </property>
+        <property name="entityInterceptor" ref="sqlInterceptor"/>
     </bean>
+
+    <!-- 配置事务管理器 -->
+    <bean id="txManager" class="org.springframework.orm.hibernate5.HibernateTransactionManager">
+        <property name="sessionFactory" ref="sessionFactory" />
+    </bean>
+
+
+    <!--&lt;!&ndash; SPRING - JPA &ndash;&gt;-->
+    <!--<jpa:repositories-->
+            <!--base-package="com.szh.im.dao" />-->
+
+    <!--<bean class="org.springframework.orm.jpa.JpaTransactionManager"-->
+          <!--id="transactionManager">-->
+        <!--<property name="entityManagerFactory"-->
+                  <!--ref="entityManagerFactory" />-->
+        <!--<property name="jpaDialect">-->
+            <!--<bean class="org.springframework.orm.jpa.vendor.HibernateJpaDialect" />-->
+        <!--</property>-->
+    <!--</bean>-->
+
+    <!--<bean id="entityManagerFactory"-->
+          <!--class="org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean">-->
+        <!--<property name="dataSource" ref="multiDataSource" />-->
+        <!--<property name="packagesToScan" value="com.szh.im"/>-->
+        <!--<property name="jpaVendorAdapter">-->
+            <!--<bean class="org.springframework.orm.jpa.vendor.HibernateJpaVendorAdapter">-->
+                <!--<property name="generateDdl" value="true" />-->
+                <!--<property name="showSql" value="false"/>-->
+                <!--<property name="databasePlatform" value="org.hibernate.dialect.MySQLDialect"/>-->
+                <!--<property name="database" value="MYSQL"/>-->
+            <!--</bean>-->
+        <!--</property>-->
+        <!--&lt;!&ndash;<property name="jpaProperties">&ndash;&gt;-->
+            <!--&lt;!&ndash;<value>&ndash;&gt;-->
+                <!--&lt;!&ndash;hibernate.cache.use_second_level_cache = true&ndash;&gt;-->
+                <!--&lt;!&ndash;hibernate.cache.region.factory_class = org.hibernate.cache.spi.Cache&ndash;&gt;-->
+                <!--&lt;!&ndash;hibernate.cache.use_query_cache = true&ndash;&gt;-->
+                <!--&lt;!&ndash;hibernate.generate_statistics = true&ndash;&gt;-->
+            <!--&lt;!&ndash;</value>&ndash;&gt;-->
+        <!--&lt;!&ndash;</property>&ndash;&gt;-->
+    <!--</bean>-->
     <!--<import resource="consumer.xml"/>-->
 </beans>
