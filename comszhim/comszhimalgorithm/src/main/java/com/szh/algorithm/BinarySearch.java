@@ -11,7 +11,7 @@ import java.util.List;
  */
 public class BinarySearch implements BaseAlgorithm {
 
-
+    static int findTime = 0;
     @Override
     public void runAlgorithm() {
 
@@ -19,7 +19,7 @@ public class BinarySearch implements BaseAlgorithm {
 
         UserPojo userPojo;
 
-        for(int i = 0 ; i < 30; i++){
+        for(int i = 0 ; i < 310; i++){
             userPojo = new UserPojo();
             userPojo.setName(i + "user");
             userPojo.setUserId(i * 2 + 1);
@@ -32,8 +32,9 @@ public class BinarySearch implements BaseAlgorithm {
             }
         });
 
-        System.out.println(binary(list, 0, list.size(), 60));
-
+        long b = System.currentTimeMillis();
+        System.out.println(binary(list, 0, list.size(), 57));
+        System.out.println("====>" + (System.currentTimeMillis() - b));
 
     }
 
@@ -47,7 +48,8 @@ public class BinarySearch implements BaseAlgorithm {
         if(end > 1) {
             if (targetId > list.get(0).getUserId() || targetId < list.get(end - 1).getUserId()) return -1;
         }
-
+        findTime++;
+        System.out.println(findTime);
         int findPosition = (begin + end ) / 2;
         UserPojo find = list.get(findPosition);
         if(find == null)return -1;
