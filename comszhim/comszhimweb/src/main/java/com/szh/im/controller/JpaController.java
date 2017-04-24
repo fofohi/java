@@ -3,6 +3,7 @@ package com.szh.im.controller;
 import com.szh.im.dao.TestOneDao;
 import com.szh.im.service.UtilService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.redis.core.RedisTemplate;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -27,7 +28,23 @@ public class JpaController {
 
     @RequestMapping(value = "/test")
     public void jpaTest(){
-        testOneDao.test();
+        new Thread(new Runnable() {
+            @Override
+            public void run() {
+                testOneDao.test(1);
+            }
+        }).start();
+        try {
+            Thread.sleep(10);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+        new Thread(new Runnable() {
+            @Override
+            public void run() {
+                testOneDao.test(2);
+            }
+        }).start();
     }
 
     @RequestMapping(value = "/testdubbo")
@@ -35,12 +52,6 @@ public class JpaController {
         utilService.getProperty();
     }
 
-    public static void main(String[] args) {
-        String s = "^\\d+\\.\\d{1,2}$|^\\d+$";
-        String b = "1.2";
-        Pattern pattern = Pattern.compile(s);
-        Matcher matcher = pattern.matcher(b);
-        System.out.println(matcher.find());
-    }
+
 }
 

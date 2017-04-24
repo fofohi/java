@@ -2,7 +2,7 @@
 <beans
         xmlns="http://www.springframework.org/schema/beans"
         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-        xmlns:jpa="http://www.springframework.org/schema/data/jpa"
+        xmlns:jpa="http://www.springframework.org/schema/data/jpa" xmlns:p="http://www.springframework.org/schema/p"
         xsi:schemaLocation="http://www.springframework.org/schema/beans
        http://www.springframework.org/schema/beans/spring-beans.xsd
         http://www.springframework.org/schema/data/jpa
@@ -119,8 +119,7 @@
         </property>
     </bean>
     <bean id="sqlInterceptor" class="com.szh.im.common.SqlInterceptor" />
-    <bean id="sessionFactory"
-          class="org.springframework.orm.hibernate5.LocalSessionFactoryBean">
+    <bean id="sessionFactory" class="org.springframework.orm.hibernate5.LocalSessionFactoryBean">
         <property name="dataSource" ref="multiDataSource" />
         <property name="packagesToScan">
             <list>
@@ -145,6 +144,16 @@
         <property name="sessionFactory" ref="sessionFactory" />
     </bean>
 
+    <bean id="jedisConnFactory"
+          class="org.springframework.data.redis.connection.jedis.JedisConnectionFactory"
+          p:hostName="192.168.33.10"
+          p:port="6379"
+          p:use-pool="true"/>
+
+    <!-- redis template definition -->
+    <bean id="redisTemplate"
+          class="org.springframework.data.redis.core.RedisTemplate"
+          p:connection-factory-ref="jedisConnFactory"/>
 
     <!--&lt;!&ndash; SPRING - JPA &ndash;&gt;-->
     <!--<jpa:repositories-->
