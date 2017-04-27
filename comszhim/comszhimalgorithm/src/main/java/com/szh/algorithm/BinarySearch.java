@@ -35,7 +35,6 @@ public class BinarySearch implements BaseAlgorithm {
         long b = System.currentTimeMillis();
         System.out.println(binary(list, 0, list.size(), 57));
         System.out.println("====>" + (System.currentTimeMillis() - b));
-
     }
 
     public static void main(String[] args) {
@@ -48,8 +47,6 @@ public class BinarySearch implements BaseAlgorithm {
         if(end > 1) {
             if (targetId > list.get(0).getUserId() || targetId < list.get(end - 1).getUserId()) return -1;
         }
-        findTime++;
-        System.out.println(findTime);
         int findPosition = (begin + end ) / 2;
         UserPojo find = list.get(findPosition);
         if(find == null)return -1;

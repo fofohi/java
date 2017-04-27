@@ -1,5 +1,7 @@
 package com.szh.algorithm;
 
+import com.jdd.activity.init.InitSystem;
+
 import java.util.*;
 
 /**
@@ -7,6 +9,10 @@ import java.util.*;
  */
 public class Application {
 
+    public static int i1=0;
+    public static int i2=0;
+    public static int i3=0;
+    public static int i4=0;
     private static class Chance{
         private String name;
         private double percent;
@@ -35,33 +41,42 @@ public class Application {
 
 
     public static void test(){
-        List<Chance> list = new ArrayList<Chance>(){
+        List<InitSystem.Chance> list = new ArrayList<InitSystem.Chance>(){
             {
-                add(new Chance("test1",0));
-                add(new Chance("test2",0));
-                add(new Chance("test3",0));
-                add(new Chance("test5",0));
-                add(new Chance("test6",0));
-                add(new Chance("test7",0.59));
+                add(new InitSystem.Chance("test1",0));
+                add(new InitSystem.Chance("test2",0.05));
+                add(new InitSystem.Chance("test3",0.95));
+                add(new InitSystem.Chance("test4",0.15));
             }
         };
-        double d = 0;
-        for (Chance chance : list) {
-            d += chance.getPercent();
-
+        int d = 0;
+        for (InitSystem.Chance chance : list) {
+            d += chance.getPercent() * 100;
         }
-        List<Double> list2 = new ArrayList<>();
-        for (Chance chance : list){
+        int r = new Random().nextInt(d);
+        int begin = 0;
+        int end = 0;
 
-            double d2 = chance.getPercent() / d;
-            list2.add(d2);
+        for(int i = 0; i < list.size() ; i++){
+            if(list.get(i).getPercent() == 0)continue;
+            end += list.get(i).getPercent() * 100;
+            if(r >= begin && r <= end){
+                if(list.get(i).getName() .equals("test1")){
+                    i1++;
+                    break;
+                }else if(list.get(i).getName().equals("test2")){
+                    i2++;
+                    break;
+                }else if(list.get(i).getName().equals("test3")){
+                    i3++;
+                    break;
+                }else if(list.get(i).getName().equals("test4")){
+                    i4++;
+                    break;
+                }
+            }
+            begin += list.get(i).getPercent() * 100;
         }
-
-        double random = Math.random() * d;
-        System.out.println("====>" + random);
-        list2.add(random);
-        Collections.sort(list2);
-        System.out.println(list2.indexOf(random));
     }
 
     public static void main(String[] args) {
