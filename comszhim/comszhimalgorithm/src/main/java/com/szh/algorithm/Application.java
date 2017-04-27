@@ -41,8 +41,8 @@ public class Application {
                 add(new Chance("test2",0));
                 add(new Chance("test3",0));
                 add(new Chance("test5",0));
-                add(new Chance("test6",0.1));
-                add(new Chance("test7",0.99));
+                add(new Chance("test6",0));
+                add(new Chance("test7",0.59));
             }
         };
         double d = 0;
