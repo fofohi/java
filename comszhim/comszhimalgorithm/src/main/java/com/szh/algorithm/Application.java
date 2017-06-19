@@ -1,6 +1,5 @@
 package com.szh.algorithm;
 
-import com.jdd.activity.init.InitSystem;
 
 import java.util.*;
 
@@ -41,16 +40,16 @@ public class Application {
 
 
     public static void test(){
-        List<InitSystem.Chance> list = new ArrayList<InitSystem.Chance>(){
+        List<Chance> list = new ArrayList<Chance>(){
             {
-                add(new InitSystem.Chance("test1",0));
-                add(new InitSystem.Chance("test2",0.05));
-                add(new InitSystem.Chance("test3",0.95));
-                add(new InitSystem.Chance("test4",0.15));
+                add(new Chance("test1",0));
+                add(new Chance("test2",0.05));
+                add(new Chance("test3",0.95));
+                add(new Chance("test4",0.15));
             }
         };
         int d = 0;
-        for (InitSystem.Chance chance : list) {
+        for (Chance chance : list) {
             d += chance.getPercent() * 100;
         }
         int r = new Random().nextInt(d);
