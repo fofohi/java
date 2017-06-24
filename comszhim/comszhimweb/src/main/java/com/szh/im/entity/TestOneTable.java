@@ -10,7 +10,7 @@ import javax.persistence.*;
 public class TestOneTable {
     private int id;
     private int fourId;
-    private int oneName;
+    private String oneName;
 
     @Id
     @GeneratedValue
@@ -35,11 +35,11 @@ public class TestOneTable {
 
     @Basic
     @Column(name = "one_name")
-    public int getOneName() {
+    public String getOneName() {
         return oneName;
     }
 
-    public void setOneName(int oneName) {
+    public void setOneName(String oneName) {
         this.oneName = oneName;
     }
 }

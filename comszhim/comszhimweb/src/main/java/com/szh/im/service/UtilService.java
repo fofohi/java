@@ -1,9 +1,9 @@
 package com.szh.im.service;
 
-//import com.szh.dubbo.service.TestService;
+import com.szh.im.dao.TestOneDao;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-
+import org.springframework.transaction.annotation.Transactional;
 
 
 /**
@@ -12,45 +12,13 @@ import org.springframework.stereotype.Service;
 @Service
 public class UtilService implements IUtilService{
 
-//    @Autowired
-//    private TestService testService;
+    @Autowired
+    private TestOneDao testService;
 
-    public UtilService() {
-
-    }
-
+    @Transactional(rollbackFor = Exception.class)
     public void getProperty() {
 
-       //testService.test();
+       testService.test(1);
 
-    }
-
-    public static void main(String[] args) {
-
-//        List<Integer> list = new ArrayList<>();
-//
-//        list.add(1);
-//        list.add(2);
-//        list.add(3);
-//        list.add(4);
-//        list.add(5);
-//        list.add(6);
-//
-//        for (int i = 0 ; i < list.size();i++) {
-//            System.out.println(list.size());
-//            list.remove(i);
-//        }
-//
-//        System.out.println(list);
-        int x = 0;
-        System.out.println(x++);
-        System.out.println(x);
-        System.out.println(++x);
-    }
-
-    static void quickSort(int[] sort,int begin,int end){
-        if(begin == end) return;
-        int middle = (begin + end) / 2;
-        int middleEle = sort[middle];
     }
 }
