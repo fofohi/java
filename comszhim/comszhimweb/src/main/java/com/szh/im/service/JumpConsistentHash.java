@@ -1,4 +1,4 @@
-package com.jdd.redpacket.commons.util;
+package com.szh.im.service;
 
 /**
     https://github.com/ssedano/jump-consistent-hash
