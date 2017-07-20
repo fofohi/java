@@ -1,29 +1,31 @@
-package com.szh.zookeeper;
+package com.szh.im.common;
 
 
 import org.apache.zookeeper.*;
+import org.springframework.beans.BeansException;
+import org.springframework.context.ApplicationContext;
+import org.springframework.context.ApplicationContextAware;
+import org.springframework.jms.listener.AbstractMessageListenerContainer;
 import org.springframework.stereotype.Component;
 
+import javax.annotation.PostConstruct;
 import java.util.concurrent.CountDownLatch;
 
 /**
  * Created by alongsea2 on 2017/3/22.
  */
-@Component
-public class ZooKeeperMonitor {
+//@Component
+public class ZooKeeperMonitor implements ApplicationContextAware {
 
     private CountDownLatch latch = new CountDownLatch(1);
     private CountDownLatch latc2 = new CountDownLatch(1);
     private boolean isRun = true;
 
-    public static void main(String[] args) {
+    private ApplicationContext applicationContext;
 
 
-        new ZooKeeperMonitor().connectToZookeeper();
 
-
-    }
-
+    @PostConstruct
     public void connectToZookeeper() {
         try {
 
@@ -50,21 +52,15 @@ public class ZooKeeperMonitor {
     }
 
     private void test(ZooKeeper zooKeeper) throws Exception {
+        AbstractMessageListenerContainer o = (AbstractMessageListenerContainer) applicationContext.getBean("one");
+        AbstractMessageListenerContainer t = (AbstractMessageListenerContainer) applicationContext.getBean("two");
+
         try {
             //创建child
             String c2 = zooKeeper.create("/test/queue", "1".getBytes(), ZooDefs.Ids.OPEN_ACL_UNSAFE, CreateMode.EPHEMERAL);
             if (c2 != null) {
-                new Thread(() -> {
-                    //启动mq线程
-                    while (isRun) {
-                        System.out.println(Thread.currentThread().getName());
-                        try {
-                            Thread.sleep(3000);
-                        } catch (InterruptedException e) {
-                            e.printStackTrace();
-                        }
-                    }
-                }).start();
+                o.start();
+                t.start();
             }
         } catch (Exception e) {
             e.printStackTrace();
@@ -75,6 +71,9 @@ public class ZooKeeperMonitor {
                 if (event.getType().getIntValue() == 2) {
                     isRun = false;
                     try {
+                        o.stop();
+                        t.stop();
+
                         zooKeeper.close();
                     } catch (Exception e) {
                         e.printStackTrace();
@@ -102,4 +101,8 @@ public class ZooKeeperMonitor {
     }
 
 
+    @Override
+    public void setApplicationContext(ApplicationContext applicationContext) throws BeansException {
+        this.applicationContext = applicationContext;
+    }
 }

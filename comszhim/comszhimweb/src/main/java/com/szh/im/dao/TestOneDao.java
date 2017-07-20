@@ -14,7 +14,7 @@ import java.util.concurrent.Executors;
 /**
  * Created by alongsea2 on 2017/3/14.
  */
-@Component
+//@Component
 public class TestOneDao implements TestOne /*extends Repository<TestOneTable,Integer>*/ {
 
     @Autowired

@@ -2,152 +2,150 @@
 <beans
         xmlns="http://www.springframework.org/schema/beans"
         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-        xmlns:jpa="http://www.springframework.org/schema/data/jpa" xmlns:p="http://www.springframework.org/schema/p"
-        xmlns:context="http://www.springframework.org/schema/context"
-        xmlns:tx="http://www.springframework.org/schema/tx"
+        xmlns:p="http://www.springframework.org/schema/p"
         xsi:schemaLocation="http://www.springframework.org/schema/beans
-       http://www.springframework.org/schema/beans/spring-beans.xsd
-        http://www.springframework.org/schema/data/jpa
-        http://www.springframework.org/schema/data/jpa/spring-jpa.xsd http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx.xsd"
+       http://www.springframework.org/schema/beans/spring-beans-4.3.xsd
+        http://activemq.org/config/1.0
+        http://activemq.apache.org/schema/core/activemq-core-5.7.xsd"
 >
     <!-- druid configuration -->
-    <bean id="mainDataSource" class="com.alibaba.druid.pool.DruidDataSource" init-method="init" destroy-method="close">
-        <property name="driverClassName" value="com.mysql.jdbc.Driver" />
-        <property name="url" value="jdbc:mysql://192.168.33.10:3306/jap_test?characterEncoding=UTF-8&amp;useSSL=false" />
-        <property name="username" value="root"/>
-        <property name="password" value="root"/>
-        <!-- 配置初始化大小、最小、最大 -->
-        <property name="initialSize" value="1" />
-        <property name="minIdle" value="5" />
-        <property name="maxActive" value="50" />
+    <!--<bean id="mainDataSource" class="com.alibaba.druid.pool.DruidDataSource" init-method="init" destroy-method="close">-->
+        <!--<property name="driverClassName" value="com.mysql.jdbc.Driver" />-->
+        <!--<property name="url" value="jdbc:mysql://192.168.33.10:3306/jap_test?characterEncoding=UTF-8&amp;useSSL=false" />-->
+        <!--<property name="username" value="root"/>-->
+        <!--<property name="password" value="root"/>-->
+        <!--&lt;!&ndash; 配置初始化大小、最小、最大 &ndash;&gt;-->
+        <!--<property name="initialSize" value="1" />-->
+        <!--<property name="minIdle" value="5" />-->
+        <!--<property name="maxActive" value="50" />-->
 
-        <!-- 配置获取连接等待超时的时间 -->
-        <property name="maxWait" value="60000" />
+        <!--&lt;!&ndash; 配置获取连接等待超时的时间 &ndash;&gt;-->
+        <!--<property name="maxWait" value="60000" />-->
 
-        <!-- 配置间隔多久才进行一次检测，检测需要关闭的空闲连接，单位是毫秒 -->
-        <property name="timeBetweenEvictionRunsMillis" value="60000" />
+        <!--&lt;!&ndash; 配置间隔多久才进行一次检测，检测需要关闭的空闲连接，单位是毫秒 &ndash;&gt;-->
+        <!--<property name="timeBetweenEvictionRunsMillis" value="60000" />-->
 
-        <!-- 配置一个连接在池中最小生存的时间，单位是毫秒 -->
-        <property name="minEvictableIdleTimeMillis" value="300000" />
+        <!--&lt;!&ndash; 配置一个连接在池中最小生存的时间，单位是毫秒 &ndash;&gt;-->
+        <!--<property name="minEvictableIdleTimeMillis" value="300000" />-->
 
-        <property name="validationQuery" value="SELECT 'x'" />
-        <property name="testWhileIdle" value="true" />
-        <property name="testOnBorrow" value="false" />
-        <property name="testOnReturn" value="false" />
+        <!--<property name="validationQuery" value="SELECT 'x'" />-->
+        <!--<property name="testWhileIdle" value="true" />-->
+        <!--<property name="testOnBorrow" value="false" />-->
+        <!--<property name="testOnReturn" value="false" />-->
 
-        <!-- 打开PSCache，并且指定每个连接上PSCache的大小 -->
-        <property name="poolPreparedStatements" value="true" />
-        <property name="maxPoolPreparedStatementPerConnectionSize" value="20" />
+        <!--&lt;!&ndash; 打开PSCache，并且指定每个连接上PSCache的大小 &ndash;&gt;-->
+        <!--<property name="poolPreparedStatements" value="true" />-->
+        <!--<property name="maxPoolPreparedStatementPerConnectionSize" value="20" />-->
 
-        <!-- 配置监控统计拦截的filters -->
-        <property name="filters" value="stat" />
-    </bean>
+        <!--&lt;!&ndash; 配置监控统计拦截的filters &ndash;&gt;-->
+        <!--<property name="filters" value="stat" />-->
+    <!--</bean>-->
 
-    <!-- druid configuration -->
-    <bean id="readDataSource1" class="com.alibaba.druid.pool.DruidDataSource" init-method="init" destroy-method="close">
-        <property name="driverClassName" value="com.mysql.jdbc.Driver" />
-        <property name="url" value="jdbc:mysql://192.168.33.10:3307/jap_test?characterEncoding=UTF-8&amp;useSSL=false" />
-        <property name="username" value="root"/>
-        <property name="password" value="root"/>
-        <!-- 配置初始化大小、最小、最大 -->
-        <property name="initialSize" value="1" />
-        <property name="minIdle" value="5" />
-        <property name="maxActive" value="50" />
+    <!--&lt;!&ndash; druid configuration &ndash;&gt;-->
+    <!--<bean id="readDataSource1" class="com.alibaba.druid.pool.DruidDataSource" init-method="init" destroy-method="close">-->
+        <!--<property name="driverClassName" value="com.mysql.jdbc.Driver" />-->
+        <!--<property name="url" value="jdbc:mysql://192.168.33.10:3307/jap_test?characterEncoding=UTF-8&amp;useSSL=false" />-->
+        <!--<property name="username" value="root"/>-->
+        <!--<property name="password" value="root"/>-->
+        <!--&lt;!&ndash; 配置初始化大小、最小、最大 &ndash;&gt;-->
+        <!--<property name="initialSize" value="1" />-->
+        <!--<property name="minIdle" value="5" />-->
+        <!--<property name="maxActive" value="50" />-->
 
-        <!-- 配置获取连接等待超时的时间 -->
-        <property name="maxWait" value="60000" />
+        <!--&lt;!&ndash; 配置获取连接等待超时的时间 &ndash;&gt;-->
+        <!--<property name="maxWait" value="60000" />-->
 
-        <!-- 配置间隔多久才进行一次检测，检测需要关闭的空闲连接，单位是毫秒 -->
-        <property name="timeBetweenEvictionRunsMillis" value="60000" />
+        <!--&lt;!&ndash; 配置间隔多久才进行一次检测，检测需要关闭的空闲连接，单位是毫秒 &ndash;&gt;-->
+        <!--<property name="timeBetweenEvictionRunsMillis" value="60000" />-->
 
-        <!-- 配置一个连接在池中最小生存的时间，单位是毫秒 -->
-        <property name="minEvictableIdleTimeMillis" value="300000" />
+        <!--&lt;!&ndash; 配置一个连接在池中最小生存的时间，单位是毫秒 &ndash;&gt;-->
+        <!--<property name="minEvictableIdleTimeMillis" value="300000" />-->
 
-        <property name="validationQuery" value="SELECT 'x'" />
-        <property name="testWhileIdle" value="true" />
-        <property name="testOnBorrow" value="false" />
-        <property name="testOnReturn" value="false" />
+        <!--<property name="validationQuery" value="SELECT 'x'" />-->
+        <!--<property name="testWhileIdle" value="true" />-->
+        <!--<property name="testOnBorrow" value="false" />-->
+        <!--<property name="testOnReturn" value="false" />-->
 
-        <!-- 打开PSCache，并且指定每个连接上PSCache的大小 -->
-        <property name="poolPreparedStatements" value="true" />
-        <property name="maxPoolPreparedStatementPerConnectionSize" value="20" />
+        <!--&lt;!&ndash; 打开PSCache，并且指定每个连接上PSCache的大小 &ndash;&gt;-->
+        <!--<property name="poolPreparedStatements" value="true" />-->
+        <!--<property name="maxPoolPreparedStatementPerConnectionSize" value="20" />-->
 
-        <!-- 配置监控统计拦截的filters -->
-        <property name="filters" value="stat" />
-    </bean>
+        <!--&lt;!&ndash; 配置监控统计拦截的filters &ndash;&gt;-->
+        <!--<property name="filters" value="stat" />-->
+    <!--</bean>-->
 
 
-    <!-- druid configuration -->
-    <bean id="readDataSource2" class="com.alibaba.druid.pool.DruidDataSource" init-method="init" destroy-method="close">
-        <property name="driverClassName" value="com.mysql.jdbc.Driver" />
-        <property name="url" value="jdbc:mysql://192.168.33.10:3308/jap_test?characterEncoding=UTF-8&amp;useSSL=false" />
-        <property name="username" value="root"/>
-        <property name="password" value="root"/>
-        <!-- 配置初始化大小、最小、最大 -->
-        <property name="initialSize" value="1" />
-        <property name="minIdle" value="5" />
-        <property name="maxActive" value="50" />
+    <!--&lt;!&ndash; druid configuration &ndash;&gt;-->
+    <!--<bean id="readDataSource2" class="com.alibaba.druid.pool.DruidDataSource" init-method="init" destroy-method="close">-->
+        <!--<property name="driverClassName" value="com.mysql.jdbc.Driver" />-->
+        <!--<property name="url" value="jdbc:mysql://192.168.33.10:3308/jap_test?characterEncoding=UTF-8&amp;useSSL=false" />-->
+        <!--<property name="username" value="root"/>-->
+        <!--<property name="password" value="root"/>-->
+        <!--&lt;!&ndash; 配置初始化大小、最小、最大 &ndash;&gt;-->
+        <!--<property name="initialSize" value="1" />-->
+        <!--<property name="minIdle" value="5" />-->
+        <!--<property name="maxActive" value="50" />-->
 
-        <!-- 配置获取连接等待超时的时间 -->
-        <property name="maxWait" value="60000" />
+        <!--&lt;!&ndash; 配置获取连接等待超时的时间 &ndash;&gt;-->
+        <!--<property name="maxWait" value="60000" />-->
 
-        <!-- 配置间隔多久才进行一次检测，检测需要关闭的空闲连接，单位是毫秒 -->
-        <property name="timeBetweenEvictionRunsMillis" value="60000" />
+        <!--&lt;!&ndash; 配置间隔多久才进行一次检测，检测需要关闭的空闲连接，单位是毫秒 &ndash;&gt;-->
+        <!--<property name="timeBetweenEvictionRunsMillis" value="60000" />-->
 
-        <!-- 配置一个连接在池中最小生存的时间，单位是毫秒 -->
-        <property name="minEvictableIdleTimeMillis" value="300000" />
+        <!--&lt;!&ndash; 配置一个连接在池中最小生存的时间，单位是毫秒 &ndash;&gt;-->
+        <!--<property name="minEvictableIdleTimeMillis" value="300000" />-->
 
-        <property name="validationQuery" value="SELECT 'x'" />
-        <property name="testWhileIdle" value="true" />
-        <property name="testOnBorrow" value="false" />
-        <property name="testOnReturn" value="false" />
+        <!--<property name="validationQuery" value="SELECT 'x'" />-->
+        <!--<property name="testWhileIdle" value="true" />-->
+        <!--<property name="testOnBorrow" value="false" />-->
+        <!--<property name="testOnReturn" value="false" />-->
 
-        <!-- 打开PSCache，并且指定每个连接上PSCache的大小 -->
-        <property name="poolPreparedStatements" value="true" />
-        <property name="maxPoolPreparedStatementPerConnectionSize" value="20" />
+        <!--&lt;!&ndash; 打开PSCache，并且指定每个连接上PSCache的大小 &ndash;&gt;-->
+        <!--<property name="poolPreparedStatements" value="true" />-->
+        <!--<property name="maxPoolPreparedStatementPerConnectionSize" value="20" />-->
 
-        <!-- 配置监控统计拦截的filters -->
-        <property name="filters" value="stat" />
-    </bean>
+        <!--&lt;!&ndash; 配置监控统计拦截的filters &ndash;&gt;-->
+        <!--<property name="filters" value="stat" />-->
+    <!--</bean>-->
 
-    <bean id="multiDataSource" class="com.szh.im.common.MultiDataSource">
-        <property name="targetDataSources">
-            <map key-type="java.lang.String">
-                <entry value-ref="readDataSource1" key="readDataSource1" />
-                <entry value-ref="readDataSource2" key="readDataSource2" />
-            </map>
-        </property>
-        <property name="defaultTargetDataSource" ref="mainDataSource" >
-        </property>
-    </bean>
-    <bean id="sqlInterceptor" class="com.szh.im.common.SqlInterceptor" />
-    <bean id="sessionFactory" class="org.springframework.orm.hibernate5.LocalSessionFactoryBean">
-        <property name="dataSource" ref="multiDataSource" />
-        <property name="packagesToScan">
-            <list>
-                <value>com.szh.im</value>
-            </list>
-        </property>
-        <property name="hibernateProperties">
-            <props>
-                <prop key="hibernate.show_sql">true</prop>
-                <prop key="hibernate.format_sql">false</prop>
-                <prop key="dialect">
-                    org.hibernate.dialect.MySQL5Dialect
-                </prop>
-                <prop key="hibernate.id.new_generator_mappings">false</prop>
-            </props>
-        </property>
-        <property name="entityInterceptor" ref="sqlInterceptor"/>
-    </bean>
+    <!--<bean id="multiDataSource" class="com.szh.im.common.MultiDataSource">-->
+        <!--<property name="targetDataSources">-->
+            <!--<map key-type="java.lang.String">-->
+                <!--<entry value-ref="readDataSource1" key="readDataSource1" />-->
+                <!--<entry value-ref="readDataSource2" key="readDataSource2" />-->
+            <!--</map>-->
+        <!--</property>-->
+        <!--<property name="defaultTargetDataSource" ref="mainDataSource" >-->
+        <!--</property>-->
+    <!--</bean>-->
+    <!--<bean id="sqlInterceptor" class="com.szh.im.common.SqlInterceptor" />-->
+    <!--<bean id="sessionFactory" class="org.springframework.orm.hibernate5.LocalSessionFactoryBean">-->
+        <!--<property name="dataSource" ref="multiDataSource" />-->
+        <!--<property name="packagesToScan">-->
+            <!--<list>-->
+                <!--<value>com.szh.im</value>-->
+            <!--</list>-->
+        <!--</property>-->
+        <!--<property name="hibernateProperties">-->
+            <!--<props>-->
+                <!--<prop key="hibernate.show_sql">true</prop>-->
+                <!--<prop key="hibernate.format_sql">false</prop>-->
+                <!--<prop key="dialect">-->
+                    <!--org.hibernate.dialect.MySQL5Dialect-->
+                <!--</prop>-->
+                <!--<prop key="hibernate.id.new_generator_mappings">false</prop>-->
+            <!--</props>-->
+        <!--</property>-->
+        <!--<property name="entityInterceptor" ref="sqlInterceptor"/>-->
+    <!--</bean>-->
 
-    <!-- 配置事务管理器 -->
-    <bean id="txManager" class="org.springframework.orm.hibernate5.HibernateTransactionManager">
-        <property name="sessionFactory" ref="sessionFactory" />
-    </bean>
+    <!--&lt;!&ndash; 配置事务管理器 &ndash;&gt;-->
+    <!--<bean id="txManager" class="org.springframework.orm.hibernate5.HibernateTransactionManager">-->
+        <!--<property name="sessionFactory" ref="sessionFactory" />-->
+    <!--</bean>-->
 
-    <!-- 使用注解的包路径 -->
-    <tx:annotation-driven transaction-manager="txManager"/>
+    <!--&lt;!&ndash; 使用注解的包路径 &ndash;&gt;-->
+    <!--<tx:annotation-driven transaction-manager="txManager"/>-->
 
 
     <bean id="jedisConnFactory"
@@ -161,6 +159,62 @@
           class="org.springframework.data.redis.core.RedisTemplate"
           p:connection-factory-ref="jedisConnFactory"/>
 
+    <bean id="queueOne" class="com.szh.im.common.TestQueueOne"/>
+    <bean id="queueTwo" class="com.szh.im.common.TestQueueTwo"/>
 
+    <bean id="targetConnectionFactory" class="org.apache.activemq.ActiveMQConnectionFactory">
+
+        <property name="brokerURL" value="tcp://localhost:61616" />
+        <property name="useAsyncSend" value="true" />
+        <property name="alwaysSessionAsync" value="true" />
+        <property name="useDedicatedTaskRunner" value="true" />
+    </bean>
+
+    <!--<bean class="com.szh.im.common.ZooKeeperMonitor" init-method="connectToZookeeper"/>-->
+
+    <!--<bean id="connectionFactory" class="org.springframework.jms.connection.CachingConnectionFactory">-->
+        <!--&lt;!&ndash; 目标ConnectionFactory对应真实的可以产生JMS Connection的ConnectionFactory &ndash;&gt;-->
+        <!--<property name="targetConnectionFactory" ref="targetConnectionFactory" />-->
+        <!--&lt;!&ndash; 同上，同理 &ndash;&gt;-->
+        <!--&lt;!&ndash; <constructor-arg ref="amqConnectionFactory" /> &ndash;&gt;-->
+        <!--&lt;!&ndash; Session缓存数量 &ndash;&gt;-->
+        <!--<property name="sessionCacheSize" value="100" />-->
+    <!--</bean>-->
+
+
+    <!--<bean id="one" class="org.springframework.jms.listener.SimpleMessageListenerContainer">-->
+        <!--<property name="connectionFactory" ref="connectionFactory"/>-->
+        <!--<property name="autoStartup" value="false"/>-->
+        <!--<property name="messageListener" ref="queueOne"/>-->
+        <!--<property name="concurrentConsumers" value="1"/>-->
+        <!--<property name="destinationName" value="TestQueue"/>-->
+    <!--</bean>-->
+
+    <!--<bean id="two" class="org.springframework.jms.listener.SimpleMessageListenerContainer">-->
+        <!--<property name="connectionFactory" ref="connectionFactory"/>-->
+        <!--<property name="autoStartup" value="false"/>-->
+        <!--<property name="messageListener" ref="queueOne"/>-->
+        <!--<property name="concurrentConsumers" value="1"/>-->
+        <!--<property name="destinationName" value="TestQueue"/>-->
+
+    <!--</bean>-->
+
+
+
+    <!--&lt;!&ndash; 定义JmsTemplate的Queue类型 &ndash;&gt;-->
+    <!--<bean id="jmsQueueTemplate" class="org.springframework.jms.core.JmsTemplate">-->
+        <!--&lt;!&ndash; 这个connectionFactory对应的是我们定义的Spring提供的那个ConnectionFactory对象 &ndash;&gt;-->
+        <!--<constructor-arg ref="connectionFactory" />-->
+        <!--&lt;!&ndash; 非pub/sub模型（发布/订阅），即队列模式 &ndash;&gt;-->
+        <!--<property name="pubSubDomain" value="false" />-->
+    <!--</bean>-->
+
+    <!--&lt;!&ndash; 定义JmsTemplate的Topic类型 &ndash;&gt;-->
+    <!--<bean id="jmsTopicTemplate" class="org.springframework.jms.core.JmsTemplate">-->
+        <!--&lt;!&ndash; 这个connectionFactory对应的是我们定义的Spring提供的那个ConnectionFactory对象 &ndash;&gt;-->
+        <!--<constructor-arg ref="connectionFactory" />-->
+        <!--&lt;!&ndash; pub/sub模型（发布/订阅） &ndash;&gt;-->
+        <!--<property name="pubSubDomain" value="true" />-->
+    <!--</bean>-->
     <!--<import resource="consumer.xml"/>-->
 </beans>

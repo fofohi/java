@@ -9,7 +9,7 @@ import org.springframework.transaction.annotation.Transactional;
 /**
  * Created by alongsea2 on 2017/3/11.
  */
-@Service
+//@Service
 public class UtilService implements IUtilService{
 
     @Autowired

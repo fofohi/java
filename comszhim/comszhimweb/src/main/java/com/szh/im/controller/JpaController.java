@@ -18,19 +18,11 @@ import java.net.URL;
 @RestController
 public class JpaController {
 
-    private final UtilService utilService;
 
-    private final TestOneDao testOneDao;
-
-    @Autowired
-    public JpaController(UtilService utilService, TestOneDao testOneDao) {
-        this.utilService = utilService;
-        this.testOneDao = testOneDao;
-    }
 
     @RequestMapping(value = "/test")
     public void jpaTest(){
-        utilService.getProperty();
+
 
 
 

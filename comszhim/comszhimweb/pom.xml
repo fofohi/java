@@ -18,6 +18,8 @@
             <!--<artifactId>com.szh.dubbo</artifactId>-->
             <!--<version>1.0-SNAPSHOT</version>-->
         <!--</dependency>-->
+        <!-- https://mvnrepository.com/artifact/org.apache.activemq/activemq-core -->
+
     </dependencies>
 
 
