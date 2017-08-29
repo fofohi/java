@@ -10,8 +10,11 @@ import io.netty.channel.socket.SocketChannel;
 import io.netty.channel.socket.nio.NioSocketChannel;
 import io.netty.handler.codec.string.StringDecoder;
 import io.netty.handler.codec.string.StringEncoder;
+import io.netty.handler.timeout.IdleStateHandler;
 import io.netty.util.concurrent.Future;
 import io.netty.util.concurrent.GenericFutureListener;
+
+import java.util.concurrent.TimeUnit;
 
 /**
  * Created by dell on 2016/7/15.
@@ -29,11 +32,11 @@ public class DiscardClient {
                     @Override
                     protected void initChannel(SocketChannel socketChannel) throws Exception {
                         ChannelPipeline p = socketChannel.pipeline();
-                        p.addLast(new StringDecoder());
-                        p.addLast(new DiscardClientHandler());
-                        //p.addLast(new DiscardClientHandlerV2());
                         p.addLast(new StringEncoder());
-
+                        p.addLast(new DiscardClientHandlerV2());
+                        p.addFirst(new DiscardClientHandler());
+                        p.addFirst(new StringDecoder());
+                        p.addFirst(new IdleStateHandler(1,2,3, TimeUnit.SECONDS));
                     }
                 });
         try {

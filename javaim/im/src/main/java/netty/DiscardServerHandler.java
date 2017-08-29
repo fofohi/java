@@ -22,27 +22,16 @@ public class DiscardServerHandler extends ChannelInboundHandlerAdapter { // (1)
 
     @Override
     public void channelActive(ChannelHandlerContext ctx) {
-        //ByteBuf s2 = Unpooled.copiedBuffer("welcome".getBytes());
         //连接成功返回client成功
         String welcome = "from server welcome";
-        ChannelHashMap.getMap().put(UUID.randomUUID().toString(),ctx.channel());
-        ctx.write(welcome);
-        ctx.flush();
+        ctx.writeAndFlush(welcome);
         ReferenceCountUtil.release(welcome);
     }
 
+
     @Override
-    public void channelRead(ChannelHandlerContext serverCtx, Object msg) { // (2)
-        if(msg != null){
-
-            ConcurrentHashMap<String, Channel> channelMap = ChannelHashMap.getMap();
-
-            for (Map.Entry<String, Channel> stringChannelEntry : channelMap.entrySet()) {
-                Channel clientChannel = stringChannelEntry.getValue();
-                clientChannel.writeAndFlush(msg);
-            }
-
-        }
+    public void channelRead(ChannelHandlerContext serverCtx, Object msg) {
+        logger.info("====>" + msg);
     }
 
     @Override

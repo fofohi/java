@@ -4,7 +4,8 @@ package netty;
 import io.netty.buffer.*;
 import io.netty.channel.ChannelHandlerContext;
 import io.netty.channel.ChannelInboundHandlerAdapter;
-import io.netty.util.ReferenceCountUtil;
+import io.netty.handler.timeout.IdleState;
+import io.netty.handler.timeout.IdleStateEvent;
 import org.apache.log4j.Logger;
 
 import java.io.BufferedReader;
@@ -20,23 +21,35 @@ public class DiscardClientHandler extends ChannelInboundHandlerAdapter {
 
     @Override
     public void channelActive(ChannelHandlerContext ctx) {
-        logger.info("channelActive ===== client active ok" );
-        ctx.writeAndFlush("give client");
-        //注册自己的状态给服务器
-        //开启读写线程
+        ctx.writeAndFlush("v1 give from client");
         new writeMsgThread(ctx);
     }
 
     @Override
     public void channelRead(ChannelHandlerContext ctx, Object msg) {
-        logger.info("channelRead ===== " + msg);
-        //ctx.fireChannelRead(msg);
+        logger.info("v1 channelRead ===== " + msg);
     }
 
     @Override
     public void channelReadComplete(ChannelHandlerContext ctx) {
 
     }
+
+    @Override
+    public void userEventTriggered(ChannelHandlerContext ctx, Object evt) throws Exception {
+        if(IdleStateEvent.class.isAssignableFrom(evt.getClass())){
+            IdleStateEvent event = (IdleStateEvent) evt;
+            if(event.state() == IdleState.WRITER_IDLE){
+                logger.info("==== write heart");
+            }else if(event.state() == IdleState.READER_IDLE){
+                logger.info("==== read heart");
+            }else if (event.state() == IdleState.ALL_IDLE){
+                logger.info("==== write read heart");
+            }
+        }
+
+    }
+
 
     @Override
     public void exceptionCaught(ChannelHandlerContext ctx,Throwable th){
@@ -74,7 +87,7 @@ public class DiscardClientHandler extends ChannelInboundHandlerAdapter {
                     ByteBuf r = a.writeByte(sLength);
                     ctx.channel().writeAndFlush("2");
                     ctx.channel().writeAndFlush("d");
-                    ctx.channel().writeAndFlush(r);
+                    ctx.channel().writeAndFlush(message);
                     ctx.channel().writeAndFlush(s);
 
                 }
