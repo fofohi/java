@@ -7,8 +7,11 @@ import io.netty.channel.socket.SocketChannel;
 import io.netty.channel.socket.nio.NioServerSocketChannel;
 import io.netty.handler.codec.string.StringDecoder;
 import io.netty.handler.codec.string.StringEncoder;
+import io.netty.handler.timeout.IdleStateHandler;
 import io.netty.util.concurrent.Future;
 import io.netty.util.concurrent.GenericFutureListener;
+
+import java.util.concurrent.TimeUnit;
 
 /**x
  * Created by dell on 2016/7/15.
@@ -32,6 +35,7 @@ public class DiscardServer {
                         @Override
                         public void initChannel(SocketChannel ch) throws Exception {
                             ChannelPipeline p = ch.pipeline();
+                            p.addLast(new IdleStateHandler(1,2,3, TimeUnit.SECONDS));
                             p.addLast(new StringEncoder());
                             p.addLast(new StringDecoder());
                             p.addLast(new DiscardServerHandler());

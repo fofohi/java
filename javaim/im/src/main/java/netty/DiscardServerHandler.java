@@ -3,6 +3,8 @@ package netty;
 import io.netty.channel.Channel;
 import io.netty.channel.ChannelHandlerContext;
 import io.netty.channel.ChannelInboundHandlerAdapter;
+import io.netty.handler.timeout.IdleState;
+import io.netty.handler.timeout.IdleStateEvent;
 import io.netty.util.ReferenceCountUtil;
 import org.apache.log4j.Logger;
 import util.ChannelHashMap;
@@ -37,6 +39,21 @@ public class DiscardServerHandler extends ChannelInboundHandlerAdapter { // (1)
     @Override
     public void channelReadComplete(ChannelHandlerContext ctx) {
 
+
+    }
+
+    @Override
+    public void userEventTriggered(ChannelHandlerContext ctx, Object evt) throws Exception {
+        if(IdleStateEvent.class.isAssignableFrom(evt.getClass())){
+            IdleStateEvent event = (IdleStateEvent) evt;
+            if(event.state() == IdleState.WRITER_IDLE){
+                logger.info("==== write heart");
+            }else if(event.state() == IdleState.READER_IDLE){
+                logger.info("==== read heart");
+            }else if (event.state() == IdleState.ALL_IDLE){
+                logger.info("==== write read heart");
+            }
+        }
 
     }
 
