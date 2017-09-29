@@ -37,11 +37,7 @@ public class BinarySearch implements BaseAlgorithm {
         System.out.println("====>" + (System.currentTimeMillis() - b));
     }
 
-    public static void main(String[] args) {
-        BaseAlgorithm baseAlgorithm = new BinarySearch();
-        StaticProxy staticProxy = new StaticProxy(baseAlgorithm);
-        staticProxy.getResult();
-    }
+
 
     private int binary(List<UserPojo> list, int begin,int end,int targetId){
         if(end > 1) {
@@ -58,5 +54,38 @@ public class BinarySearch implements BaseAlgorithm {
         }
     }
 
+    private int binaryInteger(List<Integer> list,int targetId){
+        int index = -1;
+        int begin = 0;
+        int end = list.size() - 1;
+        while (begin <= end){
+            int middle = (begin + end) / 2 ;
+            int find = list.get(middle);
+            if(find == targetId){
+                index = middle;
+                break;
+            }else if(find > targetId) {
+                middle--;
+                end = middle;
+            }else{
+                middle++;
+                begin = middle;
+            }
+        }
+        return index;
+    }
 
+    public static void main(String[] args) {
+       /* BaseAlgorithm baseAlgorithm = new BinarySearch();
+        StaticProxy staticProxy = new StaticProxy(baseAlgorithm);
+        staticProxy.getResult();*/
+        List<Integer> list = new ArrayList<>();
+        for (int i = 0; i < 10000000; i++) {
+            list.add(i * 2 + 1);
+        }
+        long b = System.currentTimeMillis();
+        System.out.println(new BinarySearch().binaryInteger(list,399));
+        System.out.println("cost" + (System.currentTimeMillis() - b));
+
+    }
 }
