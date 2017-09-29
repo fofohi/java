@@ -80,7 +80,7 @@ public class BinarySearch implements BaseAlgorithm {
         StaticProxy staticProxy = new StaticProxy(baseAlgorithm);
         staticProxy.getResult();*/
         List<Integer> list = new ArrayList<>();
-        for (int i = 0; i < 10000; i++) {
+        for (int i = 0; i < 1000; i++) {
             list.add(i * 2 + 1);
         }
         long b = System.currentTimeMillis();
