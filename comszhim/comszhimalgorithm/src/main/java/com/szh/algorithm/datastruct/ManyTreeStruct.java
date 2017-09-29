@@ -27,7 +27,7 @@ public class ManyTreeStruct {
         tn.addNodeList(tnChild3);
         tn.addNodeList(tnChild4);
         tnChild1.addNodeList(tnChildChild1);
-        tnChild1.addNodeList(tnChildChild2);
+        tnChild2.addNodeList(tnChildChild2);
         tnChildChild1.addNodeList(tnChildChildChild1);
 
 
