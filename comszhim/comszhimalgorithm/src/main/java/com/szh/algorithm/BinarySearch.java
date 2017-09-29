@@ -80,11 +80,11 @@ public class BinarySearch implements BaseAlgorithm {
         StaticProxy staticProxy = new StaticProxy(baseAlgorithm);
         staticProxy.getResult();*/
         List<Integer> list = new ArrayList<>();
-        for (int i = 0; i < 10000000; i++) {
+        for (int i = 0; i < 10000; i++) {
             list.add(i * 2 + 1);
         }
         long b = System.currentTimeMillis();
-        System.out.println(new BinarySearch().binaryInteger(list,399));
+        System.out.println(new BinarySearch().binaryInteger(list,0));
         System.out.println("cost" + (System.currentTimeMillis() - b));
 
     }
