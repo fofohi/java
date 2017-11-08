@@ -1,67 +1,50 @@
 package com.szh.algorithm;
 
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.Comparator;
-import java.util.List;
+import java.util.*;
 
 /**
  * Created by alongsea2 on 2017/10/31.
  */
-public class RankSort implements BaseAlgorithm{
+public class RankSort implements BaseAlgorithm {
 
     private List<RankDto> rankDtoList = new ArrayList<>();
 
-    public RankSort(){
+    public RankSort() {
         RankDto rankDto;
-        for(int i = 0 ; i < 20; i++){
-            rankDto =  new RankDto();
-            if( (i % 2) == 0){
-                rankDto.setScore(10);
-            }else{
-                rankDto.setScore(i * 5 + i);
-            }
-            rankDto.setUserId(i);
+        for (int i = 0; i < 100000; i++) {
+            rankDto = new RankDto();
+            rankDto.setUserId(new Random().nextInt(200));
+            rankDto.setScore(new Random().nextInt(200));
+            rankDto.setLv(new Random().nextInt(10));
+            rankDto.setUsed(new Random().nextInt(200));
             rankDtoList.add(rankDto);
         }
         rankDtoList.sort((o1, o2) -> o2.getScore() - o1.getScore());
     }
 
 
-
     @Override
     public void runAlgorithm() {
-        int rank = 5;
+        int rank = 12;
         int length = rankDtoList.size();
+        int j = 0;
         List<RankDto> dataList = new ArrayList<>();
-            //for(int i = 0 ; i < length ; i++){
-                for(int j = 0 ; j < length ; j++) {
-                    if(j + 1 >= length)break;
+        while (j < length) {
+            if (j + 1 >= length) {
+                dataList.add(rankDtoList.get(j));
+            }
 
-                    if (rankDtoList.get(j).getScore() == rankDtoList.get(j + 1).getScore()) {
-                        dataList.add(rankDtoList.get(j));
-                        dataList.add(rankDtoList.get(j + 1));
-                        j++;
-                        while (j < length){
-                            if(rankDtoList.get(j).getScore() == rankDtoList.get(j + 1).getScore()){
-                                dataList.add(rankDtoList.get(j + 1));
-                                j++;
-                            }else {
-                                dataList.add(rankDtoList.get(j + 1));
-                                break;
-                            }
-                        }
-                    } else {
-                        dataList.add(rankDtoList.get(j));
-                        rank--;
-                    }
-                    if(rank <= 0){
-                        break;
-                    }
-                }
-            //}
-        System.out.println(rankDtoList);
-        System.out.println(dataList);
+            if (rankDtoList.get(j) != rankDtoList.get(j + 1)) {
+                dataList.add(rankDtoList.get(j));
+                rank--;
+            } else {
+                dataList.add(rankDtoList.get(j));
+            }
+            j++;
+            if (rank == 0) {
+                break;
+            }
+        }
     }
 
 
@@ -69,9 +52,11 @@ public class RankSort implements BaseAlgorithm{
         new StaticProxy(new RankSort()).getResult();
     }
 
-    private static class RankDto{
+    private static class RankDto {
         private int userId;
         private int score;
+        private int lv;
+        private int used;
 
         public int getUserId() {
             return userId;
@@ -87,6 +72,22 @@ public class RankSort implements BaseAlgorithm{
 
         public void setScore(int score) {
             this.score = score;
+        }
+
+        public int getLv() {
+            return lv;
+        }
+
+        public void setLv(int lv) {
+            this.lv = lv;
+        }
+
+        public int getUsed() {
+            return used;
+        }
+
+        public void setUsed(int used) {
+            this.used = used;
         }
     }
 }
