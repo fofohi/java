@@ -1,6 +1,6 @@
 package com.szh.im;
 
-import com.szh.im.service.UtilService;
+import com.szh.im.service.impl.UtilService;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 

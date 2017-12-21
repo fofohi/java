@@ -1,4 +1,4 @@
-package com.szh.im.service;
+package com.szh.im.common;
 
 /**
     https://github.com/ssedano/jump-consistent-hash
