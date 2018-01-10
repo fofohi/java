@@ -15,10 +15,10 @@ import java.lang.annotation.Annotation;
 public class DataSourceAop {
     public static String t;
 
-    @Around("execution(* com.szh.im.controller.*.*(..))")
+    @Around("execution(* com.szh.im.controller..*.*(..))")
     public Object businessService(ProceedingJoinPoint pjp) throws Throwable {
         System.out.println("============>");
-        DataSourceAop.t = "readDataSource1";
+        DataSourceAop.t = "readDataSource2";
         Object retVal = pjp.proceed();
         //如果有特定注解,获取应该使用的库
         //模拟

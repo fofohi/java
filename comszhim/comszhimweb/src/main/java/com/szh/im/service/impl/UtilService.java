@@ -37,7 +37,7 @@ public class UtilService implements IUtilService {
         testV2();
         TestOneTable xx = testOneService.getTestOneTable();
         System.out.println("===> now is " + xx.getOneName());
-        groovyService.test();
+        testV2();
     }
 
     @Override
