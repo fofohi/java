@@ -16,8 +16,11 @@ public class GetUnsorted {
     public static int[] getFile1(){
         File file1 = new File(GetUnsorted.file1);
         try {
-            BufferedReader reader = new BufferedReader(new FileReader(file1));
-            reader.readLine();
+            FileInputStream fileInputStream = new FileInputStream(file1);
+
+            System.out.println(fileInputStream.read());
+            System.out.println(fileInputStream.read());
+
         } catch (Exception e) {
             e.printStackTrace();
         }
@@ -27,4 +30,7 @@ public class GetUnsorted {
     }
 
 
+    public static void main(String[] args) {
+        GetUnsorted.getFile1();
+    }
 }

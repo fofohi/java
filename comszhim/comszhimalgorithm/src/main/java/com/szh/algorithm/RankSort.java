@@ -11,12 +11,12 @@ public class RankSort implements BaseAlgorithm {
 
     public RankSort() {
         RankDto rankDto;
-        for (int i = 0; i < 100000; i++) {
+        for (int i = 0; i < 100; i++) {
             rankDto = new RankDto();
-            rankDto.setUserId(new Random().nextInt(200));
-            rankDto.setScore(new Random().nextInt(200));
+            rankDto.setUserId(new Random().nextInt(100));
+            rankDto.setScore(new Random().nextInt(100));
             rankDto.setLv(new Random().nextInt(10));
-            rankDto.setUsed(new Random().nextInt(200));
+            rankDto.setUsed(new Random().nextInt(100));
             rankDtoList.add(rankDto);
         }
         rankDtoList.sort((o1, o2) -> o2.getScore() - o1.getScore());
@@ -25,7 +25,7 @@ public class RankSort implements BaseAlgorithm {
 
     @Override
     public void runAlgorithm() {
-        int rank = 12;
+        int rank = 60;
         int length = rankDtoList.size();
         int j = 0;
         List<RankDto> dataList = new ArrayList<>();
@@ -45,6 +45,7 @@ public class RankSort implements BaseAlgorithm {
                 break;
             }
         }
+        System.out.println(dataList);
     }
 
 
