@@ -25,9 +25,9 @@ public interface ShopConfig {
 
     String USER_INFO_URL = "https://api.weixin.qq.com/sns/userinfo?access_token=%s&openid=%s&lang=zh_CN";
 
-    String APP_ID = "wxd5c2fbddce781cd4";
+    String APP_ID = "";
 
-    String APP_SECRET = "50554be88d16c62d11c280733c45e520";
+    String APP_SECRET = "";
 
     String REDIECT_WECHAT = "redirectWechat";
 

@@ -4,6 +4,10 @@ import org.apache.activemq.ActiveMQConnection;
 import org.apache.activemq.ActiveMQConnectionFactory;
 
 import javax.jms.*;
+import java.io.BufferedReader;
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileReader;
 
 /**
  * Created by alongsea2 on 2017/3/27.
@@ -11,13 +15,32 @@ import javax.jms.*;
 public class ActiveMessageQueue {
     public static void main(String[] args) {
         ActiveMQConnectionFactory connectionFactory = new ActiveMQConnectionFactory(
-                ActiveMQConnection.DEFAULT_USER,
-                ActiveMQConnection.DEFAULT_PASSWORD,
-                "tcp://localhost:61616");
+                "admin",
+                "admin",
+                "tcp:///10.10.11.208:61616");
         try {
-            new Thread(() -> {
-                new ActiveMqConsumer().consumer();
-            }).start();
+            String x = "/Users/alongsea2/Downloads/1.txt";
+            BufferedReader fileInputStream = new BufferedReader(new FileReader(new File(x)));
+            ActUserRegisterDTO a;
+            String xx = null;
+            do {
+                xx = fileInputStream.readLine();
+                if(xx != null){
+                    String[] ss = xx.split(",");
+                    a = new ActUserRegisterDTO();
+                    a.setUserId(Long.parseLong(ss[0]));
+                    a.setEntranceId(ss[2]);
+                    a.setUuid(ss[1]);
+                    ClientRequestHeader header = new ClientRequestHeader();
+                    header.setUserID(Long.parseLong(ss[0]) + "");
+                    header.setUuid(ss[1]);
+                    header.setCmdName(ss[2]);
+                    a.setHeader(header);
+                }
+            }while (xx != null);
+
+
+
             Connection connection = connectionFactory.createConnection();
             connection.start();
             Session session = connection.createSession(Boolean.FALSE,
@@ -32,7 +55,7 @@ public class ActiveMessageQueue {
             session.commit();
 
 
-        } catch (JMSException e) {
+        } catch (Exception e) {
             e.printStackTrace();
         }
     }

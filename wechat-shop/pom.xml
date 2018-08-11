@@ -240,16 +240,16 @@
             <id>dev2</id>
             <properties>
                 <db.url>jdbc:mysql://192.168.20.250:3306/oldshop</db.url>
-                <db.user>xlingmao</db.user>
-                <db.password>xlingmao</db.password>
+                <db.user></db.user>
+                <db.password></db.password>
             </properties>
         </profile>
         <profile>
             <id>prod</id>
             <properties>
                 <db.url>jdbc:mysql://localhost:3306/fenshang?characterEncoding=utf-8</db.url>
-                <db.user>root</db.user>
-                <db.password>fengshang123</db.password>
+                <db.user></db.user>
+                <db.password></db.password>
             </properties>
         </profile>
     </profiles>
