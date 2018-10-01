@@ -1,15 +1,9 @@
 package com.szh.algorithm.datastruct;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
-import com.fasterxml.jackson.core.JsonParser;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 
-import javax.persistence.Transient;
-import java.util.ArrayList;
-import java.util.Comparator;
-import java.util.LinkedList;
-import java.util.List;
+import java.util.*;
 
 public class GraphLession {
 
@@ -26,22 +20,19 @@ public class GraphLession {
         vertexList.add(vertex3);
         //0-1 0-2 0-3 2-3
         Edge edge0 = new Edge(vertex0,vertex1,10);
-        Edge edge1 = new Edge(vertex0,vertex2,20);
-        Edge edge2 = new Edge(vertex0,vertex3,30);
-        Edge edge3 = new Edge(vertex2,vertex3,40);
+        Edge edge1 = new Edge(vertex1,vertex2,20);
+        Edge edge2 = new Edge(vertex2,vertex3,30);
         List<Edge> edgeList = new ArrayList<>();
         edgeList.add(edge0);
         edgeList.add(edge1);
         edgeList.add(edge2);
-        edgeList.add(edge3);
 
 
         Graph graph = new Graph(vertexList, edgeList);
         graph.print();
 
         ObjectMapper objectMapper = new ObjectMapper();
-
-        //System.out.println(objectMapper.writeValueAsString(graph));
+        //System.out.println(objectMapper.writeValueAsString(graph.getVertices()));
 
     }
 
@@ -49,6 +40,16 @@ public class GraphLession {
         private int id;
 
         private Edge firstEdge;
+
+        private int isBeginNode;
+
+        public int getIsBeginNode() {
+            return isBeginNode;
+        }
+
+        public void setIsBeginNode(int isBeginNode) {
+            this.isBeginNode = isBeginNode;
+        }
 
         public Vertex(int id) {
             this.id = id;
@@ -155,7 +156,7 @@ public class GraphLession {
 
 
         void print() {
-            System.out.printf("List Graph:\n");
+            System.out.println("List Graph:\n");
             for (Vertex vertex : vertices) {
                 if(vertex.getFirstEdge() != null){
                     StringBuilder head = new StringBuilder("path is " + vertex.getId() + " -> " + vertex.getFirstEdge().getDest().getId());
@@ -167,10 +168,12 @@ public class GraphLession {
                     System.out.println(head);
                 }
             }
-            System.out.printf("total distance:\n\r");
+            System.out.println("total distance:\r");
             System.out.println(this.totalDistance);
-            System.out.printf("\n\r");
+            System.out.println("\r");
         }
+
+
 
 
         public List<Vertex> getVertices() {
@@ -197,4 +200,5 @@ public class GraphLession {
             this.totalDistance = totalDistance;
         }
     }
+
 }
