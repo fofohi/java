@@ -11,9 +11,16 @@
         <module>comszhdubbo</module>
         <module>comszhdubbo2</module>
         <module>comszhimalgorithm</module>
+        <module>springboot</module>
     </modules>
     <name>com.szh.im Maven Webapp</name>
     <url>http://maven.apache.org</url>
+
+    <parent>
+        <groupId>com.jdd</groupId>
+        <artifactId>global.core</artifactId>
+        <version>1.0</version>
+    </parent>
 
     <properties>
         <spring.version>4.3.7.RELEASE</spring.version>
@@ -150,21 +157,21 @@
             <!--<version>0.10</version>-->
         <!--</dependency>-->
 
-        <dependency>
-            <groupId>log4j</groupId>
-            <artifactId>log4j</artifactId>
-            <version>1.2.16</version>
-        </dependency>
-        <dependency>
-            <groupId>org.slf4j</groupId>
-            <artifactId>slf4j-api</artifactId>
-            <version>1.6.6</version>
-        </dependency>
-        <dependency>
-            <groupId>org.slf4j</groupId>
-            <artifactId>slf4j-log4j12</artifactId>
-            <version>1.6.6</version>
-        </dependency>
+        <!--<dependency>-->
+            <!--<groupId>log4j</groupId>-->
+            <!--<artifactId>log4j</artifactId>-->
+            <!--<version>1.2.16</version>-->
+        <!--</dependency>-->
+        <!--<dependency>-->
+            <!--<groupId>org.slf4j</groupId>-->
+            <!--<artifactId>slf4j-api</artifactId>-->
+            <!--<version>1.6.6</version>-->
+        <!--</dependency>-->
+        <!--<dependency>-->
+            <!--<groupId>org.slf4j</groupId>-->
+            <!--<artifactId>slf4j-log4j12</artifactId>-->
+            <!--<version>1.6.6</version>-->
+        <!--</dependency>-->
 
         <!-- https://mvnrepository.com/artifact/com.fasterxml.jackson.core/jackson-databind -->
         <dependency>
