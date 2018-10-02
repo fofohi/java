@@ -18,17 +18,19 @@ public class GraphLession {
         Vertex vertex1 = new Vertex(1);
         Vertex vertex2 = new Vertex(2);
         Vertex vertex3 = new Vertex(3);
+        Vertex vertex4 = new Vertex(4);
 
         LinkedList<Vertex> vertexList = new LinkedList<>();
         vertexList.add(vertex0);
         vertexList.add(vertex1);
         vertexList.add(vertex2);
         vertexList.add(vertex3);
+        vertexList.add(vertex4);
         //0-1 0-2 0-3 2-3
-        Edge edge0 = new Edge(vertex0,vertex1,10);
-        Edge edge1 = new Edge(vertex0,vertex2,20);
-        Edge edge2 = new Edge(vertex0,vertex3,30);
-        Edge edge3 = new Edge(vertex2,vertex3,40);
+        Edge edge0 = new Edge(vertex0,vertex1);
+        Edge edge1 = new Edge(vertex1,vertex2);
+        Edge edge2 = new Edge(vertex2,vertex3);
+        Edge edge3 = new Edge(vertex3,vertex4);
         List<Edge> edgeList = new ArrayList<>();
         edgeList.add(edge0);
         edgeList.add(edge1);
@@ -83,12 +85,6 @@ public class GraphLession {
             this.dest = dest;
         }
 
-        public Edge(Vertex src, Vertex dest,int distance) {
-            this.src = src;
-            this.dest = dest;
-            this.distance = distance;
-        }
-
         public Vertex getSrc() {
             return src;
         }
@@ -127,15 +123,12 @@ public class GraphLession {
 
         private List<Edge> edges;
 
-        private int totalDistance = 0;
-
 
         public Graph(List<Vertex> vertices, List<Edge> edges) {
             this.vertices = vertices;
             this.edges = edges;
-            for (Edge edge : edges) {
-                totalDistance += edge.getDistance();
-            }
+
+
             for (Vertex vertex : vertices) {
                 for (Edge edge : edges) {
                     if (vertex.getId() == edge.getSrc().getId()) {
@@ -154,22 +147,35 @@ public class GraphLession {
         }
 
 
-        void print() {
+        public void print() {
             System.out.printf("List Graph:\n");
+            List<LinkedList<Integer>> list = new ArrayList<>();
             for (Vertex vertex : vertices) {
                 if(vertex.getFirstEdge() != null){
                     StringBuilder head = new StringBuilder("path is " + vertex.getId() + " -> " + vertex.getFirstEdge().getDest().getId());
+                    System.out.println();
+                    LinkedList<Integer> list1 = new LinkedList<>();
+                    list1.addFirst(vertex.getId());
+                    list1.addLast(vertex.getFirstEdge().getDest().getId());
                     Edge tmp = vertex.getFirstEdge();
                     while (tmp.getNextEdge() != null){
+                        LinkedList<Integer> list2 = new LinkedList<>();
                         head.append(" -> ").append(tmp.getNextEdge().getDest().getId());
+                        list2.addFirst(tmp.getNextEdge().getSrc().getId());
+                        list2.addLast(tmp.getNextEdge().getDest().getId());
+                        list.add(list2);
                         tmp = tmp.getNextEdge();
                     }
                     System.out.println(head);
+                    list.add(list1);
                 }
             }
-            System.out.printf("total distance:\n\r");
-            System.out.println(this.totalDistance);
-            System.out.printf("\n\r");
+            ObjectMapper objectMapper = new ObjectMapper();
+            try {
+                System.out.println(objectMapper.writeValueAsString(list));
+            } catch (JsonProcessingException e) {
+                e.printStackTrace();
+            }
         }
 
 
@@ -187,14 +193,6 @@ public class GraphLession {
 
         public void setEdges(List<Edge> edges) {
             this.edges = edges;
-        }
-
-        public int getTotalDistance() {
-            return totalDistance;
-        }
-
-        public void setTotalDistance(int totalDistance) {
-            this.totalDistance = totalDistance;
         }
     }
 }
