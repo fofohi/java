@@ -9,11 +9,11 @@ import org.springframework.stereotype.Service;
 public class UtilServiceImpl implements UtilService {
 
     @Autowired
-    RedisTemplate redisTemplateService;
+    RedisTemplate redisTemplateByteArrayService;
 
     @Override
     public String test(String code) {
-
+        redisTemplateByteArrayService.getValueSerializer()
         return code;
     }
 }
