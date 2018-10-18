@@ -6,7 +6,10 @@
     <artifactId>archetype-spring-boot-starter</artifactId>
     <version>1.0-SNAPSHOT</version>
     <modules>
+        <!--缓存-->
         <module>cache-archetype-spring-boot-starter</module>
+        <!--公用-->
+        <module>common-archetype-spring-boot-starter</module>
     </modules>
     <packaging>pom</packaging>
 

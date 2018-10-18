@@ -1,1 +1,2 @@
-org.springframework.boot.autoconfigure.EnableAutoConfiguration=com.cache.config.RedisClusterConfiguration
+org.springframework.boot.autoconfigure.EnableAutoConfiguration=\
+  com.cache.config.RedisAutoConfiguration
