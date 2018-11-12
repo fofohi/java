@@ -8,8 +8,8 @@
     <modules>
         <!--缓存-->
         <module>cache-archetype-spring-boot-starter</module>
-        <!--公用-->
-        <module>common-archetype-spring-boot-starter</module>
+        <!--apollo-->
+        <module>apollo-archetype-spring-boot-starter</module>
     </modules>
     <packaging>pom</packaging>
 
