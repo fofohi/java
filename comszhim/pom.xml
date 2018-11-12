@@ -12,13 +12,10 @@
         <module>comszhdubbo2</module>
         <module>comszhimalgorithm</module>
         <module>springboot</module>
-        <module>testspring</module>
     </modules>
-    <name>com.szh.im Maven Webapp</name>
-    <url>http://maven.apache.org</url>
 
     <parent>
-        <groupId>com.jdd</groupId>
+        <groupId>com.self</groupId>
         <artifactId>global.core</artifactId>
         <version>1.0</version>
     </parent>

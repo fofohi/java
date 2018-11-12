@@ -5,11 +5,18 @@
     <modelVersion>4.0.0</modelVersion>
 
     <artifactId>springboot</artifactId>
+    <packaging>jar</packaging>
+    <version>1.0</version>
 
     <dependencies>
         <dependency>
-            <groupId>com.jdd</groupId>
-            <artifactId>redis-archetype-spring-boot-starter</artifactId>
+            <groupId>com.self</groupId>
+            <artifactId>apollo-archetype-spring-boot-starter</artifactId>
+            <version>1.0-SNAPSHOT</version>
+        </dependency>
+        <dependency>
+            <groupId>com.self</groupId>
+            <artifactId>cache-archetype-spring-boot-starter</artifactId>
             <version>1.0-SNAPSHOT</version>
         </dependency>
     </dependencies>
