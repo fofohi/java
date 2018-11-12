@@ -1,4 +1,4 @@
-package com.cache.service;
+package com.self.cache.service;
 
 import org.springframework.data.redis.connection.RedisStringCommands;
 import org.springframework.data.redis.core.ZSetOperations;

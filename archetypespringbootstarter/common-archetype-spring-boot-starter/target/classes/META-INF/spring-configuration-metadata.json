@@ -1,0 +1,93 @@
+{
+  "hints": [],
+  "groups": [
+    {
+      "sourceType": "com.common.DisconfProperties",
+      "name": "spring.disconf",
+      "type": "com.common.DisconfProperties"
+    }
+  ],
+  "properties": [
+    {
+      "sourceType": "com.common.DisconfProperties",
+      "name": "spring.disconf.app",
+      "type": "java.lang.String"
+    },
+    {
+      "sourceType": "com.common.DisconfProperties",
+      "name": "spring.disconf.conf-server-host",
+      "type": "java.lang.String"
+    },
+    {
+      "sourceType": "com.common.DisconfProperties",
+      "defaultValue": 5,
+      "name": "spring.disconf.conf-server-url-retry-sleep-seconds",
+      "type": "java.lang.Integer"
+    },
+    {
+      "sourceType": "com.common.DisconfProperties",
+      "defaultValue": 3,
+      "name": "spring.disconf.conf-server-url-retry-times",
+      "type": "java.lang.Integer"
+    },
+    {
+      "sourceType": "com.common.DisconfProperties",
+      "defaultValue": false,
+      "name": "spring.disconf.debug",
+      "type": "java.lang.Boolean"
+    },
+    {
+      "sourceType": "com.common.DisconfProperties",
+      "defaultValue": false,
+      "name": "spring.disconf.enable-local-download-dir-in-class-path",
+      "type": "java.lang.Boolean"
+    },
+    {
+      "sourceType": "com.common.DisconfProperties",
+      "defaultValue": false,
+      "name": "spring.disconf.enable-remote-conf",
+      "type": "java.lang.Boolean"
+    },
+    {
+      "sourceType": "com.common.DisconfProperties",
+      "name": "spring.disconf.env",
+      "type": "java.lang.String"
+    },
+    {
+      "sourceType": "com.common.DisconfProperties",
+      "name": "spring.disconf.ignore",
+      "type": "java.lang.String"
+    },
+    {
+      "sourceType": "com.common.DisconfProperties",
+      "name": "spring.disconf.main-type",
+      "type": "java.lang.String"
+    },
+    {
+      "sourceType": "com.common.DisconfProperties",
+      "name": "spring.disconf.reload-files",
+      "type": "java.lang.String"
+    },
+    {
+      "sourceType": "com.common.DisconfProperties",
+      "name": "spring.disconf.scan-package",
+      "type": "java.lang.String"
+    },
+    {
+      "sourceType": "com.common.DisconfProperties",
+      "name": "spring.disconf.un-reload-files",
+      "type": "java.lang.String"
+    },
+    {
+      "sourceType": "com.common.DisconfProperties",
+      "defaultValue": ".\/disconf\/download",
+      "name": "spring.disconf.user-define-download-dir",
+      "type": "java.lang.String"
+    },
+    {
+      "sourceType": "com.common.DisconfProperties",
+      "name": "spring.disconf.version",
+      "type": "java.lang.String"
+    }
+  ]
+}

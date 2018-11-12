@@ -1,4 +1,4 @@
-package com.cache.util;
+package com.self.cache.util;
 
 import com.dyuproject.protostuff.LinkedBuffer;
 import com.dyuproject.protostuff.ProtobufIOUtil;

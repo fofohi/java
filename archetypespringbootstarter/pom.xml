@@ -14,7 +14,7 @@
     <packaging>pom</packaging>
 
     <parent>
-        <groupId>com.jdd</groupId>
+        <groupId>com.self</groupId>
         <artifactId>global.core</artifactId>
         <version>1.0</version>
     </parent>

@@ -12,6 +12,7 @@
         <module>comszhdubbo2</module>
         <module>comszhimalgorithm</module>
         <module>springboot</module>
+        <module>testspring</module>
     </modules>
     <name>com.szh.im Maven Webapp</name>
     <url>http://maven.apache.org</url>

@@ -1,6 +1,6 @@
-package com.cache.service.impl;
+package com.self.cache.service.impl;
 
-import com.cache.service.RedisCacheService;
+import com.self.cache.service.RedisCacheService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
