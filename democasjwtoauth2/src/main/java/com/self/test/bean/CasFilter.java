@@ -29,7 +29,6 @@ public class CasFilter implements Filter {
         HttpSession session = httpServletRequest.getSession();
         System.out.println(session.getAttribute("test"));
         //看看是否有ticket 有的话验证ticket
-        //filterChain.doFilter(servletRequest,servletResponse);
         //没有的话就要跳转登录页面
         HttpServletResponse httpServletResponse = (HttpServletResponse) servletResponse;
         httpServletResponse.sendRedirect("/t?123");
