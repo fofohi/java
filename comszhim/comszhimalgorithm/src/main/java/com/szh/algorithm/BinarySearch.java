@@ -8,6 +8,7 @@ import java.util.List;
 
 /**
  * Created by alongsea2 on 2017/4/18.
+ * 2分
  */
 public class BinarySearch implements BaseAlgorithm {
 
