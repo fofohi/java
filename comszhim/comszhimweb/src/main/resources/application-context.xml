@@ -9,6 +9,9 @@
         http://activemq.org/config/1.0
         http://activemq.apache.org/schema/core/activemq-core-5.7.xsd http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx.xsd http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd"
 >   <import resource="groovy.xml"/>
+    <context:component-scan base-package="com.szh.im">
+        <context:exclude-filter type="annotation" expression="org.springframework.web.bind.annotation.RestController" />
+    </context:component-scan>
     <!-- druid configuration -->
     <bean id="mainDataSourcex" class="com.alibaba.druid.pool.DruidDataSource" init-method="init" destroy-method="close">
         <property name="driverClassName" value="com.mysql.jdbc.Driver" />

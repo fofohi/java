@@ -1,9 +1,8 @@
 public class IsPalindrome {
 
     public static boolean isPalindrome(int x) {
-        if(x <= 0)return true;
-        if(x < 10){
-            return true;
+        if(x < 0 || (x % 10 == 0 && x != 0)) {
+            return false;
         }
         int a = 1;
         while (x / 10 != 0){
@@ -16,10 +15,15 @@ public class IsPalindrome {
         boolean isQorO = a / 2d == 0;
 
         if(!isQorO){
-            int mid = numberOfX / 2;
+            int mid = (int) (numberOfX / 2d);
+            int loop = 0;
+            int left = 0;
+            int right = 0;
             while (a != 0){
                 x /= 10 * a ;
+
                 a--;
+                loop++;
             }
         }
 
