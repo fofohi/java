@@ -1,8 +1,13 @@
 package com.demo.test.demo;
 
 
+import org.springframework.beans.BeansException;
+import org.springframework.beans.factory.config.BeanFactoryPostProcessor;
+import org.springframework.beans.factory.config.ConfigurableListableBeanFactory;
+import org.springframework.stereotype.Component;
 
-public class BeanB {
+
+public class BeanB{
 
 
 
@@ -10,6 +15,7 @@ public class BeanB {
 
         return "testB";
     }
+
 
 
 }

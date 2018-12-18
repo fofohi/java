@@ -17,6 +17,10 @@ public class ApiController {
     @CrossOrigin
     @RequestMapping(method = RequestMethod.GET,value = "/api")
     public Object test(){
+
+        if(beanA == null){
+            return "beanA is null";
+        }
         return beanA.testA();
     }
 }
