@@ -21,7 +21,7 @@ public class DiscardClientHandler extends ChannelInboundHandlerAdapter {
 
     @Override
     public void channelActive(ChannelHandlerContext ctx) {
-        ctx.writeAndFlush("v1 give from client");
+        ctx.channel().writeAndFlush("v1 give from client");
         new writeMsgThread(ctx);
     }
 
