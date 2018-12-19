@@ -17,16 +17,25 @@ public class LinkedListTest {
         n4.setNext(n5);
 
 
-
-
-
+        NodeCase x = reverseWhile(n1);
+        System.out.println(x);
     }
 
 
     private static NodeCase reverseWhile(NodeCase n){
+        //保存现在的next引用
+        NodeCase next = n.getNext();
+        n.setNext(null);
+        //n1 null
+        while (next != null){
+            NodeCase n1 = next.getNext();
+            NodeCase n3 = next;
+            n3.setNext(n);
+            n = n3;
+            next = n1;
+        }
 
-
-
+        return n;
     }
 
 
