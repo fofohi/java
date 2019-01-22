@@ -1,7 +1,5 @@
 package com.szh.algorithm;
 
-import com.szh.algorithm.pojo.ListNode;
-
 public class LeetCode {
 
     /**

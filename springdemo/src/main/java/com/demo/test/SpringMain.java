@@ -12,7 +12,6 @@ public class SpringMain {
         ApplicationContext context = new ClassPathXmlApplicationContext("src/main/web-app/WEB-INF/service.xml");
         BeanA a = (BeanA) context.getBean("beanA");
         BeanB b = (BeanB) context.getBean("beanB");
-        System.out.println(a.testA());
         System.out.println(b.getB());
     }
 

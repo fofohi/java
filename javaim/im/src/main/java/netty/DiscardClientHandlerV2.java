@@ -24,7 +24,7 @@ public class DiscardClientHandlerV2 extends ChannelOutboundHandlerAdapter {
 
     @Override
     public void connect(ChannelHandlerContext ctx, SocketAddress remoteAddress, SocketAddress localAddress, ChannelPromise promise) throws Exception {
-        ctx.writeAndFlush("test");
+        ctx.channel().write("test");
         super.connect(ctx, remoteAddress, localAddress, promise);
     }
 

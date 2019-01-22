@@ -1,18 +1,11 @@
 package netty;
 
-import io.netty.channel.Channel;
 import io.netty.channel.ChannelHandlerContext;
 import io.netty.channel.ChannelInboundHandlerAdapter;
-import io.netty.handler.timeout.IdleState;
-import io.netty.handler.timeout.IdleStateEvent;
 import io.netty.util.ReferenceCountUtil;
 import org.apache.log4j.Logger;
-import util.ChannelHashMap;
 
 
-import java.util.Map;
-import java.util.UUID;
-import java.util.concurrent.ConcurrentHashMap;
 
 /**x
  * Created by dell on 2016/7/15.
@@ -42,7 +35,7 @@ public class DiscardServerHandler extends ChannelInboundHandlerAdapter { // (1)
 
     }
 
-    @Override
+    /*@Override
     public void userEventTriggered(ChannelHandlerContext ctx, Object evt) throws Exception {
         if(IdleStateEvent.class.isAssignableFrom(evt.getClass())){
             IdleStateEvent event = (IdleStateEvent) evt;
@@ -55,7 +48,7 @@ public class DiscardServerHandler extends ChannelInboundHandlerAdapter { // (1)
             }
         }
 
-    }
+    }*/
 
 
     @Override

@@ -6,11 +6,12 @@ import org.springframework.boot.autoconfigure.EnableAutoConfiguration;
 import org.springframework.boot.autoconfigure.jdbc.DataSourceAutoConfiguration;
 import org.springframework.context.annotation.ComponentScan;
 
-@ComponentScan(basePackages = "com.self")
+
+@ComponentScan(basePackages = {"com.self"})
 @EnableAutoConfiguration(exclude={DataSourceAutoConfiguration.class})
 public class Application {
 
-    public static void main(String[] args){
+    public static void main(String[] args) {
         SpringApplication.run(Application.class,args);
     }
 }

@@ -1,17 +1,22 @@
 package com.demo.test.demo;
 
 
-import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.BeansException;
+import org.springframework.beans.factory.config.BeanFactoryPostProcessor;
+import org.springframework.beans.factory.config.ConfigurableListableBeanFactory;
+import org.springframework.stereotype.Component;
+import org.springframework.stereotype.Service;
 
-public class BeanB {
+@Service
+public class BeanB{
 
-    @Autowired
-    private BeanD beanD;
+
 
     public String getB(){
-        System.out.println(beanD);
+
         return "testB";
     }
+
 
 
 }

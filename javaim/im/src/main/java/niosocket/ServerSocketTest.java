@@ -16,7 +16,7 @@ public class ServerSocketTest {
                 Socket clientSocket = ss.accept();
 
                 new Thread(()->{
-                    clientSocket
+
 
 
                 }).start();
