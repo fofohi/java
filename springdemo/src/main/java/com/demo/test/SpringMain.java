@@ -9,7 +9,7 @@ public class SpringMain {
 
 
     public static void main(String[] args) {
-        ApplicationContext context = new ClassPathXmlApplicationContext("service.xml");
+        ApplicationContext context = new ClassPathXmlApplicationContext("src/main/web-app/WEB-INF/service.xml");
         BeanA a = (BeanA) context.getBean("beanA");
         BeanB b = (BeanB) context.getBean("beanB");
         System.out.println(a.testA());
