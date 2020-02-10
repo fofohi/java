@@ -1,8 +1,8 @@
 package com.szh.im;
 
 import com.szh.im.service.impl.UtilService;
-import org.springframework.context.ApplicationContext;
-import org.springframework.context.support.ClassPathXmlApplicationContext;
+
+import java.awt.*;
 
 /**
  * Created by alongsea2 on 2017/3/11.
@@ -10,9 +10,11 @@ import org.springframework.context.support.ClassPathXmlApplicationContext;
  */
 public class Application{
 
-    public static void main(String[] args) {
-        ApplicationContext context =
-                new ClassPathXmlApplicationContext(new String[] {"application-context.xml"});
-        UtilService service = context.getBean(UtilService.class);
+    public static void main(String[] args) throws AWTException {
+//        ApplicationContext context =
+//                new ClassPathXmlApplicationContext(new String[] {"application-context.xml"});
+//        UtilService service = context.getBean(UtilService.class);
+        Robot robot = new Robot();
+        robot.mouseMove(111,222);
     }
 }
